@@ -1,0 +1,12 @@
+{
+  "name": "sprint-pulse-monorepo",
+  "private": true,
+  "scripts": {
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "dev": "pnpm -r dev"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
