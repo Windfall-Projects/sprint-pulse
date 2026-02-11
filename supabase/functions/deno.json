@@ -1,0 +1,20 @@
+{
+    "imports": {
+        "@sprintpulse/shared/": "../../packages/shared/src/",
+        "hono": "npm:hono@^4",
+        "@hono/zod-validator": "npm:@hono/zod-validator@^0.4",
+        "@supabase/supabase-js": "npm:@supabase/supabase-js@^2",
+        "zod": "npm:zod@^3.25"
+    },
+    "tasks": {
+        "test": "deno test --allow-all",
+        "check": "deno check **/*.ts"
+    },
+    "compilerOptions": {
+        "lib": [
+            "deno.ns",
+            "deno.unstable",
+            "dom"
+        ]
+    }
+}

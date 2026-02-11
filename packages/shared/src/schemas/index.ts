@@ -63,6 +63,13 @@ export const TeamMemberSchema = z.object({
   joined_at: Timestamp,
 });
 
+export const CreateTeamSchema = TeamSchema.omit({
+  id: true,
+  deleted_at: true,
+  created_at: true,
+  updated_at: true,
+});
+
 // ============================================================================
 // 4. EXECUTION (Sprints & Work Items)
 // ============================================================================
@@ -86,14 +93,37 @@ export const SprintSchema = z.object({
  * - Enforces end_date >= start_date.
  * - Use this for React Hook Form resolvers.
  */
-export const CreateSprintSchema = SprintSchema.omit({ 
-  id: true, 
-  created_at: true, 
-  updated_at: true 
+export const CreateSprintSchema = SprintSchema.omit({
+  id: true,
+  created_at: true,
+  updated_at: true
 }).refine((data) => data.end_date >= data.start_date, {
   message: "End date must be after start date",
   path: ["end_date"],
 });
+
+/**
+ * Input Schema for updating a Sprint.
+ * All fields are optional; enforces end_date >= start_date when both are present.
+ */
+export const UpdateSprintSchema = SprintSchema.pick({
+  name: true,
+  start_date: true,
+  end_date: true,
+  goal: true,
+  status: true,
+}).partial().refine(
+  (data) => {
+    if (data.start_date && data.end_date) {
+      return data.end_date >= data.start_date;
+    }
+    return true;
+  },
+  {
+    message: "End date must be after start date",
+    path: ["end_date"],
+  }
+);
 
 export const WorkItemSchema = z.object({
   id: z.string().uuid(),
@@ -103,12 +133,12 @@ export const WorkItemSchema = z.object({
   story_points: z.number().int().nonnegative().default(0),
   status: WorkItemStatusEnum,
   type: WorkItemTypeEnum,
-  
+
   // External Integration ("Shadow Records")
   provider: WorkItemProviderEnum,
   external_id: z.string().nullable(),
   external_url: z.string().url().nullable(),
-  
+
   completed_at: Timestamp.nullable(),
   created_at: Timestamp,
   updated_at: Timestamp,
@@ -134,6 +164,28 @@ export const SurveyQuestionSchema = z.object({
   question_type: QuestionTypeEnum,
   order_index: z.number().int(),
   is_required: z.boolean(),
+});
+
+/**
+ * Input Schema for creating a Survey with its questions.
+ * - `account_id` is required by the DB.
+ * - `team_id` is nullable (null = system-level / org-wide survey).
+ * - `is_active` defaults to true.
+ * - `questions` is a nested array of question definitions (no id/survey_id needed).
+ */
+export const CreateSurveySchema = z.object({
+  account_id: z.string().uuid(),
+  team_id: z.string().uuid().nullable().optional(),
+  title: z.string().min(1),
+  is_active: z.boolean().optional().default(true),
+  questions: z.array(
+    z.object({
+      question_text: z.string().min(1),
+      question_type: QuestionTypeEnum,
+      order_index: z.number().int(),
+      is_required: z.boolean().optional().default(true),
+    })
+  ),
 });
 
 export const SurveyResponseSchema = z.object({

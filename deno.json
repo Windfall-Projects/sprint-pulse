@@ -1,0 +1,12 @@
+{
+  "imports": {
+    "@sprintpulse/shared/": "./packages/shared/src/",
+    "zod": "npm:zod@^3.24.1"
+  },
+  "compilerOptions": {
+    "lib": ["deno.ns", "deno.unstable", "dom"]
+  },
+  "tasks": {
+    "check": "deno check supabase/functions/api/routes/teams.ts"
+  }
+}
