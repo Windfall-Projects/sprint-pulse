@@ -47,3 +47,36 @@ Deploy just the database migrations with:
 ```bash
 pnpm deploy:db
 ```
+
+## Quality Assurance
+
+### Linting
+
+To run lint checks across the workspace:
+
+```bash
+pnpm lint
+```
+
+### Unit Tests
+
+To run unit tests:
+
+```bash
+pnpm test
+```
+
+### Type Checking
+
+To run type checks for the entire project:
+
+```bash
+pnpm type-check
+```
+
+You can also run them individually:
+
+```bash
+pnpm type-check:api
+pnpm type-check:shared
+```
