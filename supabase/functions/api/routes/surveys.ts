@@ -63,7 +63,7 @@ app.get('/:id', async (c) => {
 });
 
 // ---------------------------------------------------------------------------
-// POST / — Create a survey with questions (pseudo-transaction)
+// POST / — Create a survey with questions (via DB transaction RPC)
 // ---------------------------------------------------------------------------
 app.post('/', zValidator('json', CreateSurveySchema), async (c) => {
     const supabase = createClient<Database>(
@@ -74,45 +74,24 @@ app.post('/', zValidator('json', CreateSurveySchema), async (c) => {
 
     const input = c.req.valid('json');
 
-    // Step 1: Insert the survey
-    const { data: survey, error: surveyError } = await supabase
-        .from('surveys')
-        .insert({
-            account_id: input.account_id,
-            team_id: input.team_id ?? null,
-            title: input.title,
-            is_active: input.is_active,
-        })
-        .select()
-        .single();
+    const { data, error } = await supabase.rpc('create_survey_with_questions', {
+        p_account_id: input.account_id,
+        p_team_id: input.team_id ?? undefined,
+        p_title: input.title,
+        p_is_active: input.is_active,
+        p_questions: input.questions,
+    });
 
-    if (surveyError || !survey) {
-        return c.json({ error: surveyError?.message ?? 'Failed to create survey' }, 500);
+    if (error) {
+        if (error.message.includes('Access Denied')) {
+            return c.json({ error: error.message }, 403);
+        }
+        return c.json({ error: error.message }, 500);
     }
 
-    // Step 2: Prepare questions with the new survey_id
-    const questionsToInsert = input.questions.map((q) => ({
-        survey_id: survey.id,
-        question_text: q.question_text,
-        response_type: q.question_type,
-        order_index: q.order_index,
-        is_required: q.is_required,
-    }));
-
-    // Step 3: Insert questions
-    const { data: createdQuestions, error: questionsError } = await supabase
-        .from('survey_questions')
-        .insert(questionsToInsert)
-        .select();
-
-    // Step 4: If questions fail, rollback the survey to prevent ghost records
-    if (questionsError) {
-        await supabase.from('surveys').delete().eq('id', survey.id);
-        return c.json({ error: questionsError.message }, 500);
-    }
-
-    return c.json({ ...survey, questions: createdQuestions }, 201);
+    return c.json(data as Record<string, unknown>, 201);
 });
+
 
 // ---------------------------------------------------------------------------
 // DELETE /:id — Delete a survey (questions cascade automatically)

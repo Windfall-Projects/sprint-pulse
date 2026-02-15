@@ -1,0 +1,149 @@
+### ============================================================================
+### Configuration
+### ============================================================================
+### 1. Run `pnpm get-token` to get a fresh access token
+### 2. Paste it below as the @token value
+### 3. Replace UUIDs with real IDs from your local database as needed
+
+@baseUrl = http://127.0.0.1:54321/functions/v1/api
+@token = x
+@accountId = 11111111-1111-1111-1111-111111111111
+@teamId = 22222222-2222-2222-2222-222222222222
+
+
+### ============================================================================
+### TEAMS
+### ============================================================================
+
+### List all teams (for the user's account)
+GET {{baseUrl}}/teams
+Authorization: Bearer {{token}}
+
+###
+
+### Get my team memberships
+GET {{baseUrl}}/teams/mine
+Authorization: Bearer {{token}}
+
+###
+
+### Create a new team
+POST {{baseUrl}}/teams
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "account_id": "{{accountId}}",
+    "name": "Backend Squad"
+}
+
+###
+
+### Get a team by ID
+GET {{baseUrl}}/teams/{{teamId}}
+Authorization: Bearer {{token}}
+
+
+### ============================================================================
+### SPRINTS
+### ============================================================================
+
+@sprintId = 2dae8bc9-c5dc-455b-89a0-1644225db2f5
+
+###
+
+### List sprints for a team
+GET {{baseUrl}}/sprints?teamId={{teamId}}
+Authorization: Bearer {{token}}
+
+###
+
+### Create a new sprint
+POST {{baseUrl}}/sprints
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "team_id": "{{teamId}}",
+    "name": "Sprint 1 — Kickoff",
+    "start_date": "2026-02-17",
+    "end_date": "2026-02-28",
+    "goal": "Get the MVP shipped",
+    "status": "planned"
+}
+
+###
+
+### Update a sprint (partial — all fields optional)
+PATCH {{baseUrl}}/sprints/{{sprintId}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "status": "active"
+}
+
+###
+
+### Delete a sprint
+DELETE {{baseUrl}}/sprints/{{sprintId}}
+Authorization: Bearer {{token}}
+
+
+### ============================================================================
+### SURVEYS
+### ============================================================================
+
+@surveyId = YOUR_SURVEY_ID_HERE
+
+###
+
+### List surveys for an account
+GET {{baseUrl}}/surveys?accountId={{accountId}}
+Authorization: Bearer {{token}}
+
+###
+
+### Get a full survey with questions
+GET {{baseUrl}}/surveys/{{surveyId}}
+Authorization: Bearer {{token}}
+
+###
+
+### Create a survey with questions (via RPC)
+POST {{baseUrl}}/surveys
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "account_id": "{{accountId}}",
+    "team_id": "{{teamId}}",
+    "title": "Sprint Retro Pulse Check",
+    "is_active": true,
+    "questions": [
+        {
+            "question_text": "How would you rate the sprint overall?",
+            "question_type": "scale",
+            "order_index": 0,
+            "is_required": true
+        },
+        {
+            "question_text": "Did you feel supported by your team?",
+            "question_type": "boolean",
+            "order_index": 1,
+            "is_required": true
+        },
+        {
+            "question_text": "Any blockers or suggestions for next sprint?",
+            "question_type": "text",
+            "order_index": 2,
+            "is_required": false
+        }
+    ]
+}
+
+###
+
+### Delete a survey (questions cascade)
+DELETE {{baseUrl}}/surveys/{{surveyId}}
+Authorization: Bearer {{token}}

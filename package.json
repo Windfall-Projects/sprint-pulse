@@ -4,11 +4,16 @@
   "scripts": {
     "test": "pnpm -r test",
     "lint": "pnpm -r lint",
-    "dev": "pnpm -r dev"
+    "dev": "pnpm -r dev",
+    "supabase:start": "npx supabase start",
+    "supabase:stop": "npx supabase stop",
+    "serve:api": "npx supabase functions serve api",
+    "get-token": "deno run -A ./supabase/get-token.ts"
   },
   "devDependencies": {
     "@hono/zod-validator": "^0.7.6",
     "@supabase/supabase-js": "^2.94.1",
+    "supabase": "^2.76.8",
     "typescript": "^5.0.0"
   },
   "dependencies": {

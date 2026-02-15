@@ -1,8 +1,8 @@
 import { Hono } from 'hono';
 import { zValidator } from '@hono/zod-validator';
 import { createClient } from '@supabase/supabase-js';
-import { Database } from '@sprintpulse/shared/database.types.ts';
-import { CreateTeamSchema } from '@sprintpulse/shared/schemas/index.ts';
+import { Database } from '../../../../packages/shared/src/database.types.ts';
+import { CreateTeamSchema } from '../../../../packages/shared/src/schemas/index.ts';
 
 const app = new Hono();
 
