@@ -8,7 +8,10 @@
     "supabase:start": "npx supabase start",
     "supabase:stop": "npx supabase stop",
     "serve:api": "npx supabase functions serve api",
-    "get-token": "deno run -A ./supabase/get-token.ts"
+    "get-token": "deno run -A ./supabase/get-token.ts",
+    "deploy:db": "npx supabase db push",
+    "deploy:api": "npx supabase functions deploy api",
+    "deploy": "pnpm run deploy:db && pnpm run deploy:api"
   },
   "devDependencies": {
     "@hono/zod-validator": "^0.7.6",
