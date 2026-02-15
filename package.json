@@ -9,6 +9,9 @@
     "supabase:stop": "npx supabase stop",
     "serve:api": "npx supabase functions serve api",
     "get-token": "deno run -A ./supabase/get-token.ts",
+    "type-check:api": "cd supabase/functions && deno task check",
+    "type-check:shared": "pnpm --filter @sprintpulse/shared exec tsc --noEmit",
+    "type-check": "pnpm run type-check:api && pnpm run type-check:shared",
     "deploy:db": "npx supabase db push",
     "deploy:api": "npx supabase functions deploy api",
     "deploy": "pnpm run deploy:db && pnpm run deploy:api"
