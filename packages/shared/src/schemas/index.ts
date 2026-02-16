@@ -14,11 +14,12 @@ const Timestamp = z.string().datetime({ offset: true });
  */
 const DateString = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Invalid date format (YYYY-MM-DD)");
 
-export const TeamRoleEnum = z.enum(['member', 'lead']);
+export const TeamRoleEnum = z.enum(['lead', 'contributor', 'stakeholder']);
 export const SprintStatusEnum = z.enum(['planned', 'active', 'completed']);
 export const WorkItemTypeEnum = z.enum(['story', 'bug', 'task', 'chore']);
 export const WorkItemStatusEnum = z.enum(['todo', 'in_progress', 'review', 'done']);
 export const WorkItemProviderEnum = z.enum(['native', 'github', 'jira']);
+export const ProjectStatusEnum = z.enum(['active', 'archived', 'completed']);
 export const QuestionTypeEnum = z.enum(['scale', 'text', 'boolean']);
 
 // ============================================================================
@@ -42,6 +43,51 @@ export const AccountSchema = z.object({
   created_at: Timestamp,
 });
 
+/**
+ * Input Schema for updating a Profile.
+ * Only `display_name` and `avatar_url` are user-editable.
+ */
+export const UpdateProfileSchema = ProfileSchema.pick({
+  display_name: true,
+  avatar_url: true,
+}).partial();
+
+/**
+ * Input Schema for creating an Account.
+ * `owner_user_id` is inferred server-side from the authenticated user.
+ */
+export const CreateAccountSchema = z.object({
+  name: z.string().min(1, "Account name is required"),
+  slug: z.string().min(1, "Slug is required"),
+});
+
+/**
+ * Input Schema for updating an Account.
+ * Only `name` is safely editable (slug changes could break external references).
+ */
+export const UpdateAccountSchema = z.object({
+  name: z.string().min(1, "Account name is required"),
+}).partial();
+
+export const AccountMemberRoleEnum = z.enum(['owner', 'admin', 'member']);
+
+export const AccountMemberSchema = z.object({
+  account_id: z.string().uuid(),
+  user_id: z.string().uuid(),
+  role: AccountMemberRoleEnum,
+  created_at: Timestamp,
+});
+
+/**
+ * Input Schema for joining an Account.
+ * `user_id` is inferred server-side from auth; `account_id` is in the body.
+ * RLS enforces that users can only add themselves.
+ */
+export const JoinAccountSchema = z.object({
+  account_id: z.string().uuid(),
+  role: AccountMemberRoleEnum,
+});
+
 // ============================================================================
 // 3. ORGANIZATION (Teams)
 // ============================================================================
@@ -56,10 +102,10 @@ export const TeamSchema = z.object({
 });
 
 export const TeamMemberSchema = z.object({
-  id: z.string().uuid(),
   team_id: z.string().uuid(),
   user_id: z.string().uuid(),
   role: TeamRoleEnum,
+  title: z.string().nullable(),
   joined_at: Timestamp,
 });
 
@@ -69,6 +115,24 @@ export const CreateTeamSchema = TeamSchema.omit({
   created_at: true,
   updated_at: true,
 });
+
+/**
+ * Input Schema for adding a member to a team.
+ */
+export const CreateTeamMemberSchema = z.object({
+  team_id: z.string().uuid(),
+  user_id: z.string().uuid(),
+  role: TeamRoleEnum.default('contributor'),
+  title: z.string().nullable().optional(),
+});
+
+/**
+ * Input Schema for updating a team member's role or title.
+ */
+export const UpdateTeamMemberSchema = z.object({
+  role: TeamRoleEnum,
+  title: z.string().nullable(),
+}).partial();
 
 // ============================================================================
 // 4. EXECUTION (Sprints & Work Items)
@@ -125,9 +189,35 @@ export const UpdateSprintSchema = SprintSchema.pick({
   }
 );
 
+export const ProjectSchema = z.object({
+  id: z.string().uuid(),
+  team_id: z.string().uuid(),
+  name: z.string().min(1, "Project name is required"),
+  description: z.string().nullable(),
+  status: ProjectStatusEnum,
+  created_at: Timestamp,
+  updated_at: Timestamp,
+});
+
+export const CreateProjectSchema = z.object({
+  team_id: z.string().uuid(),
+  name: z.string().min(1, "Project name is required"),
+  description: z.string().nullable().optional(),
+});
+
+export const UpdateProjectSchema = z.object({
+  name: z.string().min(1, "Project name is required"),
+  description: z.string().nullable(),
+  status: ProjectStatusEnum,
+}).partial();
+
 export const WorkItemSchema = z.object({
   id: z.string().uuid(),
-  sprint_id: z.string().uuid(),
+  team_id: z.string().uuid(),
+  account_id: z.string().uuid(),
+  sprint_id: z.string().uuid().nullable(),
+  assignee_user_id: z.string().uuid().nullable(),
+  project_id: z.string().uuid().nullable(),
   title: z.string().min(1, "Title is required"),
   description: z.string().nullable(),
   story_points: z.number().int().nonnegative().default(0),
@@ -143,6 +233,41 @@ export const WorkItemSchema = z.object({
   created_at: Timestamp,
   updated_at: Timestamp,
 });
+
+/**
+ * Input Schema for creating a Work Item.
+ * `account_id` is resolved server-side from the team's account.
+ */
+export const CreateWorkItemSchema = z.object({
+  team_id: z.string().uuid(),
+  sprint_id: z.string().uuid().nullable().optional(),
+  assignee_user_id: z.string().uuid().nullable().optional(),
+  project_id: z.string().uuid().nullable().optional(),
+  title: z.string().min(1, "Title is required"),
+  description: z.string().nullable().optional(),
+  story_points: z.number().int().nonnegative().default(0),
+  type: WorkItemTypeEnum.default('story'),
+  provider: WorkItemProviderEnum.default('native'),
+  external_id: z.string().nullable().optional(),
+  external_url: z.string().url().nullable().optional(),
+});
+
+/**
+ * Input Schema for updating a Work Item.
+ * All fields optional. `team_id` and `account_id` are immutable.
+ */
+export const UpdateWorkItemSchema = z.object({
+  sprint_id: z.string().uuid().nullable(),
+  assignee_user_id: z.string().uuid().nullable(),
+  project_id: z.string().uuid().nullable(),
+  title: z.string().min(1, "Title is required"),
+  description: z.string().nullable(),
+  story_points: z.number().int().nonnegative(),
+  status: WorkItemStatusEnum,
+  type: WorkItemTypeEnum,
+  external_id: z.string().nullable(),
+  external_url: z.string().url().nullable(),
+}).partial();
 
 // ============================================================================
 // 5. PULSE (Surveys)
@@ -190,10 +315,10 @@ export const CreateSurveySchema = z.object({
 
 export const SurveyResponseSchema = z.object({
   id: z.string().uuid(),
+  survey_id: z.string().uuid(),
   sprint_id: z.string().uuid(),
   user_id: z.string().uuid(),
-  is_confidential: z.boolean(), // Match spec: 'is_confidential'
-  completed_at: Timestamp.nullable(),
+  is_confidential: z.boolean(),
   created_at: Timestamp,
 });
 
@@ -201,28 +326,124 @@ export const SurveyAnswerSchema = z.object({
   id: z.string().uuid(),
   response_id: z.string().uuid(),
   question_id: z.string().uuid(),
-  scale_value: z.number().int().min(1).max(5).nullable(),
-  text_value: z.string().nullable(),
-  boolean_value: z.boolean().nullable(),
+  value_text: z.string().nullable(),
+  value_number: z.number().int().nullable(),
+  value_json: z.unknown().nullable(),
+});
+
+/**
+ * Input Schema for submitting a survey response with answers.
+ * `user_id` is inferred server-side from auth.
+ */
+export const SubmitSurveyResponseSchema = z.object({
+  survey_id: z.string().uuid(),
+  sprint_id: z.string().uuid(),
+  is_confidential: z.boolean().optional().default(false),
+  answers: z.array(
+    z.object({
+      question_id: z.string().uuid(),
+      value_text: z.string().nullable().optional(),
+      value_number: z.number().int().nullable().optional(),
+      value_json: z.unknown().nullable().optional(),
+    })
+  ),
 });
 
 // ============================================================================
 // 6. RECOGNITION (Kudos)
 // ============================================================================
 
+export const KudosCategoryEnum = z.enum(['unblock', 'support', 'technical_win', 'team_spirit']);
+
 export const KudosSchema = z.object({
   id: z.string().uuid(),
   team_id: z.string().uuid(),
   sprint_id: z.string().uuid().nullable(),
+  account_id: z.string().uuid(),
   sender_user_id: z.string().uuid(),
-  recipient_user_id: z.string().uuid(),
+  receiver_user_id: z.string().uuid(),
   message: z.string().min(1, "Message cannot be empty"),
+  category: KudosCategoryEnum.nullable(),
   created_at: Timestamp,
 });
 
 // Input Schema for giving Kudos
 export const GiveKudosSchema = KudosSchema.omit({
   id: true,
-  sender_user_id: true, // Inferred from Auth
-  created_at: true
+  account_id: true,       // Resolved from team
+  sender_user_id: true,   // Inferred from Auth
+  created_at: true,
+});
+
+// ============================================================================
+// 7. SPRINT ANALYTICS & METRICS
+// ============================================================================
+
+export const SprintCommitmentSchema = z.object({
+  id: z.string().uuid(),
+  sprint_id: z.string().uuid(),
+  user_id: z.string().uuid().nullable(),
+  committed_points: z.number().int().default(0),
+  committed_items: z.number().int().default(0),
+  created_at: Timestamp,
+});
+
+export const CreateSprintCommitmentSchema = z.object({
+  sprint_id: z.string().uuid(),
+  user_id: z.string().uuid().nullable().optional(),
+  committed_points: z.number().int().default(0),
+  committed_items: z.number().int().default(0),
+});
+
+export const SprintSnapshotSchema = z.object({
+  id: z.string().uuid(),
+  sprint_id: z.string().uuid(),
+  user_id: z.string().uuid().nullable(),
+  snapshot_date: DateString,
+  points_completed: z.number().int().default(0),
+  points_remaining: z.number().int().default(0),
+  items_completed: z.number().int().default(0),
+  items_remaining: z.number().int().default(0),
+  created_at: Timestamp,
+});
+
+export const CreateSprintSnapshotSchema = z.object({
+  sprint_id: z.string().uuid(),
+  user_id: z.string().uuid().nullable().optional(),
+  snapshot_date: DateString.optional(),
+  points_completed: z.number().int().default(0),
+  points_remaining: z.number().int().default(0),
+  items_completed: z.number().int().default(0),
+  items_remaining: z.number().int().default(0),
+});
+
+export const HistoricalMetricSchema = z.object({
+  id: z.string().uuid(),
+  team_id: z.string().uuid(),
+  user_id: z.string().uuid().nullable(),
+  metric_date: DateString,
+  import_batch_id: z.string().nullable(),
+  velocity_avg: z.number().nullable(),
+  last_sprint_points_completed: z.number().int().nullable(),
+  last_sprint_items_completed: z.number().int().nullable(),
+  last_sprint_points_incomplete: z.number().int().nullable(),
+  last_sprint_items_incomplete: z.number().int().nullable(),
+  satisfaction_score: z.number().int().min(1).max(5).nullable(),
+  flow_score: z.number().int().min(1).max(5).nullable(),
+  friction_score: z.number().int().min(1).max(5).nullable(),
+  safety_score: z.number().int().min(1).max(5).nullable(),
+  workload_balance_score: z.number().int().min(1).max(5).nullable(),
+  requirement_clarity_score: z.number().int().min(1).max(5).nullable(),
+  support_score: z.number().int().min(1).max(5).nullable(),
+  custom_soft_metrics: z.record(z.unknown()).nullable(),
+  created_at: Timestamp,
+});
+
+/**
+ * Input Schema for importing historical metrics.
+ * All metric fields are optional since not all imports have all data.
+ */
+export const CreateHistoricalMetricSchema = HistoricalMetricSchema.omit({
+  id: true,
+  created_at: true,
 });
