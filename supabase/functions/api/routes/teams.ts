@@ -34,10 +34,20 @@ app.get('/mine', async (c) => {
         return c.json({ error: 'Unauthorized' }, 401);
     }
 
+    const { data: profile } = await supabase
+        .from('profiles')
+        .select('id')
+        .eq('auth_user_id', user.id)
+        .single();
+
+    if (!profile) {
+        return c.json([]);
+    }
+
     const { data, error } = await supabase
         .from('teams')
         .select('*, team_members!inner(role)')
-        .eq('team_members.user_id', user.id);
+        .eq('team_members.profile_id', profile.id);
 
     if (error) {
         return c.json({ error: error.message }, 500);
@@ -73,11 +83,21 @@ app.post('/', zValidator('json', CreateTeamSchema), async (c) => {
 
     // 2. Insert Member (Lead)
     try {
+        const { data: profile } = await supabase
+            .from('profiles')
+            .select('id')
+            .eq('auth_user_id', user.id)
+            .single();
+
+        if (!profile) {
+            throw new Error('Profile not found for authenticated user');
+        }
+
         const { error: memberError } = await supabase
             .from('team_members')
             .insert({
                 team_id: team.id,
-                user_id: user.id,
+                profile_id: profile.id,
                 role: 'lead'
             });
 

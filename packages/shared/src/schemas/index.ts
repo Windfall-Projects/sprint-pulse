@@ -5,14 +5,14 @@ import { z } from 'zod';
 // ============================================================================
 
 // Helper for Supabase "Timestamptz" (comes as ISO string)
-const Timestamp = z.string().datetime({ offset: true });
+export const Timestamp = z.string().datetime({ offset: true });
 
 /**
  * Standard format: "YYYY-MM-DD". 
  * * @warning Do NOT pass full ISO strings or Date objects here. 
  * These flow directly into Postgres DATE columns.
  */
-const DateString = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Invalid date format (YYYY-MM-DD)");
+export const DateString = z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Invalid date format (YYYY-MM-DD)");
 
 export const TeamRoleEnum = z.enum(['lead', 'contributor', 'stakeholder']);
 export const SprintStatusEnum = z.enum(['planned', 'active', 'completed']);
@@ -27,7 +27,8 @@ export const QuestionTypeEnum = z.enum(['scale', 'text', 'boolean']);
 // ============================================================================
 
 export const ProfileSchema = z.object({
-  user_id: z.string().uuid(),
+  id: z.string().uuid(),
+  auth_user_id: z.string().uuid().nullable(),
   display_name: z.string().min(1, "Display name is required").nullable(),
   avatar_url: z.string().url().nullable(),
   created_at: Timestamp,
@@ -103,7 +104,7 @@ export const TeamSchema = z.object({
 
 export const TeamMemberSchema = z.object({
   team_id: z.string().uuid(),
-  user_id: z.string().uuid(),
+  profile_id: z.string().uuid(),
   role: TeamRoleEnum,
   title: z.string().nullable(),
   joined_at: Timestamp,
@@ -121,7 +122,7 @@ export const CreateTeamSchema = TeamSchema.omit({
  */
 export const CreateTeamMemberSchema = z.object({
   team_id: z.string().uuid(),
-  user_id: z.string().uuid(),
+  profile_id: z.string().uuid(),
   role: TeamRoleEnum.default('contributor'),
   title: z.string().nullable().optional(),
 });
@@ -216,7 +217,7 @@ export const WorkItemSchema = z.object({
   team_id: z.string().uuid(),
   account_id: z.string().uuid(),
   sprint_id: z.string().uuid().nullable(),
-  assignee_user_id: z.string().uuid().nullable(),
+  assignee_profile_id: z.string().uuid().nullable(),
   project_id: z.string().uuid().nullable(),
   title: z.string().min(1, "Title is required"),
   description: z.string().nullable(),
@@ -241,7 +242,7 @@ export const WorkItemSchema = z.object({
 export const CreateWorkItemSchema = z.object({
   team_id: z.string().uuid(),
   sprint_id: z.string().uuid().nullable().optional(),
-  assignee_user_id: z.string().uuid().nullable().optional(),
+  assignee_profile_id: z.string().uuid().nullable().optional(),
   project_id: z.string().uuid().nullable().optional(),
   title: z.string().min(1, "Title is required"),
   description: z.string().nullable().optional(),
@@ -258,7 +259,7 @@ export const CreateWorkItemSchema = z.object({
  */
 export const UpdateWorkItemSchema = z.object({
   sprint_id: z.string().uuid().nullable(),
-  assignee_user_id: z.string().uuid().nullable(),
+  assignee_profile_id: z.string().uuid().nullable(),
   project_id: z.string().uuid().nullable(),
   title: z.string().min(1, "Title is required"),
   description: z.string().nullable(),
@@ -317,7 +318,7 @@ export const SurveyResponseSchema = z.object({
   id: z.string().uuid(),
   survey_id: z.string().uuid(),
   sprint_id: z.string().uuid(),
-  user_id: z.string().uuid(),
+  responder_profile_id: z.string().uuid(),
   is_confidential: z.boolean(),
   created_at: Timestamp,
 });
@@ -360,8 +361,8 @@ export const KudosSchema = z.object({
   team_id: z.string().uuid(),
   sprint_id: z.string().uuid().nullable(),
   account_id: z.string().uuid(),
-  sender_user_id: z.string().uuid(),
-  receiver_user_id: z.string().uuid(),
+  sender_profile_id: z.string().uuid(),
+  receiver_profile_id: z.string().uuid(),
   message: z.string().min(1, "Message cannot be empty"),
   category: KudosCategoryEnum.nullable(),
   created_at: Timestamp,
@@ -371,7 +372,7 @@ export const KudosSchema = z.object({
 export const GiveKudosSchema = KudosSchema.omit({
   id: true,
   account_id: true,       // Resolved from team
-  sender_user_id: true,   // Inferred from Auth
+  sender_profile_id: true,   // Inferred from Auth
   created_at: true,
 });
 
@@ -382,7 +383,8 @@ export const GiveKudosSchema = KudosSchema.omit({
 export const SprintCommitmentSchema = z.object({
   id: z.string().uuid(),
   sprint_id: z.string().uuid(),
-  user_id: z.string().uuid().nullable(),
+
+  profile_id: z.string().uuid().nullable(),
   committed_points: z.number().int().default(0),
   committed_items: z.number().int().default(0),
   created_at: Timestamp,
@@ -390,7 +392,7 @@ export const SprintCommitmentSchema = z.object({
 
 export const CreateSprintCommitmentSchema = z.object({
   sprint_id: z.string().uuid(),
-  user_id: z.string().uuid().nullable().optional(),
+  profile_id: z.string().uuid().nullable().optional(),
   committed_points: z.number().int().default(0),
   committed_items: z.number().int().default(0),
 });
@@ -398,7 +400,7 @@ export const CreateSprintCommitmentSchema = z.object({
 export const SprintSnapshotSchema = z.object({
   id: z.string().uuid(),
   sprint_id: z.string().uuid(),
-  user_id: z.string().uuid().nullable(),
+  profile_id: z.string().uuid().nullable(),
   snapshot_date: DateString,
   points_completed: z.number().int().default(0),
   points_remaining: z.number().int().default(0),
@@ -409,7 +411,7 @@ export const SprintSnapshotSchema = z.object({
 
 export const CreateSprintSnapshotSchema = z.object({
   sprint_id: z.string().uuid(),
-  user_id: z.string().uuid().nullable().optional(),
+  profile_id: z.string().uuid().nullable().optional(),
   snapshot_date: DateString.optional(),
   points_completed: z.number().int().default(0),
   points_remaining: z.number().int().default(0),
@@ -420,7 +422,7 @@ export const CreateSprintSnapshotSchema = z.object({
 export const HistoricalMetricSchema = z.object({
   id: z.string().uuid(),
   team_id: z.string().uuid(),
-  user_id: z.string().uuid().nullable(),
+  profile_id: z.string().uuid().nullable(),
   metric_date: DateString,
   import_batch_id: z.string().nullable(),
   velocity_avg: z.number().nullable(),

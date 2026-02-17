@@ -64,9 +64,9 @@ app.post('/', zValidator('json', CreateTeamMemberSchema), async (c) => {
 });
 
 // ---------------------------------------------------------------------------
-// PATCH /:teamId/:userId — Update a team member's role or title
+// PATCH /:teamId/:profileId — Update a team member's role or title
 // ---------------------------------------------------------------------------
-app.patch('/:teamId/:userId', zValidator('json', UpdateTeamMemberSchema), async (c) => {
+app.patch('/:teamId/:profileId', zValidator('json', UpdateTeamMemberSchema), async (c) => {
     const supabase = createClient<Database>(
         Deno.env.get('SUPABASE_URL')!,
         Deno.env.get('SUPABASE_ANON_KEY')!,
@@ -74,14 +74,14 @@ app.patch('/:teamId/:userId', zValidator('json', UpdateTeamMemberSchema), async 
     );
 
     const teamId = c.req.param('teamId');
-    const userId = c.req.param('userId');
+    const profileId = c.req.param('profileId');
     const body = c.req.valid('json');
 
     const { data, error } = await supabase
         .from('team_members')
         .update(body)
         .eq('team_id', teamId)
-        .eq('user_id', userId)
+        .eq('profile_id', profileId)
         .select()
         .single();
 
@@ -96,9 +96,9 @@ app.patch('/:teamId/:userId', zValidator('json', UpdateTeamMemberSchema), async 
 });
 
 // ---------------------------------------------------------------------------
-// DELETE /:teamId/:userId — Remove a member from a team
+// DELETE /:teamId/:profileId — Remove a member from a team
 // ---------------------------------------------------------------------------
-app.delete('/:teamId/:userId', async (c) => {
+app.delete('/:teamId/:profileId', async (c) => {
     const supabase = createClient<Database>(
         Deno.env.get('SUPABASE_URL')!,
         Deno.env.get('SUPABASE_ANON_KEY')!,
@@ -106,13 +106,13 @@ app.delete('/:teamId/:userId', async (c) => {
     );
 
     const teamId = c.req.param('teamId');
-    const userId = c.req.param('userId');
+    const profileId = c.req.param('profileId');
 
     const { error } = await supabase
         .from('team_members')
         .delete()
         .eq('team_id', teamId)
-        .eq('user_id', userId);
+        .eq('profile_id', profileId);
 
     if (error) {
         return c.json({ error: error.message }, 500);

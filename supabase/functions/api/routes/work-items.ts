@@ -37,9 +37,9 @@ app.get('/', async (c) => {
         query = query.eq('status', status);
     }
 
-    const assigneeUserId = c.req.query('assigneeUserId');
-    if (assigneeUserId) {
-        query = query.eq('assignee_user_id', assigneeUserId);
+    const assigneeProfileId = c.req.query('assigneeProfileId');
+    if (assigneeProfileId) {
+        query = query.eq('assignee_profile_id', assigneeProfileId);
     }
 
     const projectId = c.req.query('projectId');

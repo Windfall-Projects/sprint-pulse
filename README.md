@@ -28,6 +28,26 @@ Once you have the access token, you can run the request tests in the `.http`
 files in the `api` directory. (Make sure you have the "REST Client" extension
 installed in VS Code from humao.)
 
+## Running Tests
+
+To run all tests (Web + API):
+
+```bash
+pnpm test
+```
+
+To run API tests specifically:
+
+```bash
+pnpm test:api
+```
+
+## Generating Database Types
+
+```bash
+npx supabase gen types typescript --local > packages/shared/src/database.types.ts
+```
+
 ## Deploying
 
 Deploy both the API function and database migrations with:

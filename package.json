@@ -2,7 +2,8 @@
   "name": "sprint-pulse-monorepo",
   "private": true,
   "scripts": {
-    "test": "pnpm -r test",
+    "test:api": "deno test --allow-all --config supabase/functions/deno.json supabase/functions/tests/",
+    "test": "pnpm -r test && pnpm run test:api",
     "lint": "pnpm -r lint",
     "dev": "pnpm -r dev",
     "supabase:start": "npx supabase start",
