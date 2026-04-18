@@ -28,6 +28,20 @@ Once you have the access token, you can run the request tests in the `.http`
 files in the `api` directory. (Make sure you have the "REST Client" extension
 installed in VS Code from humao.)
 
+## Environment Setup
+
+To run the API tests, you must configure your local environment variables.
+
+1. Create a `.env` file in the root directory.
+2. Add the `SUPABASE_SERVICE_ROLE_KEY` variable.
+
+   ```env
+   SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+   ```
+
+   You can obtain this key from the output of `npx supabase start` or by running
+   `npx supabase status`.
+
 ## Running Tests
 
 To run all tests (Web + API):
@@ -41,6 +55,10 @@ To run API tests specifically:
 ```bash
 pnpm test:api
 ```
+
+> [!NOTE]
+> Ensure you have completed the [Environment Setup](#environment-setup) before
+> running API tests.
 
 ## Generating Database Types
 
