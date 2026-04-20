@@ -1,0 +1,89 @@
+'use client'
+
+import { useActionState } from 'react'
+import { signupAction } from '../actions'
+import { Card } from '@/components/ui/Card'
+import { Button } from '@/components/ui/Button'
+import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
+
+const initialState = {
+  error: null as string | null,
+}
+
+export default function SignupForm() {
+  const [state, formAction, isPending] = useActionState(signupAction, initialState)
+
+  return (
+    <Card className="w-full relative overflow-hidden" glass>
+      <form action={formAction} className="space-y-6">
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <label htmlFor="displayName" className="text-sm font-medium text-foreground">
+              Display Name
+            </label>
+            <input
+              id="displayName"
+              name="displayName"
+              type="text"
+              required
+              placeholder="Jane Doe"
+              className="w-full px-4 py-2 bg-surface text-foreground placeholder:text-muted-foreground border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all"
+            />
+          </div>
+          <div className="space-y-2">
+            <label htmlFor="email" className="text-sm font-medium text-foreground">
+              Email Address
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              required
+              placeholder="name@example.com"
+              className="w-full px-4 py-2 bg-surface text-foreground placeholder:text-muted-foreground border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all"
+            />
+          </div>
+          <div className="space-y-2">
+            <label htmlFor="password" className="text-sm font-medium text-foreground">
+              Password
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              required
+              placeholder="••••••••"
+              minLength={6}
+              className="w-full px-4 py-2 bg-surface text-foreground placeholder:text-muted-foreground border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all"
+            />
+          </div>
+        </div>
+
+        <AnimatePresence>
+          {state?.error && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="text-sm text-red-500 font-medium"
+            >
+              {state.error}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <Button type="submit" className="w-full" disabled={isPending}>
+          {isPending ? 'Creating Account...' : 'Create Account'}
+        </Button>
+
+        <div className="text-center text-sm text-muted-foreground">
+          Already have an account?{' '}
+          <Link href="/login" className="font-medium text-primary hover:text-primary-hover transition-colors">
+            Log in
+          </Link>
+        </div>
+      </form>
+    </Card>
+  )
+}

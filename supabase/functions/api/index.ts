@@ -13,6 +13,8 @@ import kudos from './routes/kudos.ts';
 import sprintCommitments from './routes/sprint-commitments.ts';
 import sprintSnapshots from './routes/sprint-snapshots.ts';
 import historicalMetrics from './routes/historical-metrics.ts';
+import integrations from './routes/integrations.ts';
+import github from './routes/github.ts';
 
 const app = new Hono().basePath('/api');
 
@@ -30,5 +32,7 @@ app.route('/kudos', kudos);
 app.route('/sprint-commitments', sprintCommitments);
 app.route('/sprint-snapshots', sprintSnapshots);
 app.route('/historical-metrics', historicalMetrics);
+app.route('/integrations', integrations);
+app.route('/github', github);
 
 Deno.serve(app.fetch);

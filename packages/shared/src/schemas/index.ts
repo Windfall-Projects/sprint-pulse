@@ -54,6 +54,25 @@ export const UpdateProfileSchema = ProfileSchema.pick({
 }).partial();
 
 /**
+ * Input Schema for creating a Virtual Profile.
+ * auth_user_id is not included because it's null for virtual profiles.
+ * Optionally allows assigning to one or more teams initially.
+ */
+export const CreateVirtualProfileSchema = z.object({
+  display_name: z.string().min(1, "Display name is required"),
+  avatar_url: z.string().url().nullable().optional(),
+  team_ids: z.array(z.string().uuid()).optional(),
+});
+
+/**
+ * Input Schema for updating a Virtual Profile.
+ */
+export const UpdateVirtualProfileSchema = CreateVirtualProfileSchema.pick({
+  display_name: true,
+  avatar_url: true,
+}).partial();
+
+/**
  * Input Schema for creating an Account.
  * `owner_user_id` is inferred server-side from the authenticated user.
  */
@@ -449,3 +468,49 @@ export const CreateHistoricalMetricSchema = HistoricalMetricSchema.omit({
   id: true,
   created_at: true,
 });
+
+// ============================================================================
+// 8. INTEGRATIONS
+// ============================================================================
+
+export const IntegrationProviderEnum = z.enum(['github']);
+
+export const IntegrationSchema = z.object({
+  id: z.string().uuid(),
+  account_id: z.string().uuid(),
+  provider: IntegrationProviderEnum,
+  installation_id: z.string().nullable(),
+  created_at: Timestamp,
+  updated_at: Timestamp,
+});
+
+export const CreateIntegrationSchema = z.object({
+  account_id: z.string().uuid(),
+  provider: IntegrationProviderEnum,
+  installation_id: z.string().nullable().optional(),
+});
+
+export const IntegrationMappingSchema = z.object({
+  id: z.string().uuid(),
+  integration_id: z.string().uuid(),
+  external_repo_id: z.string().min(1),
+  team_id: z.string().uuid(),
+  project_id: z.string().uuid().nullable(),
+  is_active: z.boolean(),
+  created_at: Timestamp,
+  updated_at: Timestamp,
+});
+
+export const CreateIntegrationMappingSchema = z.object({
+  integration_id: z.string().uuid(),
+  external_repo_id: z.string().min(1),
+  team_id: z.string().uuid(),
+  project_id: z.string().uuid().nullable().optional(),
+  is_active: z.boolean().optional().default(true),
+});
+
+export const UpdateIntegrationMappingSchema = z.object({
+  team_id: z.string().uuid(),
+  project_id: z.string().uuid().nullable(),
+  is_active: z.boolean(),
+}).partial();

@@ -1,68 +1,136 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  /* ── Core palette (zinc-based, matches Figma) ── */
+  --background: #fafafa;          /* zinc/50 */
+  --foreground: #27272a;          /* zinc/800 — text/text1 */
 
-  --primary: #4f46e5; /* Indigo 600 */
+  --primary: #4f46e5;             /* indigo 600 — primary/default */
   --primary-foreground: #ffffff;
-  --primary-hover: #4338ca; /* Indigo 700 */
+  --primary-hover: #4338ca;       /* indigo 700 */
+  --primary-contrast: #eef2ff;    /* indigo 50 */
 
-  --surface: #ffffff;
-  --surface-hover: #f1f5f9;
-  
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
+  --accent: #fbbf24;              /* amber 400 — accent/default */
+  --accent-foreground: #78350f;   /* amber 900 — accent/contrast */
 
-  --border: #e2e8f0;
-  --ring: #818cf8; /* Indigo 400 */
-  
-  --radius: 0.75rem;
+  --surface: #fafafa;             /* zinc/50 */
+  --surface-hover: #f4f4f5;       /* zinc/100 */
+
+  --muted: #f4f4f5;               /* zinc/100 */
+  --muted-foreground: #71717a;    /* zinc/500 */
+
+  --border: #e4e4e7;              /* zinc/200 */
+  --ring: rgba(79, 70, 229, 0.5); /* primary with alpha */
+
+  /* ── Rounding (Figma spec) ── */
+  --radius-pill: 9999px;          /* buttons, inputs, nav items */
+  --radius-lg: 24px;              /* cards, large containers */
+  --radius-md: 12px;              /* icon buttons, small containers */
+  --radius-sm: 8px;               /* badges, chips */
+
+  /* ── Button gradient (primary CTA: orange→amber→yellow) ── */
+  --gradient-primary: linear-gradient(
+    90deg,
+    #c2410c 0%,       /* orange/700 */
+    #ea580c 33%,      /* orange/600 */
+    #d97706 66%,      /* amber/600 */
+    #ca8a04 100%      /* yellow/600 */
+  );
+
+  /* ── Semantic stat-card backgrounds ── */
+  --stat-teal: #0d9488;           /* teal/600 */
+  --stat-teal-fg: #f0fdfa;        /* teal/50 */
+  --stat-blue: #2563eb;           /* blue/600 */
+  --stat-blue-fg: #eff6ff;        /* blue/50 */
+  --stat-amber: #fbbf24;          /* amber/400 */
+  --stat-amber-fg: #78350f;       /* amber/900 */
+  --stat-pink: #db2777;           /* pink/600 */
+  --stat-pink-fg: #fdf2f8;        /* pink/50 */
+
+  /* ── Shadow (Figma: shadow-sm) ── */
+  --shadow-sm: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #080A12; /* Very deep blue for premium dark mode */
-    --foreground: #f8fafc;
+    --background: #0a0a0b;
+    --foreground: #fafafa;
 
-    --primary: #6366f1; /* Vibrant Indigo 500 */
+    --primary: #6366f1;
     --primary-foreground: #ffffff;
-    --primary-hover: #818cf8; /* Indigo 400 */
+    --primary-hover: #818cf8;
+    --primary-contrast: #1e1b4b;
 
-    --surface: rgba(30, 41, 59, 0.4); /* Glassmorphic Slate 800 */
-    --surface-hover: rgba(51, 65, 85, 0.6);
-    
-    --muted: #1e293b;
-    --muted-foreground: #94a3b8;
+    --accent: #f59e0b;
+    --accent-foreground: #fef3c7;
+
+    --surface: rgba(39, 39, 42, 0.6);
+    --surface-hover: rgba(63, 63, 70, 0.6);
+
+    --muted: #27272a;
+    --muted-foreground: #a1a1aa;
 
     --border: rgba(255, 255, 255, 0.1);
     --ring: rgba(99, 102, 241, 0.5);
+
+    --stat-teal: #14b8a6;
+    --stat-teal-fg: #f0fdfa;
+    --stat-blue: #3b82f6;
+    --stat-blue-fg: #eff6ff;
+    --stat-amber: #f59e0b;
+    --stat-amber-fg: #451a03;
+    --stat-pink: #ec4899;
+    --stat-pink-fg: #fdf2f8;
+
+    --gradient-primary: linear-gradient(
+      90deg,
+      #ea580c 0%,
+      #f97316 33%,
+      #f59e0b 66%,
+      #eab308 100%
+    );
+
+    --shadow-sm: 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
   }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  
+
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary-hover: var(--primary-hover);
-  
+  --color-primary-contrast: var(--primary-contrast);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
   --color-surface: var(--surface);
   --color-surface-hover: var(--surface-hover);
-  
+
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
-  
+
   --color-border: var(--border);
   --color-ring: var(--ring);
-  
-  --radius-lg: var(--radius);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-sm: calc(var(--radius) - 4px);
 
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --color-stat-teal: var(--stat-teal);
+  --color-stat-teal-fg: var(--stat-teal-fg);
+  --color-stat-blue: var(--stat-blue);
+  --color-stat-blue-fg: var(--stat-blue-fg);
+  --color-stat-amber: var(--stat-amber);
+  --color-stat-amber-fg: var(--stat-amber-fg);
+  --color-stat-pink: var(--stat-pink);
+  --color-stat-pink-fg: var(--stat-pink-fg);
+
+  --radius-pill: var(--radius-pill);
+  --radius-lg: var(--radius-lg);
+  --radius-md: var(--radius-md);
+  --radius-sm: var(--radius-sm);
+
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-urbanist), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -70,13 +138,13 @@
     background-color: var(--background);
     color: var(--foreground);
   }
-  
+
   *, ::before, ::after {
     border-color: var(--border);
   }
 }
 
-/* Glassmorphism utilities */
+/* Glassmorphism utility — opt-in only */
 .glass {
   background: var(--surface);
   backdrop-filter: blur(12px);

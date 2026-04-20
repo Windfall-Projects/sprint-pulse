@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
@@ -12,6 +13,8 @@ import {
 } from "@heroicons/react/24/outline";
 
 export default function Home() {
+  const router = useRouter();
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
@@ -57,12 +60,12 @@ export default function Home() {
           </p>
 
           <div className="flex items-center justify-center space-x-4 pt-4">
-            <Button size="lg" className="group">
+            <Button size="lg" className="group" onClick={() => router.push('/signup')}>
               Get Started
               <ArrowRightIcon className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
-            <Button variant="secondary" size="lg">
-              Book a Demo
+            <Button variant="secondary" size="lg" onClick={() => router.push('/login')}>
+              Log In
             </Button>
           </div>
         </motion.div>
