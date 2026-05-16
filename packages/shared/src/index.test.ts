@@ -4,8 +4,7 @@ import {
     CreateSprintSchema,
     DateString,
     TeamRoleEnum,
-    WorkItemStatusEnum,
-    SprintStatusEnum
+    WorkItemStatusEnum
 } from './schemas/index.js';
 
 describe('Shared Package Schemas', () => {
