@@ -52,7 +52,7 @@ export function KudosBoard({ kudos, currentProfileId }: { kudos: any[], currentP
                 <button 
                   onClick={() => handleDelete(k.id)}
                   disabled={deletingId === k.id}
-                  className="text-red-400 hover:text-red-300 opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-50 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 rounded"
+                  className="text-rose-400 hover:text-rose-300 opacity-0 group-hover:opacity-100 transition-opacity disabled:opacity-50 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500 rounded"
                   title="Delete Kudos"
                   aria-label="Delete Kudos"
                 >

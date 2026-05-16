@@ -43,7 +43,7 @@ export function TeamsList({ teams }: { teams: any[] }) {
             <button 
               onClick={() => handleDelete(team.id)}
               disabled={deletingId === team.id}
-              className="px-3 bg-red-500/10 text-red-400 border border-red-500/20 py-2 rounded-md hover:bg-red-500/20 transition-colors disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
+              className="px-3 bg-rose-500/10 text-rose-400 border border-rose-500/20 py-2 rounded-md hover:bg-rose-500/20 transition-colors disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-500"
               title="Delete Team"
               aria-label="Delete Team"
             >
