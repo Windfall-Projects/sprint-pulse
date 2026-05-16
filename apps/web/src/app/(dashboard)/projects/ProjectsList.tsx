@@ -29,7 +29,7 @@ export function ProjectsList({ projects }: { projects: any[] }) {
                 </div>
                 <div>
                   <h3 className="font-bold text-lg text-foreground">{project.name}</h3>
-                  <div className="inline-block mt-1 px-2 py-0.5 rounded text-[10px] font-semibold bg-surface border border-white/10 uppercase tracking-wider text-muted-foreground mr-2">
+                  <div className="inline-block mt-1 px-2 py-0.5 rounded text-[10px] font-semibold bg-surface border border-border uppercase tracking-wider text-muted-foreground mr-2">
                     {project.status || 'Active'}
                   </div>
                 </div>
@@ -46,7 +46,7 @@ export function ProjectsList({ projects }: { projects: any[] }) {
           </div>
           
           <div className="mt-6 flex gap-2">
-             <button className="flex-1 bg-surface border border-white/10 text-foreground py-2 text-sm font-medium rounded-md hover:bg-white/5 transition-colors">
+             <button className="flex-1 bg-surface border border-border text-foreground py-2 text-sm font-medium rounded-md hover:bg-surface-hover transition-colors">
               Manage Backlog
             </button>
             <button 

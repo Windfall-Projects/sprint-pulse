@@ -25,7 +25,7 @@ export function BacklogBoard({
   return (
     <div className="flex flex-col h-full space-y-4">
       {/* Filters */}
-      <div className="flex items-center gap-4 bg-surface p-3 rounded-lg border border-white/5">
+      <div className="flex items-center gap-4 bg-surface p-3 rounded-lg border border-border">
         <label className="text-sm text-muted-foreground font-medium">Team:</label>
         <select 
           className="bg-transparent border-none text-sm text-foreground focus:ring-0 cursor-pointer"
@@ -40,8 +40,8 @@ export function BacklogBoard({
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-1 overflow-hidden">
         {/* Backlog Column */}
-        <div className="flex flex-col h-full rounded-xl bg-surface/30 border border-white/10 overflow-hidden">
-          <div className="p-4 border-b border-white/5 flex items-center justify-between bg-surface/50">
+        <div className="flex flex-col h-full rounded-xl bg-surface/30 border border-border overflow-hidden">
+          <div className="p-4 border-b border-border flex items-center justify-between bg-surface/50">
             <h3 className="font-bold">Product Backlog</h3>
             <span className="text-xs bg-surface px-2 py-1 rounded-full text-muted-foreground">
               {backlogItems.length} items
@@ -88,8 +88,8 @@ export function BacklogBoard({
         </div>
 
         {/* Future: Sprint Planning Column or Next Up */}
-        <div className="flex flex-col h-full rounded-xl bg-surface/30 border border-white/10 overflow-hidden hidden lg:flex">
-          <div className="p-4 border-b border-white/5 flex items-center justify-between bg-surface/50">
+        <div className="flex flex-col h-full rounded-xl bg-surface/30 border border-border overflow-hidden hidden lg:flex">
+          <div className="p-4 border-b border-border flex items-center justify-between bg-surface/50">
             <h3 className="font-bold text-muted-foreground">Active Sprint (Preview)</h3>
           </div>
           <div className="p-4 flex-1 flex items-center justify-center text-center text-muted-foreground">

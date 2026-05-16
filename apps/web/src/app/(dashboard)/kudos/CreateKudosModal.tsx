@@ -34,14 +34,14 @@ export function CreateKudosModal({
     <>
       <button 
         onClick={() => setIsOpen(true)}
-        className="bg-primary text-white px-4 py-2 text-sm font-medium rounded-md hover:bg-primary/90 transition-colors"
+        className="bg-primary text-primary-foreground px-4 py-2 text-sm font-medium rounded-md hover:bg-primary-hover transition-colors"
       >
         Give Kudos
       </button>
 
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-background border border-white/10 w-full max-w-md rounded-xl p-6 shadow-2xl animate-in zoom-in-95 duration-200">
+          <div className="bg-background border border-border w-full max-w-md rounded-xl p-6 shadow-2xl animate-in zoom-in-95 duration-200">
             <h2 className="text-xl font-bold mb-4">Shoutout a Teammate</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
@@ -50,7 +50,7 @@ export function CreateKudosModal({
                   name="receiverProfileId"
                   required
                   defaultValue=""
-                  className="block w-full rounded-md bg-surface border border-white/10 px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm"
+                  className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm"
                 >
                   <option value="" disabled>Select teammate...</option>
                   {teamMembers.map(m => (
@@ -64,7 +64,7 @@ export function CreateKudosModal({
                 <select
                   name="category"
                   required
-                  className="block w-full rounded-md bg-surface border border-white/10 px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm"
+                  className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm"
                 >
                   <option value="technical_win">Technical Win</option>
                   <option value="unblock">Unblock</option>
@@ -78,7 +78,7 @@ export function CreateKudosModal({
                 <textarea
                   name="message"
                   required
-                  className="block w-full rounded-md bg-surface border border-white/10 px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm h-24 resize-none"
+                  className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm h-24 resize-none"
                   placeholder="Thank you for..."
                 />
               </div>
@@ -95,7 +95,7 @@ export function CreateKudosModal({
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="bg-primary text-white px-4 py-2 text-sm font-medium rounded-md hover:bg-primary/90 transition-colors disabled:opacity-50"
+                  className="bg-primary text-primary-foreground px-4 py-2 text-sm font-medium rounded-md hover:bg-primary-hover transition-colors disabled:opacity-50"
                 >
                   {isPending ? 'Sending...' : 'Send Kudos'}
                 </button>

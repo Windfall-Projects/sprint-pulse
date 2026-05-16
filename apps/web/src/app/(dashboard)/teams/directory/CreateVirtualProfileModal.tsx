@@ -52,14 +52,14 @@ export function CreateVirtualProfileModal({ teams }: { teams: { id: string, name
     <>
       <button 
         onClick={() => setIsOpen(true)}
-        className="bg-primary text-white px-4 py-2 text-sm font-medium rounded-md hover:bg-primary/90 transition-colors"
+        className="bg-primary text-primary-foreground px-4 py-2 text-sm font-medium rounded-md hover:bg-primary-hover transition-colors"
       >
         Create Virtual Member
       </button>
 
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-background border border-white/10 w-full max-w-md rounded-xl p-6 shadow-2xl animate-in zoom-in-95 duration-200">
+          <div className="bg-background border border-border w-full max-w-md rounded-xl p-6 shadow-2xl animate-in zoom-in-95 duration-200">
             <h2 className="text-xl font-bold mb-4">Create Virtual Member</h2>
             <p className="text-sm text-muted-foreground mb-4">
               Virtual members can be assigned work items but cannot log in.
@@ -82,7 +82,7 @@ export function CreateVirtualProfileModal({ teams }: { teams: { id: string, name
                   value={displayName}
                   onChange={(e) => setDisplayName(e.target.value)}
                   disabled={isPending}
-                  className="block w-full rounded-md bg-surface border border-white/10 px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm"
+                  className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm"
                   placeholder="e.g. GitHub Bot or John Doe"
                   autoFocus
                   required
@@ -99,7 +99,7 @@ export function CreateVirtualProfileModal({ teams }: { teams: { id: string, name
                   value={avatarUrl}
                   onChange={(e) => setAvatarUrl(e.target.value)}
                   disabled={isPending}
-                  className="block w-full rounded-md bg-surface border border-white/10 px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm"
+                  className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm"
                   placeholder="https://example.com/avatar.png"
                 />
               </div>
@@ -109,7 +109,7 @@ export function CreateVirtualProfileModal({ teams }: { teams: { id: string, name
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Assign to Teams <span className="text-muted-foreground font-normal">(Optional)</span>
                   </label>
-                  <div className="max-h-40 overflow-y-auto space-y-2 border border-white/5 p-3 rounded-md bg-surface/30">
+                  <div className="max-h-40 overflow-y-auto space-y-2 border border-border p-3 rounded-md bg-surface/30">
                     {teams.map((team) => (
                       <label key={team.id} className="flex items-center space-x-3 cursor-pointer">
                         <input
@@ -137,7 +137,7 @@ export function CreateVirtualProfileModal({ teams }: { teams: { id: string, name
                 <button
                   type="submit"
                   disabled={isPending || !displayName.trim()}
-                  className="bg-primary text-white px-4 py-2 text-sm font-medium rounded-md hover:bg-primary/90 transition-colors disabled:opacity-50"
+                  className="bg-primary text-primary-foreground px-4 py-2 text-sm font-medium rounded-md hover:bg-primary-hover transition-colors disabled:opacity-50"
                 >
                   {isPending ? 'Creating...' : 'Create Member'}
                 </button>

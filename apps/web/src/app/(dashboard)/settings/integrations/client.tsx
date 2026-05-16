@@ -73,7 +73,7 @@ export function IntegrationClient({ initialIntegrations, teams }: { initialInteg
                     <Button onClick={handleConnectGithub}>Connect GitHub</Button>
                 ) : (
                     <button 
-                        className="px-4 py-2 bg-transparent text-foreground border border-border rounded-md text-sm hover:bg-white/5 transition-colors"
+                        className="px-4 py-2 bg-transparent text-foreground border border-border rounded-md text-sm hover:bg-surface-hover transition-colors"
                         onClick={() => router.push('/settings/integrations?mapping_setup=true')}
                     >
                         Add Mapping

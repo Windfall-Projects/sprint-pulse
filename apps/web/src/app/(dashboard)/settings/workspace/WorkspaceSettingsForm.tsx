@@ -51,7 +51,7 @@ export function WorkspaceSettingsForm({
           value={name}
           onChange={(e) => setName(e.target.value)}
           disabled={!canEdit || isPending}
-          className="mt-1 block w-full sm:max-w-md rounded-md bg-surface border border-white/10 px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm disabled:opacity-50"
+          className="mt-1 block w-full sm:max-w-md rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm disabled:opacity-50"
         />
       </div>
       
@@ -60,7 +60,7 @@ export function WorkspaceSettingsForm({
           <button
             type="submit"
             disabled={isPending || name === initialName || !name.trim()}
-            className="bg-primary text-white px-4 py-2 text-sm font-medium rounded-md hover:bg-primary/90 transition-colors disabled:opacity-50"
+            className="bg-primary text-primary-foreground px-4 py-2 text-sm font-medium rounded-md hover:bg-primary-hover transition-colors disabled:opacity-50"
           >
             {isPending ? 'Saving...' : 'Save Changes'}
           </button>

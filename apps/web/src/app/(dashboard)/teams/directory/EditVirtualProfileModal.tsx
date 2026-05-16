@@ -50,7 +50,7 @@ export function EditVirtualProfileModal({ profile }: { profile: ProfileToEdit })
 
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-background border border-white/10 w-full max-w-md rounded-xl p-6 shadow-2xl animate-in zoom-in-95 duration-200">
+          <div className="bg-background border border-border w-full max-w-md rounded-xl p-6 shadow-2xl animate-in zoom-in-95 duration-200">
             <h2 className="text-xl font-bold mb-4">Edit Virtual Member</h2>
 
             {errorStatus && (
@@ -69,7 +69,7 @@ export function EditVirtualProfileModal({ profile }: { profile: ProfileToEdit })
                   value={displayName}
                   onChange={(e) => setDisplayName(e.target.value)}
                   disabled={isPending}
-                  className="block w-full rounded-md bg-surface border border-white/10 px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm"
+                  className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm"
                   required
                 />
               </div>
@@ -83,7 +83,7 @@ export function EditVirtualProfileModal({ profile }: { profile: ProfileToEdit })
                   value={avatarUrl}
                   onChange={(e) => setAvatarUrl(e.target.value)}
                   disabled={isPending}
-                  className="block w-full rounded-md bg-surface border border-white/10 px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm"
+                  className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm"
                 />
               </div>
               
@@ -99,7 +99,7 @@ export function EditVirtualProfileModal({ profile }: { profile: ProfileToEdit })
                 <button
                   type="submit"
                   disabled={isPending || !displayName.trim()}
-                  className="bg-primary text-white px-4 py-2 text-sm font-medium rounded-md hover:bg-primary/90 transition-colors disabled:opacity-50"
+                  className="bg-primary text-primary-foreground px-4 py-2 text-sm font-medium rounded-md hover:bg-primary-hover transition-colors disabled:opacity-50"
                 >
                   {isPending ? 'Saving...' : 'Save Changes'}
                 </button>
