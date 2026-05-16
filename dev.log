@@ -1,0 +1,54 @@
+
+> sprint-pulse-monorepo@ dev /app
+> pnpm -r dev
+
+Scope: 2 of 3 workspace projects
+apps/web dev$ next dev
+apps/web dev: ▲ Next.js 16.2.4 (Turbopack)
+apps/web dev: - Local:         http://localhost:3000
+apps/web dev: - Network:       http://192.168.0.2:3000
+apps/web dev: ✓ Ready in 559ms
+apps/web dev: ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+apps/web dev:  We detected multiple lockfiles and selected the directory of /app/pnpm-workspace.yaml as the root directory.
+apps/web dev:  To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+apps/web dev:    See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+apps/web dev:  Detected additional lockfiles:
+apps/web dev:    * /app/apps/web/pnpm-workspace.yaml
+apps/web dev: ⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+apps/web dev: ⨯ Error: Your project's URL and Key are required to create a Supabase client!
+apps/web dev: Check your Supabase project's API settings to find these values
+apps/web dev: https://supabase.com/dashboard/project/_/settings/api
+apps/web dev:     at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+apps/web dev:     at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+apps/web dev:     at updateSession (apps/web/src/utils/supabase/middleware.ts:9:38)
+apps/web dev:     at middleware (apps/web/src/middleware.ts:5:29)
+apps/web dev:    7 |   })
+apps/web dev:    8 |
+apps/web dev: >  9 |   const supabase = createServerClient(
+apps/web dev:      |                                      ^
+apps/web dev:   10 |     process.env.NEXT_PUBLIC_SUPABASE_URL!,
+apps/web dev:   11 |     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+apps/web dev:   12 |     {
+apps/web dev:   Reload env: .env.local
+apps/web dev: ✓ Compiled in 13ms
+apps/web dev: ⨯ Error: Your project's URL and Key are required to create a Supabase client!
+apps/web dev: Check your Supabase project's API settings to find these values
+apps/web dev: https://supabase.com/dashboard/project/_/settings/api
+apps/web dev:     at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+apps/web dev:     at <unknown> (https://supabase.com/dashboard/project/_/settings/api)
+apps/web dev:     at updateSession (apps/web/src/utils/supabase/middleware.ts:9:38)
+apps/web dev:     at middleware (apps/web/src/middleware.ts:5:29)
+apps/web dev:    7 |   })
+apps/web dev:    8 |
+apps/web dev: >  9 |   const supabase = createServerClient(
+apps/web dev:      |                                      ^
+apps/web dev:   10 |     process.env.NEXT_PUBLIC_SUPABASE_URL!,
+apps/web dev:   11 |     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+apps/web dev:   12 |     {
+apps/web dev: [?25h
+apps/web dev: Failed
+/app/apps/web:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  web@0.1.0 dev: `next dev`
+Command failed with signal "SIGTERM"
+Terminated
+ ELIFECYCLE  Command failed with exit code 143.

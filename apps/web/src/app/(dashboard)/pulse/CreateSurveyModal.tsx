@@ -25,14 +25,14 @@ export function CreateSurveyModal({ teamId, accountId }: { teamId: string, accou
     <>
       <button 
         onClick={() => setIsOpen(true)}
-        className="bg-primary text-white px-4 py-2 text-sm font-medium rounded-md hover:bg-primary/90 transition-colors"
+        className="bg-primary text-primary-foreground px-4 py-2 text-sm font-medium rounded-md hover:bg-primary-hover transition-colors"
       >
         Create Survey
       </button>
 
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-background border border-white/10 w-full max-w-md rounded-xl p-6 shadow-2xl animate-in zoom-in-95 duration-200">
+          <div className="bg-background border border-border w-full max-w-md rounded-xl p-6 shadow-2xl animate-in zoom-in-95 duration-200">
             <h2 className="text-xl font-bold mb-4">Create New Survey</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
@@ -41,7 +41,7 @@ export function CreateSurveyModal({ teamId, accountId }: { teamId: string, accou
                   type="text"
                   name="title"
                   required
-                  className="block w-full rounded-md bg-surface border border-white/10 px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm"
+                  className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm"
                   placeholder="e.g. Mid-Sprint Check-in"
                   autoFocus
                 />
@@ -52,12 +52,12 @@ export function CreateSurveyModal({ teamId, accountId }: { teamId: string, accou
                 <input
                   type="text"
                   name="description"
-                  className="block w-full rounded-md bg-surface border border-white/10 px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm"
+                  className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm"
                   placeholder="Optional context for this survey"
                 />
               </div>
 
-              <div className="p-3 bg-surface/50 border border-white/5 rounded-md text-sm text-muted-foreground">
+              <div className="p-3 bg-surface/50 border border-border rounded-md text-sm text-muted-foreground">
                 <p>For this MVP, creating a survey will automatically attach a standard "Satisfaction (1-5)" question to it.</p>
               </div>
               
@@ -73,7 +73,7 @@ export function CreateSurveyModal({ teamId, accountId }: { teamId: string, accou
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="bg-primary text-white px-4 py-2 text-sm font-medium rounded-md hover:bg-primary/90 transition-colors disabled:opacity-50"
+                  className="bg-primary text-primary-foreground px-4 py-2 text-sm font-medium rounded-md hover:bg-primary-hover transition-colors disabled:opacity-50"
                 >
                   {isPending ? 'Creating...' : 'Create'}
                 </button>

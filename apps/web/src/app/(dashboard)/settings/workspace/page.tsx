@@ -71,7 +71,7 @@ export default async function WorkspaceSettingsPage() {
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-bold">Workspace Members</h2>
           {(currentUserRole === 'admin' || currentUserRole === 'owner') && (
-            <button className="bg-primary text-white px-3 py-1.5 text-sm font-medium rounded-md hover:bg-primary/90 transition-colors">
+            <button className="bg-primary text-primary-foreground px-3 py-1.5 text-sm font-medium rounded-md hover:bg-primary-hover transition-colors">
               Invite Member
             </button>
           )}

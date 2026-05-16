@@ -34,14 +34,14 @@ export function CreateProjectModal({ teams }: { teams: any[] }) {
     <>
       <button 
         onClick={() => setIsOpen(true)}
-        className="bg-primary text-white px-4 py-2 text-sm font-medium rounded-md hover:bg-primary/90 transition-colors"
+        className="bg-primary text-primary-foreground px-4 py-2 text-sm font-medium rounded-md hover:bg-primary-hover transition-colors"
       >
         Create Project
       </button>
 
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-background border border-white/10 w-full max-w-md rounded-xl p-6 shadow-2xl animate-in zoom-in-95 duration-200">
+          <div className="bg-background border border-border w-full max-w-md rounded-xl p-6 shadow-2xl animate-in zoom-in-95 duration-200">
             <h2 className="text-xl font-bold mb-4">Create New Project</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
@@ -54,7 +54,7 @@ export function CreateProjectModal({ teams }: { teams: any[] }) {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   disabled={isPending}
-                  className="block w-full rounded-md bg-surface border border-white/10 px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm"
+                  className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm"
                   placeholder="e.g. Q3 Mobile App Revamp"
                   autoFocus
                 />
@@ -69,7 +69,7 @@ export function CreateProjectModal({ teams }: { teams: any[] }) {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   disabled={isPending}
-                  className="block w-full rounded-md bg-surface border border-white/10 px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm min-h-[80px]"
+                  className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm min-h-[80px]"
                   placeholder="Brief description of the project goals..."
                 />
               </div>
@@ -83,7 +83,7 @@ export function CreateProjectModal({ teams }: { teams: any[] }) {
                   value={teamId}
                   onChange={(e) => setTeamId(e.target.value)}
                   disabled={isPending}
-                  className="block w-full rounded-md bg-surface border border-white/10 px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm"
+                  className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm"
                 >
                   {teams.map(t => (
                     <option key={t.id} value={t.id}>{t.name}</option>
@@ -103,7 +103,7 @@ export function CreateProjectModal({ teams }: { teams: any[] }) {
                 <button
                   type="submit"
                   disabled={isPending || !name.trim() || !teamId}
-                  className="bg-primary text-white px-4 py-2 text-sm font-medium rounded-md hover:bg-primary/90 transition-colors disabled:opacity-50"
+                  className="bg-primary text-primary-foreground px-4 py-2 text-sm font-medium rounded-md hover:bg-primary-hover transition-colors disabled:opacity-50"
                 >
                   {isPending ? 'Creating...' : 'Create'}
                 </button>

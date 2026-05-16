@@ -65,7 +65,7 @@ export function KudosBoard({ kudos, currentProfileId }: { kudos: any[], currentP
               "{k.message}"
             </p>
 
-            <div className="flex items-center gap-2 pt-4 border-t border-white/5 relative z-10">
+            <div className="flex items-center gap-2 pt-4 border-t border-border relative z-10">
               <div className="flex-1 flex flex-col items-center">
                  <div className="text-[10px] text-muted-foreground uppercase mb-1 font-bold">From</div>
                  <div className="flex items-center gap-2">
