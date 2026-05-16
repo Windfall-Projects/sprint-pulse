@@ -6,6 +6,7 @@
     "test": "pnpm -r test && pnpm run test:api",
     "lint": "pnpm -r lint",
     "dev": "pnpm -r dev",
+    "build": "pnpm -r build",
     "supabase:start": "npx supabase start",
     "supabase:stop": "npx supabase stop",
     "serve:api": "npx supabase functions serve api",
