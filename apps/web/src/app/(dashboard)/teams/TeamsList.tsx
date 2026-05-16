@@ -37,7 +37,7 @@ export function TeamsList({ teams }: { teams: any[] }) {
           </div>
           
           <div className="mt-6 flex gap-2">
-            <Link href="/teams/directory" className="flex-1 bg-surface border border-white/10 text-center text-foreground py-2 text-sm font-medium rounded-md hover:bg-white/5 transition-colors">
+            <Link href="/teams/directory" className="flex-1 bg-surface border border-border text-center text-foreground py-2 text-sm font-medium rounded-md hover:bg-surface-hover transition-colors">
               Manage Members
             </Link>
             <button 

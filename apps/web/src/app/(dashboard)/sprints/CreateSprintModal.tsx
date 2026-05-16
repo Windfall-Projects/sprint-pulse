@@ -21,14 +21,14 @@ export function CreateSprintModal({ teamId }: { teamId: string }) {
     <>
       <button 
         onClick={() => setIsOpen(true)}
-        className="bg-primary text-white px-4 py-2 text-sm font-medium rounded-md hover:bg-primary/90 transition-colors"
+        className="bg-primary text-primary-foreground px-4 py-2 text-sm font-medium rounded-md hover:bg-primary-hover transition-colors"
       >
         Create Sprint
       </button>
 
       {isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-background border border-white/10 w-full max-w-md rounded-xl p-6 shadow-2xl animate-in zoom-in-95 duration-200">
+          <div className="bg-background border border-border w-full max-w-md rounded-xl p-6 shadow-2xl animate-in zoom-in-95 duration-200">
             <h2 className="text-xl font-bold mb-4">Create New Sprint</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
@@ -37,7 +37,7 @@ export function CreateSprintModal({ teamId }: { teamId: string }) {
                   type="text"
                   name="name"
                   required
-                  className="block w-full rounded-md bg-surface border border-white/10 px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm"
+                  className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm"
                   placeholder="e.g. Sprint 42"
                   autoFocus
                 />
@@ -47,7 +47,7 @@ export function CreateSprintModal({ teamId }: { teamId: string }) {
                 <label className="block text-sm font-medium text-foreground mb-1">Sprint Goal</label>
                 <textarea
                   name="goal"
-                  className="block w-full rounded-md bg-surface border border-white/10 px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm h-20"
+                  className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm h-20"
                   placeholder="What is the main objective of this sprint?"
                 />
               </div>
@@ -59,7 +59,7 @@ export function CreateSprintModal({ teamId }: { teamId: string }) {
                     type="date"
                     name="startDate"
                     required
-                    className="block w-full rounded-md bg-surface border border-white/10 px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm"
+                    className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm"
                   />
                 </div>
                 <div>
@@ -68,7 +68,7 @@ export function CreateSprintModal({ teamId }: { teamId: string }) {
                     type="date"
                     name="endDate"
                     required
-                    className="block w-full rounded-md bg-surface border border-white/10 px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm"
+                    className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm"
                   />
                 </div>
               </div>
@@ -85,7 +85,7 @@ export function CreateSprintModal({ teamId }: { teamId: string }) {
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="bg-primary text-white px-4 py-2 text-sm font-medium rounded-md hover:bg-primary/90 transition-colors disabled:opacity-50"
+                  className="bg-primary text-primary-foreground px-4 py-2 text-sm font-medium rounded-md hover:bg-primary-hover transition-colors disabled:opacity-50"
                 >
                   {isPending ? 'Creating...' : 'Create'}
                 </button>

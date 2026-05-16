@@ -62,7 +62,7 @@ export function DirectoryList({ profiles }: { profiles: Profile[] }) {
               <td className="px-6 py-4">
                 <div className="flex flex-wrap gap-2">
                   {profile.teams.map((t) => (
-                    <span key={t.team_id} className="px-2 py-0.5 rounded-md text-xs font-medium bg-surface border border-white/10 text-muted-foreground">
+                    <span key={t.team_id} className="px-2 py-0.5 rounded-md text-xs font-medium bg-surface border border-border text-muted-foreground">
                       {t.name}
                     </span>
                   ))}

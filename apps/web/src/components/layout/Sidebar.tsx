@@ -14,6 +14,7 @@ import {
   LifebuoyIcon,
   PaperAirplaneIcon,
 } from '@heroicons/react/24/outline'
+import { ThemeToggle } from '@/components/ThemeToggle'
 
 const navItems = [
   { name: 'Overview', href: '/dashboard', icon: Squares2X2Icon },
@@ -85,15 +86,16 @@ export function Sidebar({ userName, avatarUrl }: SidebarProps) {
       {/* Footer */}
       <div className="px-4 pb-4 space-y-6">
         {/* Support & Feedback links */}
-        <div className="space-y-2">
-          <a href="#" className="flex items-center gap-1.5 px-2.5 text-sm text-foreground hover:text-primary transition-colors">
+        <div className="space-y-1">
+          <a href="#" className="flex items-center gap-1.5 px-2.5 py-1.5 text-sm text-foreground hover:text-primary transition-colors rounded-md hover:bg-surface-hover">
             <LifebuoyIcon className="w-6 h-6" />
             <span>Support</span>
           </a>
-          <a href="#" className="flex items-center gap-1.5 px-2.5 text-sm text-foreground hover:text-primary transition-colors">
+          <a href="#" className="flex items-center gap-1.5 px-2.5 py-1.5 text-sm text-foreground hover:text-primary transition-colors rounded-md hover:bg-surface-hover">
             <PaperAirplaneIcon className="w-6 h-6" />
             <span>Feedback</span>
           </a>
+          <ThemeToggle />
         </div>
 
         {/* User profile */}

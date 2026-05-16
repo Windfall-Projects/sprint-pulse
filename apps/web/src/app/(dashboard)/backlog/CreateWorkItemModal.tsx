@@ -23,7 +23,7 @@ export function CreateWorkItemModal({ teamId, accountId }: { teamId: string, acc
     return (
       <button 
         onClick={() => setIsOpen(true)}
-        className="w-full py-3 border border-dashed border-white/20 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-surface/50 transition-colors flex items-center justify-center gap-2"
+        className="w-full py-3 border border-dashed border-border rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-surface/50 transition-colors flex items-center justify-center gap-2"
       >
         <PlusIcon className="w-4 h-4" /> Add Item
       </button>
@@ -37,13 +37,13 @@ export function CreateWorkItemModal({ teamId, accountId }: { teamId: string, acc
           name="title"
           required
           autoFocus
-          className="w-full bg-surface border border-white/10 rounded px-3 py-1.5 text-sm"
+          className="w-full bg-surface border border-border rounded px-3 py-1.5 text-sm"
           placeholder="What needs to be done?"
         />
         <div className="grid grid-cols-2 gap-3">
            <div>
              <label className="text-xs text-muted-foreground mb-1 block">Type</label>
-             <select name="type" className="w-full bg-surface border border-white/10 rounded px-2 py-1 text-sm">
+             <select name="type" className="w-full bg-surface border border-border rounded px-2 py-1 text-sm">
                 <option value="story">Story</option>
                 <option value="task">Task</option>
                 <option value="bug">Bug</option>
@@ -52,12 +52,12 @@ export function CreateWorkItemModal({ teamId, accountId }: { teamId: string, acc
            </div>
            <div>
              <label className="text-xs text-muted-foreground mb-1 block">Points</label>
-             <input name="points" type="number" min="0" defaultValue="0" className="w-full bg-surface border border-white/10 rounded px-2 py-1 text-sm" />
+             <input name="points" type="number" min="0" defaultValue="0" className="w-full bg-surface border border-border rounded px-2 py-1 text-sm" />
            </div>
         </div>
         <div className="flex justify-end gap-2 mt-2">
-          <button type="button" onClick={() => setIsOpen(false)} className="text-xs px-3 py-1 rounded hover:bg-white/5 disabled:opacity-50" disabled={isPending}>Cancel</button>
-          <button type="submit" className="text-xs bg-primary text-white px-3 py-1 rounded hover:bg-primary/90 disabled:opacity-50" disabled={isPending}>
+          <button type="button" onClick={() => setIsOpen(false)} className="text-xs px-3 py-1 rounded hover:bg-surface-hover disabled:opacity-50" disabled={isPending}>Cancel</button>
+          <button type="submit" className="text-xs bg-primary text-primary-foreground px-3 py-1 rounded hover:bg-primary-hover disabled:opacity-50" disabled={isPending}>
             {isPending ? 'Saving...' : 'Save'}
           </button>
         </div>

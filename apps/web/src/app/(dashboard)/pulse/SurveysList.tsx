@@ -32,11 +32,11 @@ export function SurveysList({ surveys, teamId, isLead }: { surveys: any[], teamI
           </div>
 
           <div className="flex gap-2">
-             <button className="flex-1 bg-primary text-white py-2 text-sm font-medium rounded-md hover:bg-primary/90 transition-colors">
+             <button className="flex-1 bg-primary text-primary-foreground py-2 text-sm font-medium rounded-md hover:bg-primary-hover transition-colors">
               Take Survey
             </button>
             {isLead && !survey.is_system_template && (
-              <button className="px-3 bg-surface border border-white/10 text-foreground py-2 rounded-md hover:bg-white/5 transition-colors text-sm font-medium">
+              <button className="px-3 bg-surface border border-border text-foreground py-2 rounded-md hover:bg-surface-hover transition-colors text-sm font-medium">
                 Results
               </button>
             )}

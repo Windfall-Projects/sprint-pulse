@@ -26,7 +26,7 @@ export function SprintsList({ sprints, selectedTeamId }: { sprints: any[], selec
             <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full ${
               sprint.status === 'active' ? 'bg-primary/20 text-primary border border-primary/30' :
               sprint.status === 'completed' ? 'bg-emerald-500/10 text-emerald-400' :
-              'bg-surface border border-white/10 text-muted-foreground'
+              'bg-surface border border-border text-muted-foreground'
             }`}>
               {sprint.status}
             </span>
@@ -42,7 +42,7 @@ export function SprintsList({ sprints, selectedTeamId }: { sprints: any[], selec
             <span>{sprint.end_date}</span>
           </div>
 
-          <button className="w-full bg-surface border border-white/10 text-foreground py-2 text-sm font-medium rounded-md hover:bg-white/5 transition-colors">
+          <button className="w-full bg-surface border border-border text-foreground py-2 text-sm font-medium rounded-md hover:bg-surface-hover transition-colors">
              View Board
           </button>
         </Card>

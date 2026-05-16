@@ -54,7 +54,7 @@ export function MembersList({
             const isSelf = member.user_id === 'todo-check-self' // We could pass current user ID
             
             return (
-              <tr key={member.user_id} className="border-b border-white/5">
+              <tr key={member.user_id} className="border-b border-border">
                 <td className="px-4 py-3 font-medium text-foreground flex items-center gap-3">
                   {member.avatar_url ? (
                     <img src={member.avatar_url} alt="" className="w-8 h-8 rounded-full bg-surface" />
@@ -71,7 +71,7 @@ export function MembersList({
                       value={member.role}
                       onChange={(e) => handleRoleChange(member.user_id, e.target.value)}
                       disabled={processingId === member.user_id}
-                      className="bg-surface border border-white/10 rounded-md text-sm px-2 py-1 text-foreground focus:outline-none focus:border-primary disabled:opacity-50"
+                      className="bg-surface border border-border rounded-md text-sm px-2 py-1 text-foreground focus:outline-none focus:border-primary disabled:opacity-50"
                     >
                       <option value="admin">Admin</option>
                       <option value="member">Member</option>
