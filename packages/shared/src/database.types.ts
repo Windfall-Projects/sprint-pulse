@@ -179,6 +179,73 @@ export type Database = {
           },
         ]
       }
+      integration_mappings: {
+        Row: {
+          id: string
+          integration_id: string
+          team_id: string
+          project_id: string
+          external_repo_id: string
+          is_active: boolean
+        }
+        Insert: {
+          id?: string
+          integration_id: string
+          team_id: string
+          project_id: string
+          external_repo_id: string
+          is_active?: boolean
+        }
+        Update: {
+          id?: string
+          integration_id?: string
+          team_id?: string
+          project_id?: string
+          external_repo_id?: string
+          is_active?: boolean
+        }
+        Relationships: [
+          {
+            foreignKeyName: "integration_mappings_integration_id_fkey"
+            columns: ["integration_id"]
+            isOneToOne: false
+            referencedRelation: "integrations"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      integrations: {
+        Row: {
+          id: string
+          account_id: string
+          provider: string
+          installation_id: string | null
+          created_at: string | null
+        }
+        Insert: {
+          id?: string
+          account_id: string
+          provider: string
+          installation_id?: string | null
+          created_at?: string | null
+        }
+        Update: {
+          id?: string
+          account_id?: string
+          provider?: string
+          installation_id?: string | null
+          created_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "integrations_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "accounts"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       kudos: {
         Row: {
           account_id: string
