@@ -62,5 +62,10 @@ jobs:
       - name: Start Supabase
         run: supabase start
 
+      - name: Export Supabase Env Vars
+        run: |
+          echo "SUPABASE_ANON_KEY=$(supabase status -o json | jq -r .ANON_KEY)" >> $GITHUB_ENV
+          echo "SUPABASE_SERVICE_ROLE_KEY=$(supabase status -o json | jq -r .SERVICE_ROLE_KEY)" >> $GITHUB_ENV
+
       - name: Run Tests
         run: pnpm test
