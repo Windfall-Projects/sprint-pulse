@@ -2,25 +2,30 @@
 
 import { createClient } from '@/utils/supabase/server'
 import { revalidatePath } from 'next/cache'
+import { CreateProjectSchema } from '@sprintpulse/shared/schemas'
 
 export async function createProject(formData: FormData) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return { error: 'Not authenticated' }
 
-  const name = formData.get('name') as string
-  const description = formData.get('description') as string
-  const teamId = formData.get('teamId') as string
+  const payload = {
+    team_id: formData.get('teamId') as string,
+    name: formData.get('name') as string,
+    description: formData.get('description') as string || null,
+  }
 
-  if (!name || name.trim() === '') return { error: 'Name is required' }
-  if (!teamId) return { error: 'Team is required' }
+  const validated = CreateProjectSchema.safeParse(payload)
+  if (!validated.success) {
+    return { error: 'Validation failed', fieldErrors: validated.error.flatten().fieldErrors }
+  }
 
   const { error } = await supabase
     .from('projects')
     .insert({
-      team_id: teamId,
-      name: name,
-      description: description || null,
+      team_id: validated.data.team_id,
+      name: validated.data.name,
+      description: validated.data.description,
       status: 'active'
     })
 
