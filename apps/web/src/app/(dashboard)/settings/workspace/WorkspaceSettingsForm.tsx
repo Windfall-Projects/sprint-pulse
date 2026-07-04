@@ -15,6 +15,7 @@ export function WorkspaceSettingsForm({
   const [name, setName] = useState(initialName)
   const [isPending, setIsPending] = useState(false)
   const [message, setMessage] = useState('')
+  const [errors, setErrors] = useState<Record<string, string[]>>({})
 
   async function handleAction(e: React.FormEvent) {
     e.preventDefault()
@@ -22,6 +23,7 @@ export function WorkspaceSettingsForm({
 
     setIsPending(true)
     setMessage('')
+    setErrors({})
     
     const formData = new FormData()
     formData.append('accountId', accountId)
@@ -29,9 +31,10 @@ export function WorkspaceSettingsForm({
 
     const result = await updateWorkspaceName(formData)
     
-    if (result.error) {
+    if (result?.error) {
       setMessage(`Error: ${result.error}`)
-    } else if (result.success) {
+      if (result.fieldErrors) setErrors(result.fieldErrors)
+    } else if (result?.success) {
       setMessage(`Success: ${result.success}`)
     }
     
@@ -53,6 +56,9 @@ export function WorkspaceSettingsForm({
           disabled={!canEdit || isPending}
           className="mt-1 block w-full sm:max-w-md rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm disabled:opacity-50"
         />
+        {errors.name && (
+          <p className="text-red-500 text-xs mt-1">{errors.name[0]}</p>
+        )}
       </div>
       
       {canEdit && (

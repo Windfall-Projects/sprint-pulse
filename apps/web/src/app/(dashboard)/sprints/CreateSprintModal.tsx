@@ -6,14 +6,22 @@ import { createSprint } from './actions'
 export function CreateSprintModal({ teamId }: { teamId: string }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isPending, setIsPending] = useState(false)
+  const [errors, setErrors] = useState<Record<string, string[]>>({})
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    setErrors({})
     setIsPending(true)
     const formData = new FormData(e.currentTarget)
     formData.append('teamId', teamId)
-    await createSprint(formData)
+    const res = await createSprint(formData)
     setIsPending(false)
+    
+    if (res?.error) {
+      if (res.fieldErrors) setErrors(res.fieldErrors)
+      return
+    }
+
     setIsOpen(false)
   }
 
@@ -41,6 +49,9 @@ export function CreateSprintModal({ teamId }: { teamId: string }) {
                   placeholder="e.g. Sprint 42"
                   autoFocus
                 />
+                {errors.name && (
+                  <p className="text-red-500 text-xs mt-1">{errors.name[0]}</p>
+                )}
               </div>
 
               <div>
@@ -50,6 +61,9 @@ export function CreateSprintModal({ teamId }: { teamId: string }) {
                   className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm h-20"
                   placeholder="What is the main objective of this sprint?"
                 />
+                {errors.goal && (
+                  <p className="text-red-500 text-xs mt-1">{errors.goal[0]}</p>
+                )}
               </div>
 
               <div className="grid grid-cols-2 gap-4">
@@ -61,6 +75,9 @@ export function CreateSprintModal({ teamId }: { teamId: string }) {
                     required
                     className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm"
                   />
+                  {errors.start_date && (
+                    <p className="text-red-500 text-xs mt-1">{errors.start_date[0]}</p>
+                  )}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-1">End Date</label>
@@ -70,6 +87,9 @@ export function CreateSprintModal({ teamId }: { teamId: string }) {
                     required
                     className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm"
                   />
+                  {errors.end_date && (
+                    <p className="text-red-500 text-xs mt-1">{errors.end_date[0]}</p>
+                  )}
                 </div>
               </div>
               

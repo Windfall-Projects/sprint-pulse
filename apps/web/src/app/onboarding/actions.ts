@@ -2,13 +2,16 @@
 
 import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
+import { CreateAccountSchema } from '@sprintpulse/shared/schemas'
 
 export async function createWorkspaceAction(prevState: any, formData: FormData) {
   const supabase = await createClient()
   const workspaceName = formData.get('workspaceName') as string
 
-  if (!workspaceName || workspaceName.trim() === '') {
-    return { error: 'Please enter a workspace name' }
+  const slug = workspaceName ? workspaceName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') + '-' + Math.floor(Math.random() * 1000) : ''
+  const validated = CreateAccountSchema.safeParse({ name: workspaceName, slug })
+  if (!validated.success) {
+    return { error: 'Validation failed', fieldErrors: validated.error.flatten().fieldErrors }
   }
 
   // 1. Get user and profile
@@ -26,9 +29,6 @@ export async function createWorkspaceAction(prevState: any, formData: FormData) 
   if (!profile) {
     return { error: 'Your profile seems to be missing. Please contact support.' }
   }
-
-  // Generate a basic slug
-  const slug = workspaceName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '') + '-' + Math.floor(Math.random() * 1000)
 
   // 2. Pre-generate the account UUID so we don't need .select().
   // Using .select() immediately after insert fails because RLS SELECT policies

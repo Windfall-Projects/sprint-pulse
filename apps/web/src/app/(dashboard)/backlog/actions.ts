@@ -2,30 +2,33 @@
 
 import { createClient } from '@/utils/supabase/server'
 import { revalidatePath } from 'next/cache'
+import { CreateWorkItemSchema } from '@sprintpulse/shared/schemas'
 
 export async function createWorkItem(formData: FormData) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return { error: 'Not authenticated' }
 
-  const title = formData.get('title') as string
-  const type = formData.get('type') as string
-  const points = parseInt(formData.get('points') as string || '0', 10)
-  const teamId = formData.get('teamId') as string
   const accountId = formData.get('accountId') as string
 
-  if (!title) return { error: 'Title is required' }
+  const payload = {
+    title: formData.get('title') as string,
+    type: formData.get('type') as string,
+    story_points: parseInt(formData.get('points') as string || '0', 10),
+    team_id: formData.get('teamId') as string,
+  }
+
+  const validated = CreateWorkItemSchema.safeParse(payload)
+  if (!validated.success) {
+    return { error: 'Validation failed', fieldErrors: validated.error.flatten().fieldErrors }
+  }
 
   const { error } = await supabase
     .from('work_items')
     .insert({
       account_id: accountId,
-      team_id: teamId,
-      title,
-      type,
-      story_points: points,
       status: 'todo',
-      provider: 'native'
+      ...validated.data
     })
 
   if (error) {

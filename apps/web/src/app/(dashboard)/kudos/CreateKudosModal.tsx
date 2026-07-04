@@ -16,17 +16,25 @@ export function CreateKudosModal({
 }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isPending, setIsPending] = useState(false)
+  const [errors, setErrors] = useState<Record<string, string[]>>({})
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    setErrors({})
     setIsPending(true)
     const formData = new FormData(e.currentTarget)
     formData.append('teamId', teamId)
     formData.append('accountId', accountId)
     formData.append('senderProfileId', currentUserProfileId)
     
-    await createKudos(formData)
+    const res = await createKudos(formData)
     setIsPending(false)
+
+    if (res?.error) {
+      if (res.fieldErrors) setErrors(res.fieldErrors)
+      return
+    }
+
     setIsOpen(false)
   }
 
@@ -57,6 +65,9 @@ export function CreateKudosModal({
                     <option key={m.id} value={m.id}>{m.display_name}</option>
                   ))}
                 </select>
+                {errors.receiver_profile_id && (
+                  <p className="text-red-500 text-xs mt-1">{errors.receiver_profile_id[0]}</p>
+                )}
               </div>
 
               <div>
@@ -71,6 +82,9 @@ export function CreateKudosModal({
                   <option value="support">Support</option>
                   <option value="team_spirit">Team Spirit</option>
                 </select>
+                {errors.category && (
+                  <p className="text-red-500 text-xs mt-1">{errors.category[0]}</p>
+                )}
               </div>
 
               <div>
@@ -81,6 +95,9 @@ export function CreateKudosModal({
                   className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm h-24 resize-none"
                   placeholder="Thank you for..."
                 />
+                {errors.message && (
+                  <p className="text-red-500 text-xs mt-1">{errors.message[0]}</p>
+                )}
               </div>
               
               <div className="flex justify-end gap-3 mt-6">
