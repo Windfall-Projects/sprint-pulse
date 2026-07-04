@@ -9,9 +9,11 @@ export function CreateProjectModal({ teams }: { teams: any[] }) {
   const [description, setDescription] = useState('')
   const [teamId, setTeamId] = useState(teams[0]?.id || '')
   const [isPending, setIsPending] = useState(false)
+  const [errors, setErrors] = useState<Record<string, string[]>>({})
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    setErrors({})
     if (!name.trim() || !teamId) return
 
     setIsPending(true)
@@ -20,9 +22,14 @@ export function CreateProjectModal({ teams }: { teams: any[] }) {
     formData.append('description', description)
     formData.append('teamId', teamId)
 
-    await createProject(formData)
+    const res = await createProject(formData)
     
     setIsPending(false)
+    if (res?.error) {
+      if (res.fieldErrors) setErrors(res.fieldErrors)
+      return
+    }
+
     setIsOpen(false)
     setName('')
     setDescription('')
@@ -58,6 +65,9 @@ export function CreateProjectModal({ teams }: { teams: any[] }) {
                   placeholder="e.g. Q3 Mobile App Revamp"
                   autoFocus
                 />
+                {errors.name && (
+                  <p className="text-red-500 text-xs mt-1">{errors.name[0]}</p>
+                )}
               </div>
 
               <div>
@@ -72,6 +82,9 @@ export function CreateProjectModal({ teams }: { teams: any[] }) {
                   className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm min-h-[80px]"
                   placeholder="Brief description of the project goals..."
                 />
+                {errors.description && (
+                  <p className="text-red-500 text-xs mt-1">{errors.description[0]}</p>
+                )}
               </div>
 
               <div>

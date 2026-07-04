@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/Button'
 import { motion, AnimatePresence } from 'framer-motion'
 import { UserCircleIcon, CheckCircleIcon } from '@heroicons/react/24/outline'
 
-const initialState: { error?: string; success?: string } = {}
+const initialState: any = {}
 
 interface ProfileFormProps {
   initialDisplayName: string
@@ -38,6 +38,9 @@ export function ProfileForm({ initialDisplayName, initialAvatarUrl }: ProfileFor
               defaultValue={initialDisplayName}
               className="w-full px-4 py-2 bg-surface text-foreground placeholder:text-muted-foreground border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all"
             />
+            {state?.fieldErrors?.display_name && (
+              <p className="text-red-500 text-xs mt-1">{state.fieldErrors.display_name[0]}</p>
+            )}
           </div>
 
           <div className="space-y-2">
@@ -52,6 +55,9 @@ export function ProfileForm({ initialDisplayName, initialAvatarUrl }: ProfileFor
               placeholder="https://example.com/avatar.png"
               className="w-full px-4 py-2 bg-surface text-foreground placeholder:text-muted-foreground border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all"
             />
+            {state?.fieldErrors?.avatar_url && (
+              <p className="text-red-500 text-xs mt-1">{state.fieldErrors.avatar_url[0]}</p>
+            )}
           </div>
         </div>
 

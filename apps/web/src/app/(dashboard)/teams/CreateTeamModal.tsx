@@ -7,19 +7,26 @@ export function CreateTeamModal({ accountId }: { accountId: string }) {
   const [isOpen, setIsOpen] = useState(false)
   const [name, setName] = useState('')
   const [isPending, setIsPending] = useState(false)
+  const [errors, setErrors] = useState<Record<string, string[]>>({})
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     if (!name.trim()) return
 
+    setErrors({})
     setIsPending(true)
     const formData = new FormData()
     formData.append('accountId', accountId)
     formData.append('name', name)
 
-    await createTeam(formData)
+    const res = await createTeam(formData)
     
     setIsPending(false)
+    if (res?.error) {
+      if (res.fieldErrors) setErrors(res.fieldErrors)
+      return
+    }
+
     setIsOpen(false)
     setName('')
   }
@@ -52,6 +59,9 @@ export function CreateTeamModal({ accountId }: { accountId: string }) {
                   placeholder="e.g. Apollo, Engineering, Frontend"
                   autoFocus
                 />
+                {errors.name && (
+                  <p className="text-red-500 text-xs mt-1">{errors.name[0]}</p>
+                )}
               </div>
               
               <div className="flex justify-end gap-3 mt-6">

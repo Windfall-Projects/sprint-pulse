@@ -7,15 +7,23 @@ import { createWorkItem } from './actions'
 export function CreateWorkItemModal({ teamId, accountId }: { teamId: string, accountId: string }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isPending, setIsPending] = useState(false)
+  const [errors, setErrors] = useState<Record<string, string[]>>({})
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    setErrors({})
     setIsPending(true)
     const formData = new FormData(e.currentTarget)
     formData.append('teamId', teamId)
     formData.append('accountId', accountId)
-    await createWorkItem(formData)
+    const res = await createWorkItem(formData)
     setIsPending(false)
+
+    if (res?.error) {
+      if (res.fieldErrors) setErrors(res.fieldErrors)
+      return
+    }
+
     setIsOpen(false)
   }
 
@@ -40,6 +48,9 @@ export function CreateWorkItemModal({ teamId, accountId }: { teamId: string, acc
           className="w-full bg-surface border border-border rounded px-3 py-1.5 text-sm"
           placeholder="What needs to be done?"
         />
+        {errors.title && (
+          <p className="text-red-500 text-xs mt-1">{errors.title[0]}</p>
+        )}
         <div className="grid grid-cols-2 gap-3">
            <div>
              <label className="text-xs text-muted-foreground mb-1 block">Type</label>
@@ -49,10 +60,16 @@ export function CreateWorkItemModal({ teamId, accountId }: { teamId: string, acc
                 <option value="bug">Bug</option>
                 <option value="chore">Chore</option>
              </select>
+             {errors.type && (
+               <p className="text-red-500 text-xs mt-1">{errors.type[0]}</p>
+             )}
            </div>
            <div>
              <label className="text-xs text-muted-foreground mb-1 block">Points</label>
              <input name="points" type="number" min="0" defaultValue="0" className="w-full bg-surface border border-border rounded px-2 py-1 text-sm" />
+             {errors.story_points && (
+               <p className="text-red-500 text-xs mt-1">{errors.story_points[0]}</p>
+             )}
            </div>
         </div>
         <div className="flex justify-end gap-2 mt-2">

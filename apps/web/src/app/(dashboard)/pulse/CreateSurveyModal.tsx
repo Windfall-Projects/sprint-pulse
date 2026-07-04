@@ -6,18 +6,25 @@ import { createSurvey } from './actions'
 export function CreateSurveyModal({ teamId, accountId }: { teamId: string, accountId: string }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isPending, setIsPending] = useState(false)
+  const [errors, setErrors] = useState<Record<string, string[]>>({})
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    setErrors({})
     setIsPending(true)
     const formData = new FormData(e.currentTarget)
     formData.append('teamId', teamId)
     formData.append('accountId', accountId)
     
     // We will hardcode a basic question for the MVP
-    await createSurvey(formData)
+    const res = await createSurvey(formData)
     
     setIsPending(false)
+    if (res?.error) {
+      if (res.fieldErrors) setErrors(res.fieldErrors)
+      return
+    }
+
     setIsOpen(false)
   }
 
@@ -45,6 +52,9 @@ export function CreateSurveyModal({ teamId, accountId }: { teamId: string, accou
                   placeholder="e.g. Mid-Sprint Check-in"
                   autoFocus
                 />
+                {errors.title && (
+                  <p className="text-red-500 text-xs mt-1">{errors.title[0]}</p>
+                )}
               </div>
 
               <div>
@@ -55,6 +65,9 @@ export function CreateSurveyModal({ teamId, accountId }: { teamId: string, accou
                   className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none sm:text-sm"
                   placeholder="Optional context for this survey"
                 />
+                {errors.description && (
+                  <p className="text-red-500 text-xs mt-1">{errors.description[0]}</p>
+                )}
               </div>
 
               <div className="p-3 bg-surface/50 border border-border rounded-md text-sm text-muted-foreground">

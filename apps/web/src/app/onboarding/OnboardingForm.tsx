@@ -6,8 +6,9 @@ import { Card } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const initialState = {
-  error: null as string | null,
+const initialState: any = {
+  error: null,
+  fieldErrors: undefined
 }
 
 export default function OnboardingForm() {
@@ -29,6 +30,9 @@ export default function OnboardingForm() {
               placeholder="Acme Corp"
               className="w-full px-4 py-2 bg-surface text-foreground placeholder:text-muted-foreground border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent transition-all"
             />
+            {state?.fieldErrors?.name && (
+              <p className="text-red-500 text-xs mt-1">{state.fieldErrors.name[0]}</p>
+            )}
           </div>
         </div>
 

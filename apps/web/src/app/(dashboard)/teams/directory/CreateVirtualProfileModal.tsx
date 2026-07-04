@@ -10,6 +10,7 @@ export function CreateVirtualProfileModal({ teams }: { teams: { id: string, name
   const [selectedTeams, setSelectedTeams] = useState<string[]>([])
   const [isPending, setIsPending] = useState(false)
   const [errorStatus, setErrorStatus] = useState<string | null>(null)
+  const [errors, setErrors] = useState<Record<string, string[]>>({})
 
   function toggleTeam(teamId: string) {
     setSelectedTeams(prev => 
@@ -25,6 +26,7 @@ export function CreateVirtualProfileModal({ teams }: { teams: { id: string, name
 
     setIsPending(true)
     setErrorStatus(null)
+    setErrors({})
 
     const formData = new FormData()
     formData.append('displayName', displayName)
@@ -36,8 +38,9 @@ export function CreateVirtualProfileModal({ teams }: { teams: { id: string, name
 
     const result = await createVirtualProfileAction(null, formData)
     
-    if (result.error) {
+    if (result?.error) {
       setErrorStatus(result.error)
+      if (result.fieldErrors) setErrors(result.fieldErrors)
       setIsPending(false)
     } else {
       setIsPending(false)
@@ -87,6 +90,9 @@ export function CreateVirtualProfileModal({ teams }: { teams: { id: string, name
                   autoFocus
                   required
                 />
+                {errors.display_name && (
+                  <p className="text-red-500 text-xs mt-1">{errors.display_name[0]}</p>
+                )}
               </div>
 
               <div>
@@ -102,6 +108,9 @@ export function CreateVirtualProfileModal({ teams }: { teams: { id: string, name
                   className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm"
                   placeholder="https://example.com/avatar.png"
                 />
+                {errors.avatar_url && (
+                  <p className="text-red-500 text-xs mt-1">{errors.avatar_url[0]}</p>
+                )}
               </div>
 
               {teams.length > 0 && (

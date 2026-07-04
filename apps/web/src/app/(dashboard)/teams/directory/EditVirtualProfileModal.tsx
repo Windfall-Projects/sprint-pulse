@@ -15,6 +15,7 @@ export function EditVirtualProfileModal({ profile }: { profile: ProfileToEdit })
   const [avatarUrl, setAvatarUrl] = useState(profile.avatar_url || '')
   const [isPending, setIsPending] = useState(false)
   const [errorStatus, setErrorStatus] = useState<string | null>(null)
+  const [errors, setErrors] = useState<Record<string, string[]>>({})
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -22,6 +23,7 @@ export function EditVirtualProfileModal({ profile }: { profile: ProfileToEdit })
 
     setIsPending(true)
     setErrorStatus(null)
+    setErrors({})
 
     const formData = new FormData()
     formData.append('profileId', profile.id)
@@ -30,8 +32,9 @@ export function EditVirtualProfileModal({ profile }: { profile: ProfileToEdit })
 
     const result = await updateVirtualProfileAction(null, formData)
     
-    if (result.error) {
+    if (result?.error) {
       setErrorStatus(result.error)
+      if (result.fieldErrors) setErrors(result.fieldErrors)
       setIsPending(false)
     } else {
       setIsPending(false)
@@ -72,6 +75,9 @@ export function EditVirtualProfileModal({ profile }: { profile: ProfileToEdit })
                   className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm"
                   required
                 />
+                {errors.display_name && (
+                  <p className="text-red-500 text-xs mt-1">{errors.display_name[0]}</p>
+                )}
               </div>
 
               <div>
@@ -85,6 +91,9 @@ export function EditVirtualProfileModal({ profile }: { profile: ProfileToEdit })
                   disabled={isPending}
                   className="block w-full rounded-md bg-surface border border-border px-3 py-2 text-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm"
                 />
+                {errors.avatar_url && (
+                  <p className="text-red-500 text-xs mt-1">{errors.avatar_url[0]}</p>
+                )}
               </div>
               
               <div className="flex justify-end gap-3 mt-6">
