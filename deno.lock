@@ -1,5 +1,5 @@
 {
-  "version": "5",
+  "version": "4",
   "remote": {
     "https://deno.land/std@0.208.0/assert/_constants.ts": "8a9da298c26750b28b326b297316cdde860bc237533b07e1337c021379e6b2a9",
     "https://deno.land/std@0.208.0/assert/_diff.ts": "58e1461cc61d8eb1eacbf2a010932bf6a05b79344b02ca38095f9b805795dc48",
@@ -40,14 +40,10 @@
     ],
     "packageJson": {
       "dependencies": [
-        "npm:@eslint/js@^9.39.4",
         "npm:@hono/zod-validator@~0.7.6",
         "npm:@supabase/supabase-js@^2.94.1",
-        "npm:eslint@^9.39.4",
         "npm:hono@^4.11.7",
-        "npm:next-themes@~0.4.6",
         "npm:supabase@^2.76.8",
-        "npm:typescript-eslint@^8.59.3",
         "npm:typescript@5"
       ]
     }
