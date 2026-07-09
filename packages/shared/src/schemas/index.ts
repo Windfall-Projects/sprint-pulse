@@ -39,9 +39,9 @@ export const AccountSchema = z.object({
   id: z.string().uuid(),
   name: z.string().min(1),
   slug: z.string().min(1),
-  is_test_tenant: z.boolean().nullable(),
+  is_test_tenant: z.boolean(),
   owner_user_id: z.string().uuid(),
-  created_at: Timestamp.nullable(),
+  created_at: Timestamp,
   updated_at: Timestamp.nullable(),
 });
 
@@ -119,7 +119,7 @@ export const TeamSchema = z.object({
   name: z.string().min(1, "Team name is required"),
   description: z.string().nullable(),
   deleted_at: Timestamp.nullable(), // Soft Delete support
-  created_at: Timestamp.nullable(),
+  created_at: Timestamp,
   updated_at: Timestamp.nullable(),
 });
 
@@ -169,7 +169,7 @@ export const SprintSchema = z.object({
   end_date: DateString,
   goal: z.string().nullable(),
   status: SprintStatusEnum,
-  created_at: Timestamp.nullable(),
+  created_at: Timestamp,
   updated_at: Timestamp.nullable(),
 });
 
@@ -303,8 +303,8 @@ export const SurveySchema = z.object({
   title: z.string().min(1),
   description: z.string().nullable(),
   trigger_event: z.string().nullable(),
-  is_system_template: z.boolean().nullable(),
-  created_at: Timestamp.nullable(),
+  is_system_template: z.boolean(),
+  created_at: Timestamp,
 });
 
 export const SurveyQuestionSchema = z.object({
@@ -487,7 +487,7 @@ export const IntegrationSchema = z.object({
   account_id: z.string().uuid(),
   provider: IntegrationProviderEnum,
   installation_id: z.string().nullable(),
-  created_at: Timestamp.nullable(),
+  created_at: Timestamp,
 });
 
 export const CreateIntegrationSchema = z.object({
