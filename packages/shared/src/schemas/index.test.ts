@@ -143,15 +143,6 @@ describe('2 · Identity', () => {
         updated_at: ISO_TS,
     };
 
-    const validAccount = {
-        id: UUID,
-        name: 'Acme Corp',
-        slug: 'acme-corp',
-        domain: 'acme.com',
-        is_test_tenant: false,
-        created_at: ISO_TS,
-    };
-
     describe('ProfileSchema', () => {
         it('accepts valid profile', () => {
             expect(ProfileSchema.safeParse(validProfile).success).toBe(true);
@@ -183,14 +174,20 @@ describe('2 · Identity', () => {
     });
 
     describe('AccountSchema', () => {
+        const validAccount = {
+            id: UUID,
+            name: 'Acme Corp',
+            slug: 'acme-corp',
+            is_test_tenant: false,
+            owner_user_id: UUID,
+            created_at: ISO_TS,
+            updated_at: ISO_TS,
+        };
         it('accepts valid account', () => {
             expect(AccountSchema.safeParse(validAccount).success).toBe(true);
         });
         it('rejects empty name', () => {
             expect(AccountSchema.safeParse({ ...validAccount, name: '' }).success).toBe(false);
-        });
-        it('accepts null domain', () => {
-            expect(AccountSchema.safeParse({ ...validAccount, domain: null }).success).toBe(true);
         });
     });
 
@@ -246,6 +243,7 @@ describe('3 · Organization', () => {
         id: UUID,
         account_id: UUID,
         name: 'Engineering',
+        description: null,
         deleted_at: null,
         created_at: ISO_TS,
         updated_at: ISO_TS,
@@ -265,11 +263,11 @@ describe('3 · Organization', () => {
 
     describe('CreateTeamSchema (derived via omit)', () => {
         it('accepts valid input (account_id + name)', () => {
-            expect(CreateTeamSchema.safeParse({ account_id: UUID, name: 'Backend' }).success).toBe(true);
+            expect(CreateTeamSchema.safeParse({ account_id: UUID, name: 'Backend', description: null }).success).toBe(true);
         });
         it('omits id, deleted_at, created_at, updated_at', () => {
             const result = CreateTeamSchema.safeParse({
-                id: UUID, account_id: UUID, name: 'X', deleted_at: null, created_at: ISO_TS, updated_at: ISO_TS,
+                id: UUID, account_id: UUID, name: 'X', description: null, deleted_at: null, created_at: ISO_TS, updated_at: ISO_TS,
             });
             expect(result.success).toBe(true);
             if (result.success) {
@@ -280,7 +278,7 @@ describe('3 · Organization', () => {
             }
         });
         it('rejects missing name', () => {
-            expect(CreateTeamSchema.safeParse({ account_id: UUID }).success).toBe(false);
+            expect(CreateTeamSchema.safeParse({ account_id: UUID, description: null }).success).toBe(false);
         });
     });
 
@@ -329,6 +327,7 @@ describe('4 · Sprints', () => {
 
     const validSprint = {
         id: UUID,
+        account_id: UUID,
         team_id: UUID,
         name: 'Sprint 1',
         start_date: '2025-06-01',
@@ -353,6 +352,7 @@ describe('4 · Sprints', () => {
 
     describe('CreateSprintSchema', () => {
         const input = {
+            account_id: UUID,
             team_id: UUID,
             name: 'Sprint 1',
             start_date: '2025-06-01',
@@ -547,22 +547,22 @@ describe('7 · Surveys', () => {
 
     describe('SurveySchema', () => {
         it('accepts valid survey', () => {
-            const s = { id: UUID, team_id: UUID, title: 'Retro', is_active: true, is_system_template: false, created_at: ISO_TS };
+            const s = { id: UUID, account_id: UUID, team_id: UUID, title: 'Retro', description: null, trigger_event: null, is_system_template: false, created_at: ISO_TS };
             expect(SurveySchema.safeParse(s).success).toBe(true);
         });
         it('accepts null team_id (system template)', () => {
-            const s = { id: UUID, team_id: null, title: 'System', is_active: true, is_system_template: true, created_at: ISO_TS };
+            const s = { id: UUID, account_id: UUID, team_id: null, title: 'System', description: null, trigger_event: null, is_system_template: true, created_at: ISO_TS };
             expect(SurveySchema.safeParse(s).success).toBe(true);
         });
     });
 
     describe('SurveyQuestionSchema', () => {
         it('accepts valid question', () => {
-            const q = { id: UUID, survey_id: UUID, question_text: 'How do you feel?', question_type: 'scale', order_index: 0, is_required: true };
+            const q = { id: UUID, survey_id: UUID, question_text: 'How do you feel?', metric_category: null, response_type: 'scale', options: null, order_index: 0, is_required: true };
             expect(SurveyQuestionSchema.safeParse(q).success).toBe(true);
         });
         it('rejects empty question_text', () => {
-            const q = { id: UUID, survey_id: UUID, question_text: '', question_type: 'text', order_index: 0, is_required: true };
+            const q = { id: UUID, survey_id: UUID, question_text: '', metric_category: null, response_type: 'text', options: null, order_index: 0, is_required: true };
             expect(SurveyQuestionSchema.safeParse(q).success).toBe(false);
         });
     });

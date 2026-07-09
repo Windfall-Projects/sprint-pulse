@@ -39,9 +39,10 @@ export const AccountSchema = z.object({
   id: z.string().uuid(),
   name: z.string().min(1),
   slug: z.string().min(1),
-  domain: z.string().nullable(),
   is_test_tenant: z.boolean(),
+  owner_user_id: z.string().uuid(),
   created_at: Timestamp,
+  updated_at: Timestamp.nullable(),
 });
 
 /**
@@ -116,9 +117,10 @@ export const TeamSchema = z.object({
   id: z.string().uuid(),
   account_id: z.string().uuid(),
   name: z.string().min(1, "Team name is required"),
+  description: z.string().nullable(),
   deleted_at: Timestamp.nullable(), // Soft Delete support
   created_at: Timestamp,
-  updated_at: Timestamp,
+  updated_at: Timestamp.nullable(),
 });
 
 export const TeamMemberSchema = z.object({
@@ -160,6 +162,7 @@ export const UpdateTeamMemberSchema = z.object({
 
 export const SprintSchema = z.object({
   id: z.string().uuid(),
+  account_id: z.string().uuid(),
   team_id: z.string().uuid(),
   name: z.string().min(1, "Sprint name is required"),
   start_date: DateString,
@@ -167,7 +170,7 @@ export const SprintSchema = z.object({
   goal: z.string().nullable(),
   status: SprintStatusEnum,
   created_at: Timestamp,
-  updated_at: Timestamp,
+  updated_at: Timestamp.nullable(),
 });
 
 /**
@@ -295,9 +298,11 @@ export const UpdateWorkItemSchema = z.object({
 
 export const SurveySchema = z.object({
   id: z.string().uuid(),
+  account_id: z.string().uuid(),
   team_id: z.string().uuid().nullable(), // Null = System Template
   title: z.string().min(1),
-  is_active: z.boolean(),
+  description: z.string().nullable(),
+  trigger_event: z.string().nullable(),
   is_system_template: z.boolean(),
   created_at: Timestamp,
 });
@@ -306,7 +311,9 @@ export const SurveyQuestionSchema = z.object({
   id: z.string().uuid(),
   survey_id: z.string().uuid(),
   question_text: z.string().min(1),
-  question_type: QuestionTypeEnum,
+  metric_category: z.string().nullable(),
+  response_type: z.string(),
+  options: z.unknown().nullable(),
   order_index: z.number().int(),
   is_required: z.boolean(),
 });
@@ -481,7 +488,6 @@ export const IntegrationSchema = z.object({
   provider: IntegrationProviderEnum,
   installation_id: z.string().nullable(),
   created_at: Timestamp,
-  updated_at: Timestamp,
 });
 
 export const CreateIntegrationSchema = z.object({
@@ -497,8 +503,6 @@ export const IntegrationMappingSchema = z.object({
   team_id: z.string().uuid(),
   project_id: z.string().uuid().nullable(),
   is_active: z.boolean(),
-  created_at: Timestamp,
-  updated_at: Timestamp,
 });
 
 export const CreateIntegrationMappingSchema = z.object({
