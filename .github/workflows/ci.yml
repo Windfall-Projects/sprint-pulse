@@ -62,5 +62,13 @@ jobs:
       - name: Start Supabase
         run: supabase start
 
+      - name: Set Supabase Env Vars
+        run: |
+          # Supabase CLI sometimes outputs JSON in UTF-16 in CI, strip BOM and null bytes
+          STATUS_JSON=$(supabase status -o json | tr -d '\000' | tr -d '\377' | tr -d '\376')
+          echo "SUPABASE_URL=$(echo $STATUS_JSON | jq -r .API_URL)" >> $GITHUB_ENV
+          echo "SUPABASE_ANON_KEY=$(echo $STATUS_JSON | jq -r .ANON_KEY)" >> $GITHUB_ENV
+          echo "SUPABASE_SERVICE_ROLE_KEY=$(echo $STATUS_JSON | jq -r .SERVICE_ROLE_KEY)" >> $GITHUB_ENV
+
       - name: Run Tests
         run: pnpm test
