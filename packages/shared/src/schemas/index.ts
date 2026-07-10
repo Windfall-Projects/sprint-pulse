@@ -441,7 +441,7 @@ export const CreateSprintSnapshotSchema = z.object({
 export const HistoricalMetricSchema = z.object({
   id: z.string().uuid(),
   team_id: z.string().uuid(),
-  profile_id: z.string().uuid().nullable(),
+  user_id: z.string().uuid().nullable(),
   metric_date: DateString,
   import_batch_id: z.string().nullable(),
   velocity_avg: z.number().nullable(),
