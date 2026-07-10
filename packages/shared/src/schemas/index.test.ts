@@ -768,7 +768,7 @@ describe('9 · Sprint Analytics & Metrics', () => {
         const validMetric = {
             id: UUID,
             team_id: UUID,
-            profile_id: null,
+            user_id: null,
             metric_date: '2025-06-01',
             import_batch_id: null,
             velocity_avg: 21.5,
@@ -824,7 +824,7 @@ describe('9 · Sprint Analytics & Metrics', () => {
         it('accepts input without id and created_at', () => {
             const input = {
                 team_id: UUID,
-                profile_id: null,
+                user_id: null,
                 metric_date: '2025-06-01',
                 import_batch_id: null,
                 velocity_avg: null,
