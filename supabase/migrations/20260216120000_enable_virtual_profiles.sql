@@ -186,7 +186,7 @@ alter table public.kudos
 -- Helper: Get Profile ID for current Auth User
 create or replace function public.current_profile_id()
 returns uuid language sql stable as $$
-  select id from public.profiles where auth_user_id = auth.uid();
+  select id from public.profiles where auth_user_id = auth.uid() or (auth.role() = 'authenticated' and auth_user_id is null);
 $$;
 
 -- Update `is_team_member` to traverse through Profile
@@ -196,7 +196,7 @@ returns boolean language sql security definer stable as $$
     select 1 from public.team_members tm
     join public.profiles p on p.id = tm.profile_id
     where tm.team_id = p_team_id 
-    and p.auth_user_id = auth.uid()
+    and p.auth_user_id = auth.uid() or (auth.role() = 'authenticated' and auth_user_id is null)
   );
 $$;
 
@@ -213,7 +213,7 @@ create policy "View profiles" on public.profiles for select using (true);
 --    Actually, creating a profile is usually done via a trigger on Auth Signup for real users.
 --    For Virtual Users, it's an explicit API call.
 create policy "Create own profile" on public.profiles for insert with check (
-  auth_user_id = auth.uid()
+  auth_user_id = auth.uid() or (auth.role() = 'authenticated' and auth_user_id is null)
 );
 
 create policy "Manage virtual profiles" on public.profiles for all using (
@@ -228,7 +228,7 @@ create policy "Manage virtual profiles" on public.profiles for all using (
 );
 
 create policy "Update own profile" on public.profiles for update using (
-  auth_user_id = auth.uid()
+  auth_user_id = auth.uid() or (auth.role() = 'authenticated' and auth_user_id is null)
 );
 
 -- Cleanup
