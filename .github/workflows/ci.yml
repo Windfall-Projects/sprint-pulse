@@ -20,7 +20,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Install pnpm
         uses: pnpm/action-setup@v3
@@ -30,7 +30,7 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: v1.x
+          deno-version: v2.1.4
 
       - name: Get pnpm store directory
         shell: bash
@@ -61,6 +61,25 @@ jobs:
 
       - name: Start Supabase
         run: supabase start
+
+      - name: Extract Supabase Keys
+        run: |
+          supabase status -o json | tr -d '\000' | tr -d '\377' | tr -d '\376' > status.json
+          export SUPABASE_URL=$(jq -r .API_URL status.json | tr -d '\r')
+          export SUPABASE_ANON_KEY=$(jq -r .ANON_KEY status.json | tr -d '\r')
+          export SUPABASE_SERVICE_ROLE_KEY=$(jq -r .SERVICE_ROLE_KEY status.json | tr -d '\r')
+          export FUNCTIONS_URL=$(jq -r .API_URL status.json | tr -d '\r')/functions/v1
+          echo "SUPABASE_URL=$SUPABASE_URL" >> $GITHUB_ENV
+          echo "SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY" >> $GITHUB_ENV
+          echo "SUPABASE_SERVICE_ROLE_KEY=$SUPABASE_SERVICE_ROLE_KEY" >> $GITHUB_ENV
+          echo "FUNCTIONS_URL=$FUNCTIONS_URL" >> $GITHUB_ENV
+          rm status.json
+
+      - name: Serve Deno Functions
+        run: supabase functions serve --no-verify-jwt &
+
+      - name: Wait for Deno Functions
+        run: sleep 5
 
       - name: Run Tests
         run: pnpm test
