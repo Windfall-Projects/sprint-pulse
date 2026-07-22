@@ -233,3 +233,6 @@ create policy "Update own profile" on public.profiles for update using (
 
 -- Cleanup
 drop function public.get_profile_id_by_auth_id(uuid);
+
+-- Grant permissions to service_role to allow managing records in background tasks/tests
+GRANT ALL PRIVILEGES ON public.profiles TO service_role;
