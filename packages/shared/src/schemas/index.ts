@@ -160,14 +160,15 @@ export const UpdateTeamMemberSchema = z.object({
 
 export const SprintSchema = z.object({
   id: z.string().uuid(),
+  account_id: z.string().uuid(),
   team_id: z.string().uuid(),
   name: z.string().min(1, "Sprint name is required"),
   start_date: DateString,
   end_date: DateString,
   goal: z.string().nullable(),
-  status: SprintStatusEnum,
-  created_at: Timestamp,
-  updated_at: Timestamp,
+  status: z.string(),
+  created_at: Timestamp.nullable(),
+  updated_at: Timestamp.nullable(),
 });
 
 /**
@@ -241,17 +242,17 @@ export const WorkItemSchema = z.object({
   title: z.string().min(1, "Title is required"),
   description: z.string().nullable(),
   story_points: z.number().int().nonnegative().default(0),
-  status: WorkItemStatusEnum,
-  type: WorkItemTypeEnum,
+  status: z.string(),
+  type: z.string(),
 
   // External Integration ("Shadow Records")
-  provider: WorkItemProviderEnum,
+  provider: z.string(),
   external_id: z.string().nullable(),
   external_url: z.string().url().nullable(),
 
   completed_at: Timestamp.nullable(),
-  created_at: Timestamp,
-  updated_at: Timestamp,
+  created_at: Timestamp.nullable(),
+  updated_at: Timestamp.nullable(),
 });
 
 /**
@@ -295,20 +296,27 @@ export const UpdateWorkItemSchema = z.object({
 
 export const SurveySchema = z.object({
   id: z.string().uuid(),
+  account_id: z.string().uuid(),
   team_id: z.string().uuid().nullable(), // Null = System Template
   title: z.string().min(1),
-  is_active: z.boolean(),
-  is_system_template: z.boolean(),
-  created_at: Timestamp,
+  description: z.string().nullable(),
+  trigger_event: z.string().nullable(),
+  is_system_template: z.boolean().nullable(),
+  created_at: Timestamp.nullable(),
 });
+
+// Helper to represent Json from DB
+export const JsonSchema = z.union([z.string(), z.number(), z.boolean(), z.null(), z.any(), z.array(z.any())]);
 
 export const SurveyQuestionSchema = z.object({
   id: z.string().uuid(),
-  survey_id: z.string().uuid(),
+  survey_id: z.string().uuid().nullable(),
   question_text: z.string().min(1),
-  question_type: QuestionTypeEnum,
+  response_type: z.string(),
   order_index: z.number().int(),
-  is_required: z.boolean(),
+  is_required: z.boolean().nullable(),
+  metric_category: z.string().nullable(),
+  options: JsonSchema.nullable(),
 });
 
 /**
@@ -335,20 +343,20 @@ export const CreateSurveySchema = z.object({
 
 export const SurveyResponseSchema = z.object({
   id: z.string().uuid(),
-  survey_id: z.string().uuid(),
-  sprint_id: z.string().uuid(),
-  responder_profile_id: z.string().uuid(),
-  is_confidential: z.boolean(),
-  created_at: Timestamp,
+  survey_id: z.string().uuid().nullable(),
+  sprint_id: z.string().uuid().nullable(),
+  responder_profile_id: z.string().uuid().nullable(),
+  is_confidential: z.boolean().nullable(),
+  created_at: Timestamp.nullable(),
 });
 
 export const SurveyAnswerSchema = z.object({
   id: z.string().uuid(),
-  response_id: z.string().uuid(),
-  question_id: z.string().uuid(),
+  response_id: z.string().uuid().nullable(),
+  question_id: z.string().uuid().nullable(),
   value_text: z.string().nullable(),
   value_number: z.number().int().nullable(),
-  value_json: z.unknown().nullable(),
+  value_json: JsonSchema.nullable(),
 });
 
 /**
@@ -377,14 +385,14 @@ export const KudosCategoryEnum = z.enum(['unblock', 'support', 'technical_win', 
 
 export const KudosSchema = z.object({
   id: z.string().uuid(),
-  team_id: z.string().uuid(),
+  team_id: z.string().uuid().nullable(),
   sprint_id: z.string().uuid().nullable(),
   account_id: z.string().uuid(),
-  sender_profile_id: z.string().uuid(),
-  receiver_profile_id: z.string().uuid(),
+  sender_profile_id: z.string().uuid().nullable(),
+  receiver_profile_id: z.string().uuid().nullable(),
   message: z.string().min(1, "Message cannot be empty"),
-  category: KudosCategoryEnum.nullable(),
-  created_at: Timestamp,
+  category: z.string().nullable(),
+  created_at: Timestamp.nullable(),
 });
 
 // Input Schema for giving Kudos
@@ -404,9 +412,9 @@ export const SprintCommitmentSchema = z.object({
   sprint_id: z.string().uuid(),
 
   profile_id: z.string().uuid().nullable(),
-  committed_points: z.number().int().default(0),
-  committed_items: z.number().int().default(0),
-  created_at: Timestamp,
+  committed_points: z.number().int().nullable().default(0),
+  committed_items: z.number().int().nullable().default(0),
+  created_at: Timestamp.nullable(),
 });
 
 export const CreateSprintCommitmentSchema = z.object({
@@ -420,12 +428,12 @@ export const SprintSnapshotSchema = z.object({
   id: z.string().uuid(),
   sprint_id: z.string().uuid(),
   profile_id: z.string().uuid().nullable(),
-  snapshot_date: DateString,
-  points_completed: z.number().int().default(0),
-  points_remaining: z.number().int().default(0),
-  items_completed: z.number().int().default(0),
-  items_remaining: z.number().int().default(0),
-  created_at: Timestamp,
+  snapshot_date: DateString.nullable(),
+  points_completed: z.number().int().nullable().default(0),
+  points_remaining: z.number().int().nullable().default(0),
+  items_completed: z.number().int().nullable().default(0),
+  items_remaining: z.number().int().nullable().default(0),
+  created_at: Timestamp.nullable(),
 });
 
 export const CreateSprintSnapshotSchema = z.object({
@@ -456,8 +464,8 @@ export const HistoricalMetricSchema = z.object({
   workload_balance_score: z.number().int().min(1).max(5).nullable(),
   requirement_clarity_score: z.number().int().min(1).max(5).nullable(),
   support_score: z.number().int().min(1).max(5).nullable(),
-  custom_soft_metrics: z.record(z.unknown()).nullable(),
-  created_at: Timestamp,
+  custom_soft_metrics: JsonSchema.nullable(),
+  created_at: Timestamp.nullable(),
 });
 
 /**
@@ -495,10 +503,8 @@ export const IntegrationMappingSchema = z.object({
   integration_id: z.string().uuid(),
   external_repo_id: z.string().min(1),
   team_id: z.string().uuid(),
-  project_id: z.string().uuid().nullable(),
+  project_id: z.string().uuid(),
   is_active: z.boolean(),
-  created_at: Timestamp,
-  updated_at: Timestamp,
 });
 
 export const CreateIntegrationMappingSchema = z.object({

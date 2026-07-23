@@ -61,7 +61,7 @@ app.post('/', zValidator('json', GiveKudosSchema), async (c) => {
     const { data: team, error: teamError } = await supabase
         .from('teams')
         .select('account_id')
-        .eq('id', body.team_id)
+        .eq('id', body.team_id || '')
         .single();
 
     if (teamError || !team) {
