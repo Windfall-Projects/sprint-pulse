@@ -62,5 +62,13 @@ jobs:
       - name: Start Supabase
         run: supabase start
 
+      - name: Extract Supabase Keys
+        run: |
+          supabase status -o json > supabase_status_raw.json
+          cat supabase_status_raw.json | tr -d '\000' | tr -d '\377' | tr -d '\376' > supabase_status.json
+          echo "SUPABASE_URL=$(jq -r '.API_URL' supabase_status.json | tr -d '\r')" >> $GITHUB_ENV
+          echo "SUPABASE_ANON_KEY=$(jq -r '.ANON_KEY' supabase_status.json | tr -d '\r')" >> $GITHUB_ENV
+          echo "SUPABASE_SERVICE_ROLE_KEY=$(jq -r '.SERVICE_ROLE_KEY' supabase_status.json | tr -d '\r')" >> $GITHUB_ENV
+
       - name: Run Tests
         run: pnpm test
