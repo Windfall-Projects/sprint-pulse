@@ -1,0 +1,1 @@
+GRANT ALL PRIVILEGES ON public.profiles TO service_role;
