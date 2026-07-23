@@ -45,6 +45,7 @@ describe('Shared Package Schemas', () => {
 
     describe('CreateSprintSchema', () => {
         const validSprint = {
+            account_id: '223e4567-e89b-12d3-a456-426614174001',
             team_id: '123e4567-e89b-12d3-a456-426614174000',
             name: 'Sprint 1',
             start_date: '2023-10-01',

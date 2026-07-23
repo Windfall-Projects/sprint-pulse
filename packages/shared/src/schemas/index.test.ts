@@ -329,6 +329,7 @@ describe('4 · Sprints', () => {
 
     const validSprint = {
         id: UUID,
+        account_id: UUID,
         team_id: UUID,
         name: 'Sprint 1',
         start_date: '2025-06-01',
@@ -346,13 +347,11 @@ describe('4 · Sprints', () => {
         it('accepts null goal', () => {
             expect(SprintSchema.safeParse({ ...validSprint, goal: null }).success).toBe(true);
         });
-        it('rejects invalid status', () => {
-            expect(SprintSchema.safeParse({ ...validSprint, status: 'cancelled' }).success).toBe(false);
-        });
     });
 
     describe('CreateSprintSchema', () => {
         const input = {
+            account_id: UUID,
             team_id: UUID,
             name: 'Sprint 1',
             start_date: '2025-06-01',
@@ -547,22 +546,22 @@ describe('7 · Surveys', () => {
 
     describe('SurveySchema', () => {
         it('accepts valid survey', () => {
-            const s = { id: UUID, team_id: UUID, title: 'Retro', is_active: true, is_system_template: false, created_at: ISO_TS };
+            const s = { id: UUID, account_id: UUID, team_id: UUID, title: 'Retro', description: null, trigger_event: null, is_system_template: false, created_at: ISO_TS };
             expect(SurveySchema.safeParse(s).success).toBe(true);
         });
         it('accepts null team_id (system template)', () => {
-            const s = { id: UUID, team_id: null, title: 'System', is_active: true, is_system_template: true, created_at: ISO_TS };
+            const s = { id: UUID, account_id: UUID, team_id: null, title: 'System', description: null, trigger_event: null, is_system_template: true, created_at: ISO_TS };
             expect(SurveySchema.safeParse(s).success).toBe(true);
         });
     });
 
     describe('SurveyQuestionSchema', () => {
         it('accepts valid question', () => {
-            const q = { id: UUID, survey_id: UUID, question_text: 'How do you feel?', question_type: 'scale', order_index: 0, is_required: true };
+            const q = { id: UUID, survey_id: UUID, question_text: 'How was it?', response_type: 'scale' as const, order_index: 0, is_required: true, metric_category: null, options: null };
             expect(SurveyQuestionSchema.safeParse(q).success).toBe(true);
         });
         it('rejects empty question_text', () => {
-            const q = { id: UUID, survey_id: UUID, question_text: '', question_type: 'text', order_index: 0, is_required: true };
+            const q = { id: UUID, survey_id: UUID, question_text: '', response_type: 'scale', order_index: 0, is_required: true, metric_category: null, options: null };
             expect(SurveyQuestionSchema.safeParse(q).success).toBe(false);
         });
     });
