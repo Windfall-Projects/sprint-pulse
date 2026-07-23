@@ -20,7 +20,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Install pnpm
         uses: pnpm/action-setup@v3
@@ -30,7 +30,7 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: v1.x
+          deno-version: v2.1.4
 
       - name: Get pnpm store directory
         shell: bash
@@ -61,6 +61,13 @@ jobs:
 
       - name: Start Supabase
         run: supabase start
+
+      - name: Extract Supabase Keys
+        run: |
+          STATUS_JSON=$(supabase status -o json | tr -d '\000' | tr -d '\377' | tr -d '\376')
+          echo "SUPABASE_URL=$(echo $STATUS_JSON | jq -r '.API_URL' | tr -d '\r')" >> $GITHUB_ENV
+          echo "SUPABASE_ANON_KEY=$(echo $STATUS_JSON | jq -r '.ANON_KEY' | tr -d '\r')" >> $GITHUB_ENV
+          echo "SUPABASE_SERVICE_ROLE_KEY=$(echo $STATUS_JSON | jq -r '.SERVICE_ROLE_KEY' | tr -d '\r')" >> $GITHUB_ENV
 
       - name: Run Tests
         run: pnpm test
