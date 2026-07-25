@@ -1,120 +1,177 @@
-# Sprint Pulse
+# Supabase CLI
 
-## Quick Start
+[![Coverage Status](https://coveralls.io/repos/github/supabase/cli/badge.svg?branch=develop)](https://coveralls.io/github/supabase/cli?branch=develop) [![Bitbucket Pipelines](https://img.shields.io/bitbucket/pipelines/supabase-cli/setup-cli/master?style=flat-square&label=Bitbucket%20Canary)](https://bitbucket.org/supabase-cli/setup-cli/pipelines) [![Gitlab Pipeline Status](https://img.shields.io/gitlab/pipeline-status/sweatybridge%2Fsetup-cli?label=Gitlab%20Canary)
+](https://gitlab.com/sweatybridge/setup-cli/-/pipelines)
 
-Start the local Supabase environment with:
+[Supabase](https://supabase.io) is an open source Firebase alternative. We're building the features of Firebase using enterprise-grade open source tools.
+
+This repository contains all the functionality for Supabase CLI.
+
+- [x] Running Supabase locally
+- [x] Managing database migrations
+- [x] Creating and deploying Supabase Functions
+- [x] Generating types directly from your database schema
+- [x] Making authenticated HTTP requests to [Management API](https://supabase.com/docs/reference/api/introduction)
+
+## Getting started
+
+### Install the CLI
+
+Available via [NPM](https://www.npmjs.com) as dev dependency. To install:
 
 ```bash
-pnpm supabase:start
+npm i supabase --save-dev
 ```
 
-✏️ Save the "Perishable" Authentication Key from the terminal output.
+When installing with yarn 4, you need to disable experimental fetch with the following nodejs config.
 
-After starting the local Supabase environment, add a test user via the Supabase
-Studio (URL appears in the terminal output under "Development Tools").
-
-✏️ Save the user's email and password.
-
-With the user's email and password and the perishable authentication key, run
-the following command and follow the prompts to get an authentication token:
-
-```bash
-pnpm get-token
+```
+NODE_OPTIONS=--no-experimental-fetch yarn add supabase
 ```
 
-✏️ Save the access token.
+> **Note**
+For Bun versions below v1.0.17, you must add `supabase` as a [trusted dependency](https://bun.sh/guides/install/trusted) before running `bun add -D supabase`.
 
-Once you have the access token, you can run the request tests in the `.http`
-files in the `api` directory. (Make sure you have the "REST Client" extension
-installed in VS Code from humao.)
+<details>
+  <summary><b>macOS</b></summary>
 
-## Environment Setup
+  Available via [Homebrew](https://brew.sh). To install:
 
-To run the API tests, you must configure your local environment variables.
+  ```sh
+  brew install supabase/tap/supabase
+  ```
 
-1. Create a `.env` file in the root directory.
-2. Add the `SUPABASE_SERVICE_ROLE_KEY` variable.
+  To install the beta release channel:
 
-   ```env
-   SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-   ```
+  ```sh
+  brew install supabase/tap/supabase-beta
+  brew link --overwrite supabase-beta
+  ```
 
-   You can obtain this key from the output of `npx supabase start` or by running
-   `npx supabase status`.
+  To upgrade:
 
-## Running Tests
+  ```sh
+  brew upgrade supabase
+  ```
+</details>
 
-To run all tests (Web + API):
+<details>
+  <summary><b>Windows</b></summary>
+
+  Available via [Scoop](https://scoop.sh). To install:
+
+  ```powershell
+  scoop bucket add supabase https://github.com/supabase/scoop-bucket.git
+  scoop install supabase
+  ```
+
+  To upgrade:
+
+  ```powershell
+  scoop update supabase
+  ```
+</details>
+
+<details>
+  <summary><b>Linux</b></summary>
+
+  Available via [Homebrew](https://brew.sh) and Linux packages.
+
+  #### via Homebrew
+
+  To install:
+
+  ```sh
+  brew install supabase/tap/supabase
+  ```
+
+  To upgrade:
+
+  ```sh
+  brew upgrade supabase
+  ```
+
+  #### via Linux packages
+
+  Linux packages are provided in [Releases](https://github.com/supabase/cli/releases). To install, download the `.apk`/`.deb`/`.rpm`/`.pkg.tar.zst` file depending on your package manager and run the respective commands.
+
+  ```sh
+  sudo apk add --allow-untrusted <...>.apk
+  ```
+
+  ```sh
+  sudo dpkg -i <...>.deb
+  ```
+
+  ```sh
+  sudo rpm -i <...>.rpm
+  ```
+
+  ```sh
+  sudo pacman -U <...>.pkg.tar.zst
+  ```
+</details>
+
+<details>
+  <summary><b>Other Platforms</b></summary>
+
+  You can also install the CLI via [go modules](https://go.dev/ref/mod#go-install) without the help of package managers.
+
+  ```sh
+  go install github.com/supabase/cli@latest
+  ```
+
+  Add a symlink to the binary in `$PATH` for easier access:
+
+  ```sh
+  ln -s "$(go env GOPATH)/bin/cli" /usr/bin/supabase
+  ```
+
+  This works on other non-standard Linux distros.
+</details>
+
+<details>
+  <summary><b>Community Maintained Packages</b></summary>
+
+  Available via [pkgx](https://pkgx.sh/). Package script [here](https://github.com/pkgxdev/pantry/blob/main/projects/supabase.com/cli/package.yml).
+  To install in your working directory:
+
+  ```bash
+  pkgx install supabase
+  ```
+
+  Available via [Nixpkgs](https://nixos.org/). Package script [here](https://github.com/NixOS/nixpkgs/blob/master/pkgs/development/tools/supabase-cli/default.nix).
+</details>
+
+### Run the CLI
 
 ```bash
-pnpm test
+supabase bootstrap
 ```
 
-To run API tests specifically:
+Or using npx:
 
 ```bash
-pnpm test:api
+npx supabase bootstrap
 ```
 
-> [!NOTE]
-> Ensure you have completed the [Environment Setup](#environment-setup) before
-> running API tests.
+The bootstrap command will guide you through the process of setting up a Supabase project using one of the [starter](https://github.com/supabase-community/supabase-samples/blob/main/samples.json) templates.
 
-## Generating Database Types
+## Docs
 
-```bash
-npx supabase gen types typescript --local > packages/shared/src/database.types.ts
-```
+Command & config reference can be found [here](https://supabase.com/docs/reference/cli/about).
 
-## Deploying
+## Breaking changes
 
-Deploy both the API function and database migrations with:
+We follow semantic versioning for changes that directly impact CLI commands, flags, and configurations.
 
-```bash
-pnpm run deploy
-```
+However, due to dependencies on other service images, we cannot guarantee that schema migrations, seed.sql, and generated types will always work for the same CLI major version. If you need such guarantees, we encourage you to pin a specific version of CLI in package.json.
 
-Deploy just the API function with:
+## Developing
 
-```bash
-pnpm deploy:api
-```
+To run from source:
 
-Deploy just the database migrations with:
-
-```bash
-pnpm deploy:db
-```
-
-## Quality Assurance
-
-### Linting
-
-To run lint checks across the workspace:
-
-```bash
-pnpm lint
-```
-
-### Unit Tests
-
-To run unit tests:
-
-```bash
-pnpm test
-```
-
-### Type Checking
-
-To run type checks for the entire project:
-
-```bash
-pnpm type-check
-```
-
-You can also run them individually:
-
-```bash
-pnpm type-check:api
-pnpm type-check:shared
+```sh
+# Go >= 1.22
+go run . help
 ```
