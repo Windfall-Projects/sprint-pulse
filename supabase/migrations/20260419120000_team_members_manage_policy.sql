@@ -51,3 +51,4 @@ with check (
       and public.is_account_member(t.account_id)
   )
 );
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO service_role;
