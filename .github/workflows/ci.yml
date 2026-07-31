@@ -62,5 +62,22 @@ jobs:
       - name: Start Supabase
         run: supabase start
 
+      - name: Export Supabase Env
+        run: |
+          # Strip BOM/nulls/carriage returns from the utf-16 json output
+          STATUS_JSON=$(supabase status -o json | tr -d '\000' | tr -d '\377' | tr -d '\376')
+
+          SUPABASE_URL=$(echo "$STATUS_JSON" | jq -r '.API_URL' | tr -d '\r')
+          SUPABASE_ANON_KEY=$(echo "$STATUS_JSON" | jq -r '.ANON_KEY' | tr -d '\r')
+          SUPABASE_SERVICE_ROLE_KEY=$(echo "$STATUS_JSON" | jq -r '.SERVICE_ROLE_KEY' | tr -d '\r')
+
+          echo "SUPABASE_URL=$SUPABASE_URL" >> $GITHUB_ENV
+          echo "SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY" >> $GITHUB_ENV
+          echo "SUPABASE_SERVICE_ROLE_KEY=$SUPABASE_SERVICE_ROLE_KEY" >> $GITHUB_ENV
+
       - name: Run Tests
         run: pnpm test
+        env:
+          SUPABASE_URL: ${{ env.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ env.SUPABASE_ANON_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ env.SUPABASE_SERVICE_ROLE_KEY }}
