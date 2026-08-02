@@ -69,6 +69,12 @@ jobs:
           echo "SUPABASE_ANON_KEY=$(jq -r '.ANON_KEY' supabase_status.json | tr -d '\000' | tr -d '\377' | tr -d '\376' | tr -d '\r')" >> $GITHUB_ENV
           echo "SUPABASE_SERVICE_ROLE_KEY=$(jq -r '.SERVICE_ROLE_KEY' supabase_status.json | tr -d '\000' | tr -d '\377' | tr -d '\376' | tr -d '\r')" >> $GITHUB_ENV
 
+      - name: Grant service_role privileges
+        run: |
+          supabase db execute "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO service_role;"
+          supabase db execute "GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO service_role;"
+          supabase db execute "GRANT ALL PRIVILEGES ON ALL ROUTINES IN SCHEMA public TO service_role;"
+
       - name: Run Tests
         env:
           SUPABASE_URL: ${{ env.SUPABASE_URL }}
