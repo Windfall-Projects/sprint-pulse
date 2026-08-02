@@ -62,5 +62,16 @@ jobs:
       - name: Start Supabase
         run: supabase start
 
+      - name: Set Supabase Environment Variables
+        run: |
+          supabase status -o json > supabase_status.json
+          echo "SUPABASE_URL=$(jq -r '.API_URL' supabase_status.json | tr -d '\000' | tr -d '\377' | tr -d '\376' | tr -d '\r')" >> $GITHUB_ENV
+          echo "SUPABASE_ANON_KEY=$(jq -r '.ANON_KEY' supabase_status.json | tr -d '\000' | tr -d '\377' | tr -d '\376' | tr -d '\r')" >> $GITHUB_ENV
+          echo "SUPABASE_SERVICE_ROLE_KEY=$(jq -r '.SERVICE_ROLE_KEY' supabase_status.json | tr -d '\000' | tr -d '\377' | tr -d '\376' | tr -d '\r')" >> $GITHUB_ENV
+
       - name: Run Tests
+        env:
+          SUPABASE_URL: ${{ env.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ env.SUPABASE_ANON_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ env.SUPABASE_SERVICE_ROLE_KEY }}
         run: pnpm test
