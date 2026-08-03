@@ -64,9 +64,9 @@ jobs:
 
       - name: Grant service_role Privileges
         run: |
-          supabase db execute --query "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO service_role;"
-          supabase db execute --query "GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO service_role;"
-          supabase db execute --query "GRANT ALL PRIVILEGES ON ALL ROUTINES IN SCHEMA public TO service_role;"
+          supabase db query "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO service_role;"
+          supabase db query "GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO service_role;"
+          supabase db query "GRANT ALL PRIVILEGES ON ALL ROUTINES IN SCHEMA public TO service_role;"
 
       - name: Extract Supabase Variables
         run: |
