@@ -70,7 +70,7 @@ jobs:
 
       - name: Extract Supabase Variables
         run: |
-          STATUS_JSON=$(supabase status -o json)
+          STATUS_JSON=$(supabase status -o json | grep -v "WARN: config section")
           echo "SUPABASE_URL=$(echo "\$STATUS_JSON" | jq -r .API_URL | tr -d '\000' | tr -d '\377' | tr -d '\376' | tr -d '\r')" >> $GITHUB_ENV
           echo "SUPABASE_ANON_KEY=$(echo "\$STATUS_JSON" | jq -r .ANON_KEY | tr -d '\000' | tr -d '\377' | tr -d '\376' | tr -d '\r')" >> $GITHUB_ENV
           echo "SUPABASE_SERVICE_ROLE_KEY=$(echo "\$STATUS_JSON" | jq -r .SERVICE_ROLE_KEY | tr -d '\000' | tr -d '\377' | tr -d '\376' | tr -d '\r')" >> $GITHUB_ENV
