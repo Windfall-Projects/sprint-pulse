@@ -30,7 +30,7 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: v1.x
+          deno-version: v2.1.4
 
       - name: Get pnpm store directory
         shell: bash
@@ -56,6 +56,8 @@ jobs:
 
       - name: Setup Supabase CLI
         uses: supabase/setup-cli@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           version: latest
 
@@ -63,4 +65,9 @@ jobs:
         run: supabase start
 
       - name: Run Tests
-        run: pnpm test
+        run: |
+          supabase status -o json | grep -v "WARN:" > supabase_status.json
+          export SUPABASE_URL=$(jq -r '.API_URL' supabase_status.json | tr -d '\000' | tr -d '\377' | tr -d '\376' | tr -d '\r')
+          export SUPABASE_ANON_KEY=$(jq -r '.ANON_KEY' supabase_status.json | tr -d '\000' | tr -d '\377' | tr -d '\376' | tr -d '\r')
+          export SUPABASE_SERVICE_ROLE_KEY=$(jq -r '.SERVICE_ROLE_KEY' supabase_status.json | tr -d '\000' | tr -d '\377' | tr -d '\376' | tr -d '\r')
+          pnpm test
