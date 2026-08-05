@@ -149,7 +149,9 @@ describe('2 · Identity', () => {
         slug: 'acme-corp',
         domain: 'acme.com',
         is_test_tenant: false,
+        owner_user_id: UUID,
         created_at: ISO_TS,
+        updated_at: ISO_TS,
     };
 
     describe('ProfileSchema', () => {
