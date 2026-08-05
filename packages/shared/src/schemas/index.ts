@@ -41,7 +41,9 @@ export const AccountSchema = z.object({
   slug: z.string().min(1),
   domain: z.string().nullable(),
   is_test_tenant: z.boolean(),
+  owner_user_id: z.string().uuid(),
   created_at: Timestamp,
+  updated_at: Timestamp.nullable(),
 });
 
 /**
