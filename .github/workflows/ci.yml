@@ -65,6 +65,9 @@ jobs:
       - name: Extract Supabase env
         run: supabase status -o env | grep -v "WARN:" | tr -d '"' | tr -d '\000' | tr -d '\377' | tr -d '\376' | tr -d '\r' >> $GITHUB_ENV
 
+      - name: Grant service_role DB privileges
+        run: supabase db query "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO service_role; GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO service_role; GRANT ALL PRIVILEGES ON ALL ROUTINES IN SCHEMA public TO service_role;"
+
       - name: Run Tests
         env:
           SUPABASE_SERVICE_ROLE_KEY: ${{ env.SERVICE_ROLE_KEY }}
