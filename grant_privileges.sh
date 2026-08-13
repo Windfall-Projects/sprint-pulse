@@ -1,0 +1,1 @@
+export PGPASSWORD=postgres && psql -h 127.0.0.1 -p 54322 -U postgres -d postgres -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO service_role; GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO service_role; GRANT ALL PRIVILEGES ON ALL ROUTINES IN SCHEMA public TO service_role;"

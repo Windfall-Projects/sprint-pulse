@@ -30,5 +30,10 @@
   "dependencies": {
     "hono": "^4.11.7",
     "next-themes": "^0.4.6"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "supabase"
+    ]
   }
 }
