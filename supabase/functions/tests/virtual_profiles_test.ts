@@ -4,8 +4,8 @@ import "std/dotenv/load";
 import { createClient } from "@supabase/supabase-js";
 import { Database } from "../../../packages/shared/src/database.types.ts";
 
-// Hardcoded for local dev environment verification
-const SUPABASE_URL = "http://127.0.0.1:54321";
+// Use environment variables for CI compatibility, fallback to local dev defaults
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? "http://127.0.0.1:54321";
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
 
 Deno.test({
