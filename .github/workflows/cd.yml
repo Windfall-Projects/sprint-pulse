@@ -27,7 +27,7 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: v1.x
+          deno-version: v2.1.4
 
       - name: Get pnpm store directory
         shell: bash
@@ -48,7 +48,7 @@ jobs:
       - name: Setup Supabase CLI
         uses: supabase/setup-cli@v1
         with:
-          version: latest
+          version: 2.76.8
 
       - name: Deploy Database Migrations
         run: supabase db push --project-ref ${{ secrets.SUPABASE_PROJECT_ID }}
