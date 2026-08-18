@@ -55,8 +55,8 @@ Deno.test({
         const token = session.session.access_token;
         console.log("LOG: Got Session Token:", token.substring(0, 20) + "...");
 
-        // Use Service Role Key for API calls to bypass "Invalid JWT" due to local env ES256/HS256 mismatch
-        const apiToken = SUPABASE_SERVICE_ROLE_KEY;
+        // Use user session access token for API calls
+        const apiToken = token;
 
         // 4. Create an Account (via API to simulate real flow)
         const accountName = "Test Account " + Date.now();
@@ -66,6 +66,7 @@ Deno.test({
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${apiToken}`,
+                "apikey": SUPABASE_ANON_KEY,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
@@ -92,6 +93,7 @@ Deno.test({
             method: "PATCH",
             headers: {
                 "Authorization": `Bearer ${apiToken}`,
+                "apikey": SUPABASE_ANON_KEY,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
