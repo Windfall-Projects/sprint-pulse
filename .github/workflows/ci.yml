@@ -30,7 +30,7 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: v1.x
+          deno-version: v2.1.4
 
       - name: Get pnpm store directory
         shell: bash
@@ -62,5 +62,18 @@ jobs:
       - name: Start Supabase
         run: supabase start
 
+      - name: Extract Supabase Keys
+        run: supabase status -o env | grep -v 'WARN:' | tr -d '"' | tr -d '\000' | tr -d '\377' | tr -d '\376' | tr -d '\r' >> $GITHUB_ENV
+
+      - name: Grant service_role privileges
+        run: |
+          supabase db query "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO service_role;"
+          supabase db query "GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO service_role;"
+          supabase db query "GRANT ALL PRIVILEGES ON ALL ROUTINES IN SCHEMA public TO service_role;"
+
       - name: Run Tests
         run: pnpm test
+        env:
+          SUPABASE_URL: ${{ env.API_URL }}
+          SUPABASE_ANON_KEY: ${{ env.ANON_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ env.SERVICE_ROLE_KEY }}
