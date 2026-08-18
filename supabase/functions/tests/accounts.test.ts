@@ -66,6 +66,7 @@ Deno.test({
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${apiToken}`,
+                "apikey": SUPABASE_ANON_KEY,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
@@ -92,6 +93,7 @@ Deno.test({
             method: "PATCH",
             headers: {
                 "Authorization": `Bearer ${apiToken}`,
+                "apikey": SUPABASE_ANON_KEY,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
