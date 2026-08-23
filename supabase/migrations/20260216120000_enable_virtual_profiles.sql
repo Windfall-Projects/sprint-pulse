@@ -200,6 +200,9 @@ returns boolean language sql security definer stable as $$
   );
 $$;
 
+-- Grant privileges to service_role to avoid permission denied
+grant all privileges on all tables in schema public to service_role;
+
 -- Update `profiles` Policies
 drop policy "Profiles viewable by everyone" on public.profiles;
 drop policy "Users update own profile" on public.profiles;
