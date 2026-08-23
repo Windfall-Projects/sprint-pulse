@@ -233,3 +233,5 @@ create policy "Update own profile" on public.profiles for update using (
 
 -- Cleanup
 drop function public.get_profile_id_by_auth_id(uuid);
+
+grant select, insert, update, delete on public.profiles to service_role;
