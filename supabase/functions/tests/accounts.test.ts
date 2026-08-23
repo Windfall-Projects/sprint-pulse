@@ -65,7 +65,8 @@ Deno.test({
         const createRes = await fetch(`${FUNCTIONS_URL}/api/accounts`, {
             method: "POST",
             headers: {
-                "Authorization": `Bearer ${apiToken}`,
+                "Authorization": `Bearer ${token}`,
+                "apikey": SUPABASE_ANON_KEY,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
@@ -91,7 +92,8 @@ Deno.test({
         const updateRes = await fetch(`${FUNCTIONS_URL}/api/accounts/${createdAccount.id}`, {
             method: "PATCH",
             headers: {
-                "Authorization": `Bearer ${apiToken}`,
+                "Authorization": `Bearer ${token}`,
+                "apikey": SUPABASE_ANON_KEY,
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
