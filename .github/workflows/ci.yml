@@ -30,7 +30,7 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: v2.1.4
+          deno-version: v1.x
 
       - name: Get pnpm store directory
         shell: bash
