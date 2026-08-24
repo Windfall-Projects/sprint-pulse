@@ -231,5 +231,8 @@ create policy "Update own profile" on public.profiles for update using (
   auth_user_id = auth.uid()
 );
 
+-- Grant privileges for service role to prevent permissions issues in Edge Functions/Tests
+grant all privileges on all tables in schema public to service_role;
+
 -- Cleanup
 drop function public.get_profile_id_by_auth_id(uuid);
