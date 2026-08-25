@@ -68,7 +68,7 @@ async function processGithubIssueWebhook(supabase: ReturnType<typeof createClien
 }
 
 // This endpoint receives webhooks directly from the GitHub App
-app.post('/webhook', zValidator('header', GithubWebhookHeaderSchema), zValidator('json', GithubWebhookPayloadSchema), async (c) => {
+app.post('/webhook', zValidator('header', GithubWebhookHeaderSchema), async (c) => {
     const headers = c.req.valid('header');
     const event = headers['x-github-event'];
 
@@ -81,7 +81,13 @@ app.post('/webhook', zValidator('header', GithubWebhookHeaderSchema), zValidator
         Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')! // Need service key to handle background syncing
     );
 
-    const payload = c.req.valid('json');
+    const body = await c.req.json();
+    const parsed = GithubWebhookPayloadSchema.safeParse(body);
+    if (!parsed.success) {
+        return c.json({ error: parsed.error }, 400);
+    }
+
+    const payload = parsed.data;
     const result = await processGithubIssueWebhook(supabase, payload);
     if (result.message) {
         return c.json({ message: result.message }, 200);
