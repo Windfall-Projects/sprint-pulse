@@ -22,6 +22,23 @@ export const WorkItemProviderEnum = z.enum(['native', 'github', 'jira']);
 export const ProjectStatusEnum = z.enum(['active', 'archived', 'completed']);
 export const QuestionTypeEnum = z.enum(['scale', 'text', 'boolean']);
 
+export const GithubWebhookPayloadSchema = z.object({
+    action: z.string(),
+    issue: z.object({
+        title: z.string(),
+        body: z.string().nullable(),
+        number: z.number(),
+        html_url: z.string(),
+    }),
+    repository: z.object({
+        full_name: z.string(),
+    }),
+});
+
+export const GithubWebhookHeaderSchema = z.object({
+    'x-github-event': z.string()
+});
+
 // ============================================================================
 // 2. IDENTITY (Profiles & Accounts)
 // ============================================================================
