@@ -2,15 +2,41 @@
 
 import { useState } from 'react'
 import { createSurvey } from './actions'
+import { CreateSurveySchema } from '@sprintpulse/shared/schemas'
 
 export function CreateSurveyModal({ teamId, accountId }: { teamId: string, accountId: string }) {
   const [isOpen, setIsOpen] = useState(false)
   const [isPending, setIsPending] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setIsPending(true)
+    setError(null)
+
     const formData = new FormData(e.currentTarget)
+
+    // Validate with Zod Schema
+    const payload = {
+      account_id: accountId,
+      team_id: teamId,
+      title: formData.get('title'),
+      is_active: true,
+      questions: [{
+        question_text: "How satisfied are you with the current sprint?",
+        question_type: "scale_1_5",
+        order_index: 1,
+        is_required: true
+      }]
+    }
+
+    const result = CreateSurveySchema.safeParse(payload)
+    if (!result.success) {
+      setError("Invalid form data: " + result.error.errors[0].message)
+      setIsPending(false)
+      return
+    }
+
     formData.append('teamId', teamId)
     formData.append('accountId', accountId)
     
@@ -60,6 +86,12 @@ export function CreateSurveyModal({ teamId, accountId }: { teamId: string, accou
               <div className="p-3 bg-surface/50 border border-border rounded-md text-sm text-muted-foreground">
                 <p>For this MVP, creating a survey will automatically attach a standard "Satisfaction (1-5)" question to it.</p>
               </div>
+
+              {error && (
+                <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-md text-sm text-red-500 mt-4">
+                  {error}
+                </div>
+              )}
               
               <div className="flex justify-end gap-3 mt-6">
                 <button
