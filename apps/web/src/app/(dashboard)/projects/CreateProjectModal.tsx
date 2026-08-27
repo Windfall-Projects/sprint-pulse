@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { createProject } from './actions'
+import { CreateProjectSchema } from '@sprintpulse/shared'
 
 export function CreateProjectModal({ teams }: { teams: any[] }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -12,7 +13,17 @@ export function CreateProjectModal({ teams }: { teams: any[] }) {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (!name.trim() || !teamId) return
+
+    const parseResult = CreateProjectSchema.safeParse({
+      name,
+      description: description || null,
+      teamId: teamId,
+    })
+
+    if (!parseResult.success) {
+      console.error('Validation failed:', parseResult.error)
+      return
+    }
 
     setIsPending(true)
     const formData = new FormData()
