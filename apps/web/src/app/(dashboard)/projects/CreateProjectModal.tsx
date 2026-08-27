@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { createProject } from './actions'
+import { CreateProjectSchema } from '@sprintpulse'
 
 export function CreateProjectModal({ teams }: { teams: any[] }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -12,13 +13,20 @@ export function CreateProjectModal({ teams }: { teams: any[] }) {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (!name.trim() || !teamId) return
+
+    const result = CreateProjectSchema.safeParse({
+      name,
+      description: description || null,
+      team_id: teamId
+    })
+
+    if (!result.success) return
 
     setIsPending(true)
     const formData = new FormData()
-    formData.append('name', name)
-    formData.append('description', description)
-    formData.append('teamId', teamId)
+    formData.append('name', result.data.name)
+    if (result.data.description) formData.append('description', result.data.description)
+    formData.append('teamId', result.data.team_id)
 
     await createProject(formData)
     
