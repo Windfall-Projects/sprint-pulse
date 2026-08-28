@@ -558,11 +558,11 @@ describe('7 · Surveys', () => {
 
     describe('SurveyQuestionSchema', () => {
         it('accepts valid question', () => {
-            const q = { id: UUID, survey_id: UUID, question_text: 'How do you feel?', question_type: 'scale', order_index: 0, is_required: true };
+            const q = { id: UUID, survey_id: UUID, question_text: 'How do you feel?', response_type: 'scale', order_index: 0, is_required: true, metric_category: null, options: null };
             expect(SurveyQuestionSchema.safeParse(q).success).toBe(true);
         });
         it('rejects empty question_text', () => {
-            const q = { id: UUID, survey_id: UUID, question_text: '', question_type: 'text', order_index: 0, is_required: true };
+            const q = { id: UUID, survey_id: UUID, question_text: '', response_type: 'text', order_index: 0, is_required: true, metric_category: null, options: null };
             expect(SurveyQuestionSchema.safeParse(q).success).toBe(false);
         });
     });
