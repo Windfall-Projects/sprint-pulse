@@ -304,11 +304,13 @@ export const SurveySchema = z.object({
 
 export const SurveyQuestionSchema = z.object({
   id: z.string().uuid(),
-  survey_id: z.string().uuid(),
+  survey_id: z.string().uuid().nullable(),
   question_text: z.string().min(1),
-  question_type: QuestionTypeEnum,
+  response_type: QuestionTypeEnum,
   order_index: z.number().int(),
-  is_required: z.boolean(),
+  is_required: z.boolean().nullable(),
+  metric_category: z.string().nullable(),
+  options: z.unknown().nullable(),
 });
 
 /**
