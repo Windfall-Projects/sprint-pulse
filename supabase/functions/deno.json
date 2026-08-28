@@ -1,5 +1,6 @@
 {
   "imports": {
+    "@sprintpulse/shared": "../../packages/shared/src/index.ts",
     "@sprintpulse/shared/": "../../packages/shared/src/",
     "hono": "npm:hono@^4",
     "@hono/zod-validator": "npm:@hono/zod-validator@^0.4",
