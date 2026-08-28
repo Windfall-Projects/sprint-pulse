@@ -490,6 +490,19 @@ export const CreateIntegrationSchema = z.object({
   installation_id: z.string().nullable().optional(),
 });
 
+export const GithubWebhookPayloadSchema = z.object({
+  action: z.string(),
+  issue: z.object({
+    number: z.number(),
+    title: z.string(),
+    body: z.string().nullable(),
+    html_url: z.string().url()
+  }),
+  repository: z.object({
+    full_name: z.string()
+  })
+});
+
 export const IntegrationMappingSchema = z.object({
   id: z.string().uuid(),
   integration_id: z.string().uuid(),

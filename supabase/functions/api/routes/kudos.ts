@@ -73,7 +73,7 @@ app.post('/', zValidator('json', GiveKudosSchema), async (c) => {
         .insert({
             ...body,
             account_id: team.account_id,
-            sender_user_id: user.id,
+            sender_profile_id: user.id,
         })
         .select()
         .single();

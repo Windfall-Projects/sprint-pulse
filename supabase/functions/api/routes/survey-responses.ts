@@ -95,7 +95,7 @@ app.post('/', zValidator('json', SubmitSurveyResponseSchema), async (c) => {
         .insert({
             survey_id: input.survey_id,
             sprint_id: input.sprint_id,
-            user_id: user.id,
+            responder_profile_id: user.id,
             is_confidential: input.is_confidential,
         })
         .select()
