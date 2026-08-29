@@ -62,5 +62,8 @@ jobs:
       - name: Start Supabase
         run: supabase start
 
+      - name: Extract Supabase Keys
+        run: supabase status -o env | grep -v 'WARN:' | tr -d '"' | tr -d '\000' | tr -d '\377' | tr -d '\376' | tr -d '\r' >> $GITHUB_ENV
+
       - name: Run Tests
         run: pnpm test
