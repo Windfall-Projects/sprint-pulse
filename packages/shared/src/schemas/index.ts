@@ -473,6 +473,19 @@ export const CreateHistoricalMetricSchema = HistoricalMetricSchema.omit({
 // 8. INTEGRATIONS
 // ============================================================================
 
+export const GithubWebhookPayloadSchema = z.object({
+  action: z.string(),
+  issue: z.object({
+    number: z.number(),
+    title: z.string(),
+    body: z.string().nullable(),
+    html_url: z.string().url(),
+  }),
+  repository: z.object({
+    full_name: z.string(),
+  }),
+});
+
 export const IntegrationProviderEnum = z.enum(['github']);
 
 export const IntegrationSchema = z.object({
