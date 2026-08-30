@@ -1,6 +1,7 @@
 import { Hono } from 'hono';
 import { createClient } from '@supabase/supabase-js';
 import { Database } from '../../../../packages/shared/src/database.types.ts';
+import { GithubWebhookPayloadSchema } from '../../../../packages/shared/src/schemas/index.ts';
 
 const app = new Hono();
 
@@ -17,9 +18,15 @@ app.post('/webhook', async (c) => {
     );
 
     if (event === 'issues') {
-        const action = payload.action;
-        const issue = payload.issue;
-        const repoFullName = payload.repository.full_name;
+        const parsed = GithubWebhookPayloadSchema.safeParse(payload);
+        if (!parsed.success) {
+            return c.json({ error: 'Invalid payload structure', details: parsed.error.issues }, 400);
+        }
+
+        const validPayload = parsed.data;
+        const action = validPayload.action;
+        const issue = validPayload.issue;
+        const repoFullName = validPayload.repository.full_name;
 
         // Find mapping
         const { data: mapping } = await supabase
