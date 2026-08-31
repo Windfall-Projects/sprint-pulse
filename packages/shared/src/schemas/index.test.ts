@@ -147,9 +147,10 @@ describe('2 · Identity', () => {
         id: UUID,
         name: 'Acme Corp',
         slug: 'acme-corp',
-        domain: 'acme.com',
         is_test_tenant: false,
+        owner_user_id: UUID,
         created_at: ISO_TS,
+        updated_at: ISO_TS,
     };
 
     describe('ProfileSchema', () => {
@@ -188,9 +189,6 @@ describe('2 · Identity', () => {
         });
         it('rejects empty name', () => {
             expect(AccountSchema.safeParse({ ...validAccount, name: '' }).success).toBe(false);
-        });
-        it('accepts null domain', () => {
-            expect(AccountSchema.safeParse({ ...validAccount, domain: null }).success).toBe(true);
         });
     });
 
@@ -246,6 +244,7 @@ describe('3 · Organization', () => {
         id: UUID,
         account_id: UUID,
         name: 'Engineering',
+        description: 'Test Description',
         deleted_at: null,
         created_at: ISO_TS,
         updated_at: ISO_TS,
@@ -269,7 +268,7 @@ describe('3 · Organization', () => {
         });
         it('omits id, deleted_at, created_at, updated_at', () => {
             const result = CreateTeamSchema.safeParse({
-                id: UUID, account_id: UUID, name: 'X', deleted_at: null, created_at: ISO_TS, updated_at: ISO_TS,
+                id: UUID, account_id: UUID, name: 'X', description: null, deleted_at: null, created_at: ISO_TS, updated_at: ISO_TS,
             });
             expect(result.success).toBe(true);
             if (result.success) {
