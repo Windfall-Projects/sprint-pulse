@@ -39,9 +39,10 @@ export const AccountSchema = z.object({
   id: z.string().uuid(),
   name: z.string().min(1),
   slug: z.string().min(1),
-  domain: z.string().nullable(),
-  is_test_tenant: z.boolean(),
-  created_at: Timestamp,
+  is_test_tenant: z.boolean().nullable(),
+  owner_user_id: z.string().uuid(),
+  created_at: Timestamp.nullable(),
+  updated_at: Timestamp.nullable(),
 });
 
 /**
@@ -116,9 +117,10 @@ export const TeamSchema = z.object({
   id: z.string().uuid(),
   account_id: z.string().uuid(),
   name: z.string().min(1, "Team name is required"),
+  description: z.string().nullable().optional(),
   deleted_at: Timestamp.nullable(), // Soft Delete support
-  created_at: Timestamp,
-  updated_at: Timestamp,
+  created_at: Timestamp.nullable(),
+  updated_at: Timestamp.nullable(),
 });
 
 export const TeamMemberSchema = z.object({
@@ -377,14 +379,14 @@ export const KudosCategoryEnum = z.enum(['unblock', 'support', 'technical_win', 
 
 export const KudosSchema = z.object({
   id: z.string().uuid(),
-  team_id: z.string().uuid(),
+  team_id: z.string().uuid().nullable(),
   sprint_id: z.string().uuid().nullable(),
   account_id: z.string().uuid(),
-  sender_profile_id: z.string().uuid(),
-  receiver_profile_id: z.string().uuid(),
+  sender_profile_id: z.string().uuid().nullable(),
+  receiver_profile_id: z.string().uuid().nullable(),
   message: z.string().min(1, "Message cannot be empty"),
   category: KudosCategoryEnum.nullable(),
-  created_at: Timestamp,
+  created_at: Timestamp.nullable(),
 });
 
 // Input Schema for giving Kudos

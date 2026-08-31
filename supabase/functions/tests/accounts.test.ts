@@ -5,8 +5,8 @@ import { createClient } from "@supabase/supabase-js";
 import { Database } from "../../../packages/shared/src/database.types.ts";
 
 // Hardcoded for local dev environment verification
-const SUPABASE_URL = "http://127.0.0.1:54321";
-const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? Deno.env.get("API_URL") ?? "http://127.0.0.1:54321";
+const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? Deno.env.get("SERVICE_ROLE_KEY") ?? "";
 const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY") ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxvY2FsIiwicm9sZSI6ImFub24iLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU";
 const FUNCTIONS_URL = "http://127.0.0.1:54321/functions/v1";
 
@@ -120,7 +120,11 @@ Deno.test({
             console.error("LOG: DB Verify Error:", dbError);
             throw dbError;
         }
-        assertEquals(dbAccount.name, newName);
+        if ('name' in dbAccount) {
+            assertEquals(dbAccount.name, newName);
+        } else {
+            throw new Error("Missing name in dbAccount");
+        }
         console.log("LOG: Update Verified in DB");
 
         // Cleanup (Optional, but good practice)
