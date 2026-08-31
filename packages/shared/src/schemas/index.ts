@@ -385,7 +385,7 @@ export const KudosSchema = z.object({
   sender_profile_id: z.string().uuid().nullable(),
   receiver_profile_id: z.string().uuid().nullable(),
   message: z.string().min(1, "Message cannot be empty"),
-  category: z.string().nullable(),
+  category: KudosCategoryEnum.nullable(),
   created_at: Timestamp.nullable(),
 });
 
