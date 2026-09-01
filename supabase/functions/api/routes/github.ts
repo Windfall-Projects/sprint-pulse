@@ -1,6 +1,7 @@
 import { Hono } from 'hono';
 import { createClient } from '@supabase/supabase-js';
 import { Database } from '../../../../packages/shared/src/database.types.ts';
+import { GithubWebhookPayloadSchema } from '../../../../packages/shared/src/schemas/index.ts';
 
 const app = new Hono();
 
@@ -9,7 +10,17 @@ app.post('/webhook', async (c) => {
     // In production, verify signature with Github App Secret
     // const signature = c.req.header('x-hub-signature-256');
     const event = c.req.header('X-GitHub-Event');
-    const payload = await c.req.json();
+
+    if (event === 'ping') {
+        return c.json({ message: 'pong' }, 200);
+    }
+
+    const rawPayload = await c.req.json();
+    const parsed = GithubWebhookPayloadSchema.safeParse(rawPayload);
+    if (!parsed.success) {
+        return c.json({ error: 'Invalid payload', details: parsed.error }, 400);
+    }
+    const payload = parsed.data;
 
     const supabase = createClient<Database>(
         Deno.env.get('SUPABASE_URL')!,
