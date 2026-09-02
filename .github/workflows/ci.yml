@@ -11,7 +11,7 @@ on:
 jobs:
   test:
     name: Lint, Type Check, and Test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout repository
@@ -30,7 +30,7 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: v1.x
+          deno-version: v2.1.4
 
       - name: Get pnpm store directory
         shell: bash
@@ -63,4 +63,6 @@ jobs:
         run: supabase start
 
       - name: Run Tests
-        run: pnpm test
+        run: |
+          supabase status -o env | grep "SUPABASE_URL\|SUPABASE_SERVICE_ROLE_KEY\|SUPABASE_ANON_KEY" >> $GITHUB_ENV
+          pnpm test

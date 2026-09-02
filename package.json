@@ -23,7 +23,7 @@
     "@hono/zod-validator": "^0.7.6",
     "@supabase/supabase-js": "^2.94.1",
     "eslint": "^9.39.4",
-    "supabase": "^2.76.8",
+    "supabase": "^2.116.0",
     "typescript": "^5.0.0",
     "typescript-eslint": "^8.59.3"
   },
