@@ -63,7 +63,7 @@ jobs:
         run: supabase start
 
       - name: Extract Supabase Keys
-        run: supabase status -o env | grep -E 'API_URL|ANON_KEY|SERVICE_ROLE_KEY' >> $GITHUB_ENV
+        run: supabase status -o env | grep -E 'API_URL|ANON_KEY|SERVICE_ROLE_KEY' | sed 's/"//g' >> $GITHUB_ENV
 
       - name: Run Tests
         run: pnpm test
