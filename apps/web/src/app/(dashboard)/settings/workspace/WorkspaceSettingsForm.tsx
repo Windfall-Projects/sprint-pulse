@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { updateWorkspaceName } from './actions'
+import { UpdateAccountSchema } from '@sprintpulse/shared'
 
 export function WorkspaceSettingsForm({ 
   accountId, 
@@ -23,9 +24,17 @@ export function WorkspaceSettingsForm({
     setIsPending(true)
     setMessage('')
     
+    const parseResult = UpdateAccountSchema.safeParse({ name })
+
+    if (!parseResult.success) {
+      setMessage(`Error: ${parseResult.error.errors[0].message}`)
+      setIsPending(false)
+      return
+    }
+
     const formData = new FormData()
     formData.append('accountId', accountId)
-    formData.append('name', name)
+    formData.append('name', parseResult.data.name ?? name)
 
     const result = await updateWorkspaceName(formData)
     
