@@ -33,7 +33,8 @@ app.post('/webhook', async (c) => {
             return c.json({ message: 'No active mapping for this repository' }, 200);
         }
 
-        const account_id = (mapping.integrations as any).account_id;
+        const integrations = mapping.integrations as unknown as { account_id: string };
+        const account_id = integrations?.account_id;
 
         if (action === 'opened') {
             await supabase.from('work_items').insert({
@@ -47,20 +48,20 @@ app.post('/webhook', async (c) => {
                 provider: 'github',
                 external_id: issue.number.toString(),
                 external_url: issue.html_url
-            } as any);
+            });
         } else if (action === 'edited') {
             await supabase.from('work_items')
-                .update({ title: issue.title, description: issue.body } as any)
+                .update({ title: issue.title, description: issue.body })
                 .eq('provider', 'github')
                 .eq('external_id', issue.number.toString());
         } else if (action === 'closed') {
             await supabase.from('work_items')
-                .update({ status: 'done' } as any)
+                .update({ status: 'done' })
                 .eq('provider', 'github')
                 .eq('external_id', issue.number.toString());
         } else if (action === 'reopened') {
             await supabase.from('work_items')
-                .update({ status: 'todo' } as any)
+                .update({ status: 'todo' })
                 .eq('provider', 'github')
                 .eq('external_id', issue.number.toString());
         }
