@@ -1,0 +1,1532 @@
+WARN: config section [inbucket] is deprecated. Please use [local_smtp] instead.
+v1.70.3: Pulling from supabase/storage-api
+1.50.4: Pulling from supabase/logflare
+2026.08.17-sha-0c1da8f: Pulling from supabase/studio
+868d43efe767: Pulling fs layer
+5f05fbb94ac9: Pulling fs layer
+dbd229483e61: Pulling fs layer
+f4e2bfbd8bcd: Pulling fs layer
+521c5280947c: Pulling fs layer
+3f609ae12598: Pulling fs layer
+78f6dd8aae59: Pulling fs layer
+c80645774acf: Pulling fs layer
+cecc09177dca: Pulling fs layer
+6db964937c43: Pulling fs layer
+5e731b050e43: Pulling fs layer
+3adfb80f0287: Pulling fs layer
+0f248d4fdffd: Pulling fs layer
+264588d8dd60: Pulling fs layer
+b7d0efd3fc9c: Pulling fs layer
+c0c4dc518956: Pulling fs layer
+512fd86e6200: Pulling fs layer
+v0.98.0: Pulling from supabase/postgres-meta
+v2.129.3: Pulling from supabase/realtime
+2.8.1: Pulling from supabase/kong
+f623498ee610: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+cf5270183f88: Pulling fs layer
+c895300000d9: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:cf5270183f886cd00783d703af99f7c8e18e25c6fd304aa4c7fed723162a3da7) to overlayfs as "extract-764112881-XMOH sha256:3e896459638b59b76ba2b02263a57607d7b8f7a570187365c9a4856e8c59d5d9": failed to convert whiteout file "opt/app/rel/logflare/bin/.wh.priv": operation not permitted
+Retrying after 4s: public.ecr.aws/supabase/logflare:1.50.4
+4f4fb700ef54: Pulling fs layer
+f066bdfa8565: Pulling fs layer
+062e450697fa: Pulling fs layer
+aadc1df55248: Pulling fs layer
+07f6c7f37eb7: Pulling fs layer
+219bccc39f10: Pulling fs layer
+9d445f162b30: Pulling fs layer
+4683247db99b: Pulling fs layer
+0ced55f3e717: Pulling fs layer
+e39a20378c07: Pulling fs layer
+ac006f7e52ef: Pulling fs layer
+62d958520b0b: Pulling fs layer
+7505145a46ec: Pulling fs layer
+5c18a8cdfd6b: Pulling fs layer
+23c96171f2fe: Pulling fs layer
+4b118796ff6a: Pulling fs layer
+753ab3b39a58: Pulling fs layer
+4f4fb700ef54: Already exists
+4f4fb700ef54: Pull complete
+44136fa355b3: Already exists
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:b7d0efd3fc9c7637c2b6ddc5c27db770b986ee40d93d0f8943b4d6837ca8aa25) to overlayfs as "extract-213321962-iXor sha256:b3574fef8c166763bdc1e161ea0691fc21621f1d145527fc85ec6e88e0c6a7bb": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted
+Retrying after 4s: public.ecr.aws/supabase/studio:2026.08.17-sha-0c1da8f
+814dd06d26c7: Pulling fs layer
+531e3bd93090: Pulling fs layer
+a70653f7a2d5: Pulling fs layer
+213ec9aee27d: Pulling fs layer
+8a9aedb7cce2: Download complete
+7505145a46ec: Download complete
+814dd06d26c7: Download complete
+4683247db99b: Download complete
+8c7a9d068733: Download complete
+e39a20378c07: Download complete
+62d958520b0b: Download complete
+219bccc39f10: Download complete
+23c96171f2fe: Download complete
+1.50.4: Pulling from supabase/logflare
+9d445f162b30: Download complete
+f623498ee610: Pulling fs layer
+c895300000d9: Pulling fs layer
+cf5270183f88: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+5c18a8cdfd6b: Download complete
+a70653f7a2d5: Download complete
+0ced55f3e717: Download complete
+f066bdfa8565: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:cf5270183f886cd00783d703af99f7c8e18e25c6fd304aa4c7fed723162a3da7) to overlayfs as "extract-732349252-QR8S sha256:3e896459638b59b76ba2b02263a57607d7b8f7a570187365c9a4856e8c59d5d9": failed to convert whiteout file "opt/app/rel/logflare/bin/.wh.priv": operation not permitted
+Retrying after 8s: public.ecr.aws/supabase/logflare:1.50.4
+4b118796ff6a: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:4b118796ff6a5ec54e8c8377233f6a9cc0dd4139322a8650c3b44139d4701502) to overlayfs as "extract-19691262-J5V3 sha256:5a310934a5ac8b65e3eee32b455e4f607b48a3174a1278ef4cff365807f1ae91": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted
+Retrying after 4s: public.ecr.aws/supabase/postgres-meta:v0.98.0
+2026.08.17-sha-0c1da8f: Pulling from supabase/studio
+264588d8dd60: Pulling fs layer
+512fd86e6200: Pulling fs layer
+b7d0efd3fc9c: Pulling fs layer
+c0c4dc518956: Pulling fs layer
+531e3bd93090: Download complete
+v0.98.0: Pulling from supabase/postgres-meta
+44136fa355b3: Already exists
+7505145a46ec: Pulling fs layer
+4b118796ff6a: Pulling fs layer
+753ab3b39a58: Pulling fs layer
+23c96171f2fe: Pulling fs layer
+5c18a8cdfd6b: Pulling fs layer
+8a9aedb7cce2: Download complete
+7505145a46ec: Download complete
+23c96171f2fe: Download complete
+5c18a8cdfd6b: Download complete
+213ec9aee27d: Download complete
+a70653f7a2d5: Pull complete
+a70653f7a2d5: Pull complete
+213ec9aee27d: Pull complete
+failed to extract layer (application/vnd.docker.image.rootfs.diff.tar.gzip sha256:531e3bd93090d08ef911bb2c8320f2fef2428ef96597535a55111fda18efde52) to overlayfs as "extract-660017948-KS9r sha256:76e66cec8435ad1db5b948618a4d99bb66a837f1e274dedd9dfa2a549422db99": failed to convert whiteout file "tmp/.wh.kong.tar.gz": operation not permitted
+Retrying after 4s: public.ecr.aws/supabase/kong:2.8.1
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:b7d0efd3fc9c7637c2b6ddc5c27db770b986ee40d93d0f8943b4d6837ca8aa25) to overlayfs as "extract-137428998-XuvZ sha256:b3574fef8c166763bdc1e161ea0691fc21621f1d145527fc85ec6e88e0c6a7bb": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted
+4b118796ff6a: Download complete
+Retrying after 8s: public.ecr.aws/supabase/studio:2026.08.17-sha-0c1da8f
+1.50.4: Pulling from supabase/logflare
+f623498ee610: Pulling fs layer
+cf5270183f88: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+c895300000d9: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:4b118796ff6a5ec54e8c8377233f6a9cc0dd4139322a8650c3b44139d4701502) to overlayfs as "extract-562555951-KDNP sha256:5a310934a5ac8b65e3eee32b455e4f607b48a3174a1278ef4cff365807f1ae91": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted
+Retrying after 8s: public.ecr.aws/supabase/postgres-meta:v0.98.0
+07f6c7f37eb7: Download complete
+ac006f7e52ef: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:cf5270183f886cd00783d703af99f7c8e18e25c6fd304aa4c7fed723162a3da7) to overlayfs as "extract-734596071-pG7m sha256:3e896459638b59b76ba2b02263a57607d7b8f7a570187365c9a4856e8c59d5d9": failed to convert whiteout file "opt/app/rel/logflare/bin/.wh.priv": operation not permitted
+1.50.4: Pulling from supabase/logflare
+f623498ee610: Pulling fs layer
+cf5270183f88: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+c895300000d9: Pulling fs layer
+062e450697fa: Download complete
+2.8.1: Pulling from supabase/kong
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:cf5270183f886cd00783d703af99f7c8e18e25c6fd304aa4c7fed723162a3da7) to overlayfs as "extract-510994219-EUpF sha256:3e896459638b59b76ba2b02263a57607d7b8f7a570187365c9a4856e8c59d5d9": failed to convert whiteout file "opt/app/rel/logflare/bin/.wh.priv": operation not permitted
+Retrying after 4s: ghcr.io/supabase/logflare:1.50.4
+aadc1df55248: Download complete
+814dd06d26c7: Pulling fs layer
+a70653f7a2d5: Pulling fs layer
+213ec9aee27d: Pulling fs layer
+531e3bd93090: Pulling fs layer
+814dd06d26c7: Download complete
+a70653f7a2d5: Download complete
+213ec9aee27d: Download complete
+a70653f7a2d5: Pull complete
+213ec9aee27d: Pull complete
+062e450697fa: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:0f248d4fdffda4033dc95b28fd74e8449c4a0a7039c673b19c6128cb1a3f29f7) to overlayfs as "extract-954908657-wCEG sha256:13f9cc0b59182b6552d87dce283a86e92849632ae6df1d7a60b5705b310524f8": failed to convert whiteout file "usr/local/lib/node_modules/npm/.wh..npmrc": operation not permitted
+Retrying after 4s: public.ecr.aws/supabase/storage-api:v1.70.3
+531e3bd93090: Download complete
+failed to extract layer (application/vnd.docker.image.rootfs.diff.tar.gzip sha256:531e3bd93090d08ef911bb2c8320f2fef2428ef96597535a55111fda18efde52) to overlayfs as "extract-194907417-1MpW sha256:76e66cec8435ad1db5b948618a4d99bb66a837f1e274dedd9dfa2a549422db99": failed to convert whiteout file "tmp/.wh.kong.tar.gz": operation not permitted
+Retrying after 8s: public.ecr.aws/supabase/kong:2.8.1
+2026.08.17-sha-0c1da8f: Pulling from supabase/studio
+264588d8dd60: Pulling fs layer
+512fd86e6200: Pulling fs layer
+b7d0efd3fc9c: Pulling fs layer
+c0c4dc518956: Pulling fs layer
+v0.98.0: Pulling from supabase/postgres-meta
+1.50.4: Pulling from supabase/logflare
+f623498ee610: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+cf5270183f88: Pulling fs layer
+c895300000d9: Pulling fs layer
+7505145a46ec: Pulling fs layer
+23c96171f2fe: Pulling fs layer
+4b118796ff6a: Pulling fs layer
+753ab3b39a58: Pulling fs layer
+5c18a8cdfd6b: Pulling fs layer
+23c96171f2fe: Download complete
+5c18a8cdfd6b: Download complete
+7505145a46ec: Download complete
+4b118796ff6a: Download complete
+44136fa355b3: Already exists
+8a9aedb7cce2: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:4b118796ff6a5ec54e8c8377233f6a9cc0dd4139322a8650c3b44139d4701502) to overlayfs as "extract-854692717-g0nZ sha256:5a310934a5ac8b65e3eee32b455e4f607b48a3174a1278ef4cff365807f1ae91": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted
+v0.98.0: Pulling from supabase/postgres-meta
+aadc1df55248: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:cf5270183f886cd00783d703af99f7c8e18e25c6fd304aa4c7fed723162a3da7) to overlayfs as "extract-183570470-iuPM sha256:3e896459638b59b76ba2b02263a57607d7b8f7a570187365c9a4856e8c59d5d9": failed to convert whiteout file "opt/app/rel/logflare/bin/.wh.priv": operation not permitted
+Retrying after 8s: ghcr.io/supabase/logflare:1.50.4
+7505145a46ec: Pulling fs layer
+23c96171f2fe: Pulling fs layer
+5c18a8cdfd6b: Pulling fs layer
+4b118796ff6a: Pulling fs layer
+753ab3b39a58: Pulling fs layer
+219bccc39f10: Pull complete
+07f6c7f37eb7: Pull complete
+9d445f162b30: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:f066bdfa8565ddb58716a39bfbabc26abab1038be9e22f0c854f168a4ea1aa72) to overlayfs as "extract-266461808-Cbn9 sha256:55fe818a1a0e4180c83abda23d230ace6c4420b40adcce898496d62508df17d2": failed to convert whiteout file "tmp/.wh.libpg-query.tar.gz": operation not permitted
+Retrying after 4s: public.ecr.aws/supabase/realtime:v2.129.3
+44136fa355b3: Already exists
+7505145a46ec: Download complete
+23c96171f2fe: Download complete
+5c18a8cdfd6b: Download complete
+4b118796ff6a: Download complete
+8a9aedb7cce2: Download complete
+v1.70.3: Pulling from supabase/storage-api
+868d43efe767: Pulling fs layer
+5f05fbb94ac9: Pulling fs layer
+5e731b050e43: Pulling fs layer
+dbd229483e61: Pulling fs layer
+f4e2bfbd8bcd: Pulling fs layer
+521c5280947c: Pulling fs layer
+3f609ae12598: Pulling fs layer
+c80645774acf: Pulling fs layer
+78f6dd8aae59: Pulling fs layer
+0f248d4fdffd: Pulling fs layer
+6db964937c43: Pulling fs layer
+3adfb80f0287: Pulling fs layer
+cecc09177dca: Pulling fs layer
+753ab3b39a58: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:4b118796ff6a5ec54e8c8377233f6a9cc0dd4139322a8650c3b44139d4701502) to overlayfs as "extract-233996425-GBee sha256:5a310934a5ac8b65e3eee32b455e4f607b48a3174a1278ef4cff365807f1ae91": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted
+Retrying after 4s: ghcr.io/supabase/postgres-meta:v0.98.0
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:b7d0efd3fc9c7637c2b6ddc5c27db770b986ee40d93d0f8943b4d6837ca8aa25) to overlayfs as "extract-313686050-qZFa sha256:b3574fef8c166763bdc1e161ea0691fc21621f1d145527fc85ec6e88e0c6a7bb": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted
+v2.129.3: Pulling from supabase/realtime
+2026.08.17-sha-0c1da8f: Pulling from supabase/studio
+264588d8dd60: Pulling fs layer
+b7d0efd3fc9c: Pulling fs layer
+c0c4dc518956: Pulling fs layer
+512fd86e6200: Pulling fs layer
+f066bdfa8565: Pulling fs layer
+062e450697fa: Pulling fs layer
+aadc1df55248: Pulling fs layer
+07f6c7f37eb7: Pulling fs layer
+219bccc39f10: Pulling fs layer
+9d445f162b30: Pulling fs layer
+4683247db99b: Pulling fs layer
+0ced55f3e717: Pulling fs layer
+e39a20378c07: Pulling fs layer
+ac006f7e52ef: Pulling fs layer
+62d958520b0b: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+4f4fb700ef54: Already exists
+4f4fb700ef54: Pull complete
+f066bdfa8565: Download complete
+v0.98.0: Pulling from supabase/postgres-meta
+e39a20378c07: Download complete
+62d958520b0b: Download complete
+219bccc39f10: Download complete
+9d445f162b30: Download complete
+4683247db99b: Download complete
+0ced55f3e717: Download complete
+2.8.1: Pulling from supabase/kong
+8c7a9d068733: Download complete
+07f6c7f37eb7: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:0f248d4fdffda4033dc95b28fd74e8449c4a0a7039c673b19c6128cb1a3f29f7) to overlayfs as "extract-211300232-NICN sha256:13f9cc0b59182b6552d87dce283a86e92849632ae6df1d7a60b5705b310524f8": failed to convert whiteout file "usr/local/lib/node_modules/npm/.wh..npmrc": operation not permitted
+Retrying after 8s: public.ecr.aws/supabase/storage-api:v1.70.3
+814dd06d26c7: Pulling fs layer
+213ec9aee27d: Pulling fs layer
+a70653f7a2d5: Pulling fs layer
+531e3bd93090: Pulling fs layer
+062e450697fa: Download complete
+23c96171f2fe: Pulling fs layer
+4b118796ff6a: Pulling fs layer
+753ab3b39a58: Pulling fs layer
+5c18a8cdfd6b: Pulling fs layer
+7505145a46ec: Pulling fs layer
+44136fa355b3: Already exists
+1.50.4: Pulling from supabase/logflare
+f623498ee610: Pulling fs layer
+c895300000d9: Pulling fs layer
+cf5270183f88: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+814dd06d26c7: Download complete
+ac006f7e52ef: Download complete
+a70653f7a2d5: Download complete
+213ec9aee27d: Download complete
+8a9aedb7cce2: Download complete
+23c96171f2fe: Download complete
+7505145a46ec: Download complete
+a70653f7a2d5: Pull complete
+213ec9aee27d: Pull complete
+5c18a8cdfd6b: Download complete
+062e450697fa: Pull complete
+aadc1df55248: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:b7d0efd3fc9c7637c2b6ddc5c27db770b986ee40d93d0f8943b4d6837ca8aa25) to overlayfs as "extract-977430510-h8Dr sha256:b3574fef8c166763bdc1e161ea0691fc21621f1d145527fc85ec6e88e0c6a7bb": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted
+Retrying after 4s: ghcr.io/supabase/studio:2026.08.17-sha-0c1da8f
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:cf5270183f886cd00783d703af99f7c8e18e25c6fd304aa4c7fed723162a3da7) to overlayfs as "extract-340526195-kZ3b sha256:3e896459638b59b76ba2b02263a57607d7b8f7a570187365c9a4856e8c59d5d9": failed to convert whiteout file "opt/app/rel/logflare/bin/.wh.priv": operation not permitted
+1.50.4: Pulling from supabase/logflare
+f623498ee610: Pulling fs layer
+cf5270183f88: Pulling fs layer
+c895300000d9: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+4b118796ff6a: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:4b118796ff6a5ec54e8c8377233f6a9cc0dd4139322a8650c3b44139d4701502) to overlayfs as "extract-206688436-uxOh sha256:5a310934a5ac8b65e3eee32b455e4f607b48a3174a1278ef4cff365807f1ae91": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted
+Retrying after 8s: ghcr.io/supabase/postgres-meta:v0.98.0
+531e3bd93090: Download complete
+failed to extract layer (application/vnd.docker.image.rootfs.diff.tar.gzip sha256:531e3bd93090d08ef911bb2c8320f2fef2428ef96597535a55111fda18efde52) to overlayfs as "extract-764493024-EH0h sha256:76e66cec8435ad1db5b948618a4d99bb66a837f1e274dedd9dfa2a549422db99": failed to convert whiteout file "tmp/.wh.kong.tar.gz": operation not permitted
+2.8.1: Pulling from supabase/kong
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:cf5270183f886cd00783d703af99f7c8e18e25c6fd304aa4c7fed723162a3da7) to overlayfs as "extract-520557426-j7Bp sha256:3e896459638b59b76ba2b02263a57607d7b8f7a570187365c9a4856e8c59d5d9": failed to convert whiteout file "opt/app/rel/logflare/bin/.wh.priv": operation not permitted
+Retrying after 4s: supabase/logflare:1.50.4
+814dd06d26c7: Pulling fs layer
+a70653f7a2d5: Pulling fs layer
+213ec9aee27d: Pulling fs layer
+531e3bd93090: Pulling fs layer
+a70653f7a2d5: Download complete
+814dd06d26c7: Download complete
+213ec9aee27d: Download complete
+213ec9aee27d: Pull complete
+a70653f7a2d5: Pull complete
+531e3bd93090: Download complete
+failed to extract layer (application/vnd.docker.image.rootfs.diff.tar.gzip sha256:531e3bd93090d08ef911bb2c8320f2fef2428ef96597535a55111fda18efde52) to overlayfs as "extract-42263489-R98x sha256:76e66cec8435ad1db5b948618a4d99bb66a837f1e274dedd9dfa2a549422db99": failed to convert whiteout file "tmp/.wh.kong.tar.gz": operation not permitted
+Retrying after 4s: ghcr.io/supabase/kong:2.8.1
+2026.08.17-sha-0c1da8f: Pulling from supabase/studio
+264588d8dd60: Pulling fs layer
+c0c4dc518956: Pulling fs layer
+b7d0efd3fc9c: Pulling fs layer
+512fd86e6200: Pulling fs layer
+aadc1df55248: Pull complete
+07f6c7f37eb7: Pull complete
+219bccc39f10: Pull complete
+9d445f162b30: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:f066bdfa8565ddb58716a39bfbabc26abab1038be9e22f0c854f168a4ea1aa72) to overlayfs as "extract-876834639-RYrz sha256:55fe818a1a0e4180c83abda23d230ace6c4420b40adcce898496d62508df17d2": failed to convert whiteout file "tmp/.wh.libpg-query.tar.gz": operation not permitted
+Retrying after 8s: public.ecr.aws/supabase/realtime:v2.129.3
+v1.70.3: Pulling from supabase/storage-api
+868d43efe767: Pulling fs layer
+c80645774acf: Pulling fs layer
+5e731b050e43: Pulling fs layer
+78f6dd8aae59: Pulling fs layer
+5f05fbb94ac9: Pulling fs layer
+cecc09177dca: Pulling fs layer
+3adfb80f0287: Pulling fs layer
+dbd229483e61: Pulling fs layer
+521c5280947c: Pulling fs layer
+0f248d4fdffd: Pulling fs layer
+3f609ae12598: Pulling fs layer
+f4e2bfbd8bcd: Pulling fs layer
+6db964937c43: Pulling fs layer
+1.50.4: Pulling from supabase/logflare
+cf5270183f88: Pulling fs layer
+c895300000d9: Pulling fs layer
+f623498ee610: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:cf5270183f886cd00783d703af99f7c8e18e25c6fd304aa4c7fed723162a3da7) to overlayfs as "extract-923245502-5Uts sha256:3e896459638b59b76ba2b02263a57607d7b8f7a570187365c9a4856e8c59d5d9": failed to convert whiteout file "opt/app/rel/logflare/bin/.wh.priv": operation not permitted
+Retrying after 8s: supabase/logflare:1.50.4
+2.8.1: Pulling from supabase/kong
+814dd06d26c7: Pulling fs layer
+a70653f7a2d5: Pulling fs layer
+531e3bd93090: Pulling fs layer
+213ec9aee27d: Pulling fs layer
+814dd06d26c7: Download complete
+a70653f7a2d5: Download complete
+213ec9aee27d: Download complete
+a70653f7a2d5: Pull complete
+213ec9aee27d: Pull complete
+531e3bd93090: Download complete
+failed to extract layer (application/vnd.docker.image.rootfs.diff.tar.gzip sha256:531e3bd93090d08ef911bb2c8320f2fef2428ef96597535a55111fda18efde52) to overlayfs as "extract-451358741-9_Zl sha256:76e66cec8435ad1db5b948618a4d99bb66a837f1e274dedd9dfa2a549422db99": failed to convert whiteout file "tmp/.wh.kong.tar.gz": operation not permitted
+Retrying after 8s: ghcr.io/supabase/kong:2.8.1
+v0.98.0: Pulling from supabase/postgres-meta
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:b7d0efd3fc9c7637c2b6ddc5c27db770b986ee40d93d0f8943b4d6837ca8aa25) to overlayfs as "extract-557461774-isdv sha256:b3574fef8c166763bdc1e161ea0691fc21621f1d145527fc85ec6e88e0c6a7bb": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted
+Retrying after 8s: ghcr.io/supabase/studio:2026.08.17-sha-0c1da8f
+7505145a46ec: Pulling fs layer
+753ab3b39a58: Pulling fs layer
+23c96171f2fe: Pulling fs layer
+4b118796ff6a: Pulling fs layer
+5c18a8cdfd6b: Pulling fs layer
+44136fa355b3: Already exists
+7505145a46ec: Download complete
+8a9aedb7cce2: Download complete
+23c96171f2fe: Download complete
+5c18a8cdfd6b: Download complete
+4b118796ff6a: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:4b118796ff6a5ec54e8c8377233f6a9cc0dd4139322a8650c3b44139d4701502) to overlayfs as "extract-639119963-eGl- sha256:5a310934a5ac8b65e3eee32b455e4f607b48a3174a1278ef4cff365807f1ae91": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted
+v0.98.0: Pulling from supabase/postgres-meta
+7505145a46ec: Pulling fs layer
+23c96171f2fe: Pulling fs layer
+753ab3b39a58: Pulling fs layer
+4b118796ff6a: Pulling fs layer
+5c18a8cdfd6b: Pulling fs layer
+5c18a8cdfd6b: Download complete
+44136fa355b3: Already exists
+7505145a46ec: Download complete
+23c96171f2fe: Download complete
+8a9aedb7cce2: Download complete
+4b118796ff6a: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:4b118796ff6a5ec54e8c8377233f6a9cc0dd4139322a8650c3b44139d4701502) to overlayfs as "extract-821175012-K50o sha256:5a310934a5ac8b65e3eee32b455e4f607b48a3174a1278ef4cff365807f1ae91": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted
+Retrying after 4s: supabase/postgres-meta:v0.98.0
+v2.129.3: Pulling from supabase/realtime
+4f4fb700ef54: Pulling fs layer
+4683247db99b: Pulling fs layer
+f066bdfa8565: Pulling fs layer
+ac006f7e52ef: Pulling fs layer
+e39a20378c07: Pulling fs layer
+aadc1df55248: Pulling fs layer
+07f6c7f37eb7: Pulling fs layer
+219bccc39f10: Pulling fs layer
+62d958520b0b: Pulling fs layer
+9d445f162b30: Pulling fs layer
+062e450697fa: Pulling fs layer
+0ced55f3e717: Pulling fs layer
+4f4fb700ef54: Already exists
+4f4fb700ef54: Pull complete
+219bccc39f10: Download complete
+e39a20378c07: Download complete
+0ced55f3e717: Download complete
+4683247db99b: Download complete
+f066bdfa8565: Download complete
+62d958520b0b: Download complete
+9d445f162b30: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:0f248d4fdffda4033dc95b28fd74e8449c4a0a7039c673b19c6128cb1a3f29f7) to overlayfs as "extract-485371875-iXjI sha256:13f9cc0b59182b6552d87dce283a86e92849632ae6df1d7a60b5705b310524f8": failed to convert whiteout file "usr/local/lib/node_modules/npm/.wh..npmrc": operation not permitted
+8c7a9d068733: Download complete
+v1.70.3: Pulling from supabase/storage-api
+868d43efe767: Pulling fs layer
+c80645774acf: Pulling fs layer
+5e731b050e43: Pulling fs layer
+5f05fbb94ac9: Pulling fs layer
+0f248d4fdffd: Pulling fs layer
+dbd229483e61: Pulling fs layer
+6db964937c43: Pulling fs layer
+f4e2bfbd8bcd: Pulling fs layer
+78f6dd8aae59: Pulling fs layer
+521c5280947c: Pulling fs layer
+3f609ae12598: Pulling fs layer
+cecc09177dca: Pulling fs layer
+3adfb80f0287: Pulling fs layer
+ac006f7e52ef: Download complete
+07f6c7f37eb7: Download complete
+1.50.4: Pulling from supabase/logflare
+062e450697fa: Download complete
+v0.98.0: Pulling from supabase/postgres-meta
+f623498ee610: Pulling fs layer
+cf5270183f88: Pulling fs layer
+c895300000d9: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+2.8.1: Pulling from supabase/kong
+2026.08.17-sha-0c1da8f: Pulling from supabase/studio
+44136fa355b3: Already exists
+a70653f7a2d5: Pulling fs layer
+213ec9aee27d: Pulling fs layer
+531e3bd93090: Pulling fs layer
+814dd06d26c7: Pulling fs layer
+aadc1df55248: Download complete
+7505145a46ec: Pulling fs layer
+4b118796ff6a: Pulling fs layer
+23c96171f2fe: Pulling fs layer
+753ab3b39a58: Pulling fs layer
+5c18a8cdfd6b: Pulling fs layer
+512fd86e6200: Pulling fs layer
+b7d0efd3fc9c: Pulling fs layer
+c0c4dc518956: Pulling fs layer
+264588d8dd60: Pulling fs layer
+8a9aedb7cce2: Download complete
+a70653f7a2d5: Download complete
+7505145a46ec: Download complete
+814dd06d26c7: Download complete
+23c96171f2fe: Download complete
+5c18a8cdfd6b: Download complete
+213ec9aee27d: Download complete
+4b118796ff6a: Download complete
+213ec9aee27d: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:cf5270183f886cd00783d703af99f7c8e18e25c6fd304aa4c7fed723162a3da7) to overlayfs as "extract-455223429-4UUp sha256:3e896459638b59b76ba2b02263a57607d7b8f7a570187365c9a4856e8c59d5d9": failed to convert whiteout file "opt/app/rel/logflare/bin/.wh.priv": operation not permitted
+a70653f7a2d5: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:4b118796ff6a5ec54e8c8377233f6a9cc0dd4139322a8650c3b44139d4701502) to overlayfs as "extract-339328997-p_tQ sha256:5a310934a5ac8b65e3eee32b455e4f607b48a3174a1278ef4cff365807f1ae91": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted
+Retrying after 8s: supabase/postgres-meta:v0.98.0
+062e450697fa: Pull complete
+531e3bd93090: Download complete
+failed to extract layer (application/vnd.docker.image.rootfs.diff.tar.gzip sha256:531e3bd93090d08ef911bb2c8320f2fef2428ef96597535a55111fda18efde52) to overlayfs as "extract-493313009-dgqJ sha256:76e66cec8435ad1db5b948618a4d99bb66a837f1e274dedd9dfa2a549422db99": failed to convert whiteout file "tmp/.wh.kong.tar.gz": operation not permitted
+2.8.1: Pulling from library/kong
+a70653f7a2d5: Pulling fs layer
+213ec9aee27d: Pulling fs layer
+531e3bd93090: Pulling fs layer
+814dd06d26c7: Pulling fs layer
+a70653f7a2d5: Download complete
+814dd06d26c7: Download complete
+213ec9aee27d: Download complete
+213ec9aee27d: Pull complete
+a70653f7a2d5: Pull complete
+531e3bd93090: Download complete
+failed to extract layer (application/vnd.docker.image.rootfs.diff.tar.gzip sha256:531e3bd93090d08ef911bb2c8320f2fef2428ef96597535a55111fda18efde52) to overlayfs as "extract-818188903-RgBd sha256:76e66cec8435ad1db5b948618a4d99bb66a837f1e274dedd9dfa2a549422db99": failed to convert whiteout file "tmp/.wh.kong.tar.gz": operation not permitted
+Retrying after 4s: library/kong:2.8.1
+aadc1df55248: Pull complete
+07f6c7f37eb7: Pull complete
+219bccc39f10: Pull complete
+9d445f162b30: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:f066bdfa8565ddb58716a39bfbabc26abab1038be9e22f0c854f168a4ea1aa72) to overlayfs as "extract-334702923-r1CT sha256:55fe818a1a0e4180c83abda23d230ace6c4420b40adcce898496d62508df17d2": failed to convert whiteout file "tmp/.wh.libpg-query.tar.gz": operation not permitted
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:b7d0efd3fc9c7637c2b6ddc5c27db770b986ee40d93d0f8943b4d6837ca8aa25) to overlayfs as "extract-346009398-8fhD sha256:b3574fef8c166763bdc1e161ea0691fc21621f1d145527fc85ec6e88e0c6a7bb": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted
+v2.129.3: Pulling from supabase/realtime
+2026.08.17-sha-0c1da8f: Pulling from supabase/studio
+264588d8dd60: Pulling fs layer
+c0c4dc518956: Pulling fs layer
+b7d0efd3fc9c: Pulling fs layer
+512fd86e6200: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+062e450697fa: Pulling fs layer
+aadc1df55248: Pulling fs layer
+07f6c7f37eb7: Pulling fs layer
+219bccc39f10: Pulling fs layer
+9d445f162b30: Pulling fs layer
+f066bdfa8565: Pulling fs layer
+0ced55f3e717: Pulling fs layer
+e39a20378c07: Pulling fs layer
+4683247db99b: Pulling fs layer
+ac006f7e52ef: Pulling fs layer
+62d958520b0b: Pulling fs layer
+4f4fb700ef54: Already exists
+4f4fb700ef54: Pull complete
+9d445f162b30: Download complete
+e39a20378c07: Download complete
+4683247db99b: Download complete
+219bccc39f10: Download complete
+f066bdfa8565: Download complete
+0ced55f3e717: Download complete
+62d958520b0b: Download complete
+8c7a9d068733: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:0f248d4fdffda4033dc95b28fd74e8449c4a0a7039c673b19c6128cb1a3f29f7) to overlayfs as "extract-999919618-za90 sha256:13f9cc0b59182b6552d87dce283a86e92849632ae6df1d7a60b5705b310524f8": failed to convert whiteout file "usr/local/lib/node_modules/npm/.wh..npmrc": operation not permitted
+Retrying after 4s: ghcr.io/supabase/storage-api:v1.70.3
+v0.98.0: Pulling from supabase/postgres-meta
+07f6c7f37eb7: Download complete
+ac006f7e52ef: Download complete
+7505145a46ec: Pulling fs layer
+23c96171f2fe: Pulling fs layer
+753ab3b39a58: Pulling fs layer
+4b118796ff6a: Pulling fs layer
+5c18a8cdfd6b: Pulling fs layer
+062e450697fa: Download complete
+44136fa355b3: Already exists
+7505145a46ec: Download complete
+23c96171f2fe: Download complete
+5c18a8cdfd6b: Download complete
+8a9aedb7cce2: Download complete
+2.8.1: Pulling from library/kong
+v1.70.3: Pulling from supabase/storage-api
+aadc1df55248: Download complete
+4b118796ff6a: Download complete
+868d43efe767: Pulling fs layer
+5f05fbb94ac9: Pulling fs layer
+dbd229483e61: Pulling fs layer
+f4e2bfbd8bcd: Pulling fs layer
+521c5280947c: Pulling fs layer
+3f609ae12598: Pulling fs layer
+6db964937c43: Pulling fs layer
+5e731b050e43: Pulling fs layer
+0f248d4fdffd: Pulling fs layer
+cecc09177dca: Pulling fs layer
+3adfb80f0287: Pulling fs layer
+78f6dd8aae59: Pulling fs layer
+c80645774acf: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:4b118796ff6a5ec54e8c8377233f6a9cc0dd4139322a8650c3b44139d4701502) to overlayfs as "extract-914928380-ahix sha256:5a310934a5ac8b65e3eee32b455e4f607b48a3174a1278ef4cff365807f1ae91": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted
+814dd06d26c7: Pulling fs layer
+a70653f7a2d5: Pulling fs layer
+213ec9aee27d: Pulling fs layer
+531e3bd93090: Pulling fs layer
+814dd06d26c7: Download complete
+a70653f7a2d5: Download complete
+213ec9aee27d: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:b7d0efd3fc9c7637c2b6ddc5c27db770b986ee40d93d0f8943b4d6837ca8aa25) to overlayfs as "extract-403745987-NVDv sha256:b3574fef8c166763bdc1e161ea0691fc21621f1d145527fc85ec6e88e0c6a7bb": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted
+Retrying after 4s: supabase/studio:2026.08.17-sha-0c1da8f
+062e450697fa: Pull complete
+a70653f7a2d5: Pull complete
+213ec9aee27d: Pull complete
+531e3bd93090: Download complete
+failed to extract layer (application/vnd.docker.image.rootfs.diff.tar.gzip sha256:531e3bd93090d08ef911bb2c8320f2fef2428ef96597535a55111fda18efde52) to overlayfs as "extract-792337516-TD5I sha256:76e66cec8435ad1db5b948618a4d99bb66a837f1e274dedd9dfa2a549422db99": failed to convert whiteout file "tmp/.wh.kong.tar.gz": operation not permitted
+Retrying after 8s: library/kong:2.8.1
+2026.08.17-sha-0c1da8f: Pulling from supabase/studio
+264588d8dd60: Pulling fs layer
+b7d0efd3fc9c: Pulling fs layer
+c0c4dc518956: Pulling fs layer
+512fd86e6200: Pulling fs layer
+aadc1df55248: Pull complete
+9d445f162b30: Pull complete
+219bccc39f10: Pull complete
+9d445f162b30: Pull complete
+219bccc39f10: Pull complete
+07f6c7f37eb7: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:f066bdfa8565ddb58716a39bfbabc26abab1038be9e22f0c854f168a4ea1aa72) to overlayfs as "extract-218670530-Yl89 sha256:55fe818a1a0e4180c83abda23d230ace6c4420b40adcce898496d62508df17d2": failed to convert whiteout file "tmp/.wh.libpg-query.tar.gz": operation not permitted
+Retrying after 4s: ghcr.io/supabase/realtime:v2.129.3
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:0f248d4fdffda4033dc95b28fd74e8449c4a0a7039c673b19c6128cb1a3f29f7) to overlayfs as "extract-626932877-jvIm sha256:13f9cc0b59182b6552d87dce283a86e92849632ae6df1d7a60b5705b310524f8": failed to convert whiteout file "usr/local/lib/node_modules/npm/.wh..npmrc": operation not permitted
+Retrying after 8s: ghcr.io/supabase/storage-api:v1.70.3
+v2.129.3: Pulling from supabase/realtime
+4f4fb700ef54: Pulling fs layer
+62d958520b0b: Pulling fs layer
+07f6c7f37eb7: Pulling fs layer
+062e450697fa: Pulling fs layer
+9d445f162b30: Pulling fs layer
+4683247db99b: Pulling fs layer
+0ced55f3e717: Pulling fs layer
+e39a20378c07: Pulling fs layer
+aadc1df55248: Pulling fs layer
+ac006f7e52ef: Pulling fs layer
+f066bdfa8565: Pulling fs layer
+219bccc39f10: Pulling fs layer
+4f4fb700ef54: Already exists
+4683247db99b: Download complete
+62d958520b0b: Download complete
+4f4fb700ef54: Pull complete
+219bccc39f10: Download complete
+e39a20378c07: Download complete
+9d445f162b30: Download complete
+0ced55f3e717: Download complete
+f066bdfa8565: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:b7d0efd3fc9c7637c2b6ddc5c27db770b986ee40d93d0f8943b4d6837ca8aa25) to overlayfs as "extract-106583910-1cm1 sha256:b3574fef8c166763bdc1e161ea0691fc21621f1d145527fc85ec6e88e0c6a7bb": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted
+Retrying after 8s: supabase/studio:2026.08.17-sha-0c1da8f
+8c7a9d068733: Download complete
+062e450697fa: Download complete
+2.8.1: Pulling from library/kong
+07f6c7f37eb7: Download complete
+062e450697fa: Pull complete
+814dd06d26c7: Pulling fs layer
+213ec9aee27d: Pulling fs layer
+531e3bd93090: Pulling fs layer
+a70653f7a2d5: Pulling fs layer
+814dd06d26c7: Download complete
+aadc1df55248: Download complete
+ac006f7e52ef: Download complete
+a70653f7a2d5: Download complete
+213ec9aee27d: Download complete
+213ec9aee27d: Pull complete
+a70653f7a2d5: Pull complete
+v1.70.3: Pulling from supabase/storage-api
+868d43efe767: Pulling fs layer
+5f05fbb94ac9: Pulling fs layer
+dbd229483e61: Pulling fs layer
+f4e2bfbd8bcd: Pulling fs layer
+521c5280947c: Pulling fs layer
+3f609ae12598: Pulling fs layer
+c80645774acf: Pulling fs layer
+5e731b050e43: Pulling fs layer
+0f248d4fdffd: Pulling fs layer
+6db964937c43: Pulling fs layer
+78f6dd8aae59: Pulling fs layer
+cecc09177dca: Pulling fs layer
+3adfb80f0287: Pulling fs layer
+2026.08.17-sha-0c1da8f: Pulling from supabase/studio
+264588d8dd60: Pulling fs layer
+512fd86e6200: Pulling fs layer
+b7d0efd3fc9c: Pulling fs layer
+c0c4dc518956: Pulling fs layer
+aadc1df55248: Pull complete
+219bccc39f10: Pull complete
+9d445f162b30: Pull complete
+07f6c7f37eb7: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:f066bdfa8565ddb58716a39bfbabc26abab1038be9e22f0c854f168a4ea1aa72) to overlayfs as "extract-81866284-xj5s sha256:55fe818a1a0e4180c83abda23d230ace6c4420b40adcce898496d62508df17d2": failed to convert whiteout file "tmp/.wh.libpg-query.tar.gz": operation not permitted
+Retrying after 8s: ghcr.io/supabase/realtime:v2.129.3
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:0f248d4fdffda4033dc95b28fd74e8449c4a0a7039c673b19c6128cb1a3f29f7) to overlayfs as "extract-603278296-nj0q sha256:13f9cc0b59182b6552d87dce283a86e92849632ae6df1d7a60b5705b310524f8": failed to convert whiteout file "usr/local/lib/node_modules/npm/.wh..npmrc": operation not permitted
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:b7d0efd3fc9c7637c2b6ddc5c27db770b986ee40d93d0f8943b4d6837ca8aa25) to overlayfs as "extract-138500957-Ul9Y sha256:b3574fef8c166763bdc1e161ea0691fc21621f1d145527fc85ec6e88e0c6a7bb": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted
+531e3bd93090: Download complete
+failed to extract layer (application/vnd.docker.image.rootfs.diff.tar.gzip sha256:531e3bd93090d08ef911bb2c8320f2fef2428ef96597535a55111fda18efde52) to overlayfs as "extract-759500453-4-2U sha256:76e66cec8435ad1db5b948618a4d99bb66a837f1e274dedd9dfa2a549422db99": failed to convert whiteout file "tmp/.wh.kong.tar.gz": operation not permitted
+v1.70.3: Pulling from supabase/storage-api
+868d43efe767: Pulling fs layer
+c80645774acf: Pulling fs layer
+5e731b050e43: Pulling fs layer
+5f05fbb94ac9: Pulling fs layer
+0f248d4fdffd: Pulling fs layer
+dbd229483e61: Pulling fs layer
+6db964937c43: Pulling fs layer
+f4e2bfbd8bcd: Pulling fs layer
+78f6dd8aae59: Pulling fs layer
+521c5280947c: Pulling fs layer
+cecc09177dca: Pulling fs layer
+3f609ae12598: Pulling fs layer
+3adfb80f0287: Pulling fs layer
+v2.129.3: Pulling from supabase/realtime
+4f4fb700ef54: Pulling fs layer
+062e450697fa: Pulling fs layer
+aadc1df55248: Pulling fs layer
+07f6c7f37eb7: Pulling fs layer
+219bccc39f10: Pulling fs layer
+9d445f162b30: Pulling fs layer
+f066bdfa8565: Pulling fs layer
+4683247db99b: Pulling fs layer
+0ced55f3e717: Pulling fs layer
+ac006f7e52ef: Pulling fs layer
+e39a20378c07: Pulling fs layer
+62d958520b0b: Pulling fs layer
+4f4fb700ef54: Already exists
+4f4fb700ef54: Pull complete
+f066bdfa8565: Download complete
+62d958520b0b: Download complete
+4683247db99b: Download complete
+e39a20378c07: Download complete
+219bccc39f10: Download complete
+9d445f162b30: Download complete
+0ced55f3e717: Download complete
+8c7a9d068733: Download complete
+ac006f7e52ef: Download complete
+07f6c7f37eb7: Download complete
+062e450697fa: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:0f248d4fdffda4033dc95b28fd74e8449c4a0a7039c673b19c6128cb1a3f29f7) to overlayfs as "extract-553623044-uCg7 sha256:13f9cc0b59182b6552d87dce283a86e92849632ae6df1d7a60b5705b310524f8": failed to convert whiteout file "usr/local/lib/node_modules/npm/.wh..npmrc": operation not permitted
+Retrying after 4s: supabase/storage-api:v1.70.3
+aadc1df55248: Download complete
+062e450697fa: Pull complete
+v1.70.3: Pulling from supabase/storage-api
+868d43efe767: Pulling fs layer
+5f05fbb94ac9: Pulling fs layer
+dbd229483e61: Pulling fs layer
+f4e2bfbd8bcd: Pulling fs layer
+521c5280947c: Pulling fs layer
+3f609ae12598: Pulling fs layer
+6db964937c43: Pulling fs layer
+78f6dd8aae59: Pulling fs layer
+cecc09177dca: Pulling fs layer
+c80645774acf: Pulling fs layer
+3adfb80f0287: Pulling fs layer
+5e731b050e43: Pulling fs layer
+0f248d4fdffd: Pulling fs layer
+aadc1df55248: Pull complete
+219bccc39f10: Pull complete
+9d445f162b30: Pull complete
+07f6c7f37eb7: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:f066bdfa8565ddb58716a39bfbabc26abab1038be9e22f0c854f168a4ea1aa72) to overlayfs as "extract-301510131-LI-x sha256:55fe818a1a0e4180c83abda23d230ace6c4420b40adcce898496d62508df17d2": failed to convert whiteout file "tmp/.wh.libpg-query.tar.gz": operation not permitted
+v2.129.3: Pulling from supabase/realtime
+4f4fb700ef54: Pulling fs layer
+f066bdfa8565: Pulling fs layer
+0ced55f3e717: Pulling fs layer
+e39a20378c07: Pulling fs layer
+aadc1df55248: Pulling fs layer
+4683247db99b: Pulling fs layer
+07f6c7f37eb7: Pulling fs layer
+ac006f7e52ef: Pulling fs layer
+219bccc39f10: Pulling fs layer
+62d958520b0b: Pulling fs layer
+9d445f162b30: Pulling fs layer
+062e450697fa: Pulling fs layer
+4f4fb700ef54: Already exists
+4f4fb700ef54: Pull complete
+f066bdfa8565: Download complete
+4683247db99b: Download complete
+219bccc39f10: Download complete
+62d958520b0b: Download complete
+e39a20378c07: Download complete
+0ced55f3e717: Download complete
+9d445f162b30: Download complete
+8c7a9d068733: Download complete
+07f6c7f37eb7: Download complete
+ac006f7e52ef: Download complete
+062e450697fa: Download complete
+aadc1df55248: Download complete
+062e450697fa: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:0f248d4fdffda4033dc95b28fd74e8449c4a0a7039c673b19c6128cb1a3f29f7) to overlayfs as "extract-661698334-vMH6 sha256:13f9cc0b59182b6552d87dce283a86e92849632ae6df1d7a60b5705b310524f8": failed to convert whiteout file "usr/local/lib/node_modules/npm/.wh..npmrc": operation not permitted
+Retrying after 8s: supabase/storage-api:v1.70.3
+aadc1df55248: Pull complete
+219bccc39f10: Pull complete
+9d445f162b30: Pull complete
+07f6c7f37eb7: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:f066bdfa8565ddb58716a39bfbabc26abab1038be9e22f0c854f168a4ea1aa72) to overlayfs as "extract-628365838-f4IO sha256:55fe818a1a0e4180c83abda23d230ace6c4420b40adcce898496d62508df17d2": failed to convert whiteout file "tmp/.wh.libpg-query.tar.gz": operation not permitted
+Retrying after 4s: supabase/realtime:v2.129.3
+v2.129.3: Pulling from supabase/realtime
+4f4fb700ef54: Pulling fs layer
+f066bdfa8565: Pulling fs layer
+9d445f162b30: Pulling fs layer
+4683247db99b: Pulling fs layer
+aadc1df55248: Pulling fs layer
+07f6c7f37eb7: Pulling fs layer
+0ced55f3e717: Pulling fs layer
+219bccc39f10: Pulling fs layer
+062e450697fa: Pulling fs layer
+e39a20378c07: Pulling fs layer
+ac006f7e52ef: Pulling fs layer
+62d958520b0b: Pulling fs layer
+v1.70.3: Pulling from supabase/storage-api
+dbd229483e61: Pulling fs layer
+f4e2bfbd8bcd: Pulling fs layer
+0f248d4fdffd: Pulling fs layer
+521c5280947c: Pulling fs layer
+5f05fbb94ac9: Pulling fs layer
+3f609ae12598: Pulling fs layer
+c80645774acf: Pulling fs layer
+5e731b050e43: Pulling fs layer
+78f6dd8aae59: Pulling fs layer
+6db964937c43: Pulling fs layer
+cecc09177dca: Pulling fs layer
+3adfb80f0287: Pulling fs layer
+868d43efe767: Pulling fs layer
+4f4fb700ef54: Already exists
+4f4fb700ef54: Pull complete
+f066bdfa8565: Download complete
+4683247db99b: Download complete
+e39a20378c07: Download complete
+219bccc39f10: Download complete
+62d958520b0b: Download complete
+8c7a9d068733: Download complete
+9d445f162b30: Download complete
+0ced55f3e717: Download complete
+062e450697fa: Download complete
+ac006f7e52ef: Download complete
+07f6c7f37eb7: Download complete
+062e450697fa: Pull complete
+aadc1df55248: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:0f248d4fdffda4033dc95b28fd74e8449c4a0a7039c673b19c6128cb1a3f29f7) to overlayfs as "extract-725570076-wVBh sha256:13f9cc0b59182b6552d87dce283a86e92849632ae6df1d7a60b5705b310524f8": failed to convert whiteout file "usr/local/lib/node_modules/npm/.wh..npmrc": operation not permitted
+aadc1df55248: Pull complete
+07f6c7f37eb7: Pull complete
+219bccc39f10: Pull complete
+9d445f162b30: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:f066bdfa8565ddb58716a39bfbabc26abab1038be9e22f0c854f168a4ea1aa72) to overlayfs as "extract-222297521-sVwi sha256:55fe818a1a0e4180c83abda23d230ace6c4420b40adcce898496d62508df17d2": failed to convert whiteout file "tmp/.wh.libpg-query.tar.gz": operation not permitted
+Retrying after 8s: supabase/realtime:v2.129.3
+v2.129.3: Pulling from supabase/realtime
+4f4fb700ef54: Pulling fs layer
+07f6c7f37eb7: Pulling fs layer
+0ced55f3e717: Pulling fs layer
+9d445f162b30: Pulling fs layer
+f066bdfa8565: Pulling fs layer
+ac006f7e52ef: Pulling fs layer
+e39a20378c07: Pulling fs layer
+4683247db99b: Pulling fs layer
+aadc1df55248: Pulling fs layer
+219bccc39f10: Pulling fs layer
+62d958520b0b: Pulling fs layer
+062e450697fa: Pulling fs layer
+4f4fb700ef54: Already exists
+4f4fb700ef54: Pull complete
+e39a20378c07: Download complete
+4683247db99b: Download complete
+62d958520b0b: Download complete
+219bccc39f10: Download complete
+0ced55f3e717: Download complete
+9d445f162b30: Download complete
+f066bdfa8565: Download complete
+8c7a9d068733: Download complete
+ac006f7e52ef: Download complete
+07f6c7f37eb7: Download complete
+062e450697fa: Download complete
+aadc1df55248: Download complete
+062e450697fa: Pull complete
+aadc1df55248: Pull complete
+219bccc39f10: Pull complete
+9d445f162b30: Pull complete
+219bccc39f10: Pull complete
+9d445f162b30: Pull complete
+07f6c7f37eb7: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:f066bdfa8565ddb58716a39bfbabc26abab1038be9e22f0c854f168a4ea1aa72) to overlayfs as "extract-481035577-Meu8 sha256:55fe818a1a0e4180c83abda23d230ace6c4420b40adcce898496d62508df17d2": failed to convert whiteout file "tmp/.wh.libpg-query.tar.gz": operation not permitted
+failed to pull docker image from all registries: public.ecr.aws/supabase/logflare:1.50.4 attempt 1: 1.50.4: Pulling from supabase/logflare
+f623498ee610: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+cf5270183f88: Pulling fs layer
+c895300000d9: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:cf5270183f886cd00783d703af99f7c8e18e25c6fd304aa4c7fed723162a3da7) to overlayfs as "extract-764112881-XMOH sha256:3e896459638b59b76ba2b02263a57607d7b8f7a570187365c9a4856e8c59d5d9": failed to convert whiteout file "opt/app/rel/logflare/bin/.wh.priv": operation not permitted; public.ecr.aws/supabase/logflare:1.50.4 attempt 2: 1.50.4: Pulling from supabase/logflare
+f623498ee610: Pulling fs layer
+c895300000d9: Pulling fs layer
+cf5270183f88: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:cf5270183f886cd00783d703af99f7c8e18e25c6fd304aa4c7fed723162a3da7) to overlayfs as "extract-732349252-QR8S sha256:3e896459638b59b76ba2b02263a57607d7b8f7a570187365c9a4856e8c59d5d9": failed to convert whiteout file "opt/app/rel/logflare/bin/.wh.priv": operation not permitted; public.ecr.aws/supabase/logflare:1.50.4 attempt 3: 1.50.4: Pulling from supabase/logflare
+f623498ee610: Pulling fs layer
+cf5270183f88: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+c895300000d9: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:cf5270183f886cd00783d703af99f7c8e18e25c6fd304aa4c7fed723162a3da7) to overlayfs as "extract-734596071-pG7m sha256:3e896459638b59b76ba2b02263a57607d7b8f7a570187365c9a4856e8c59d5d9": failed to convert whiteout file "opt/app/rel/logflare/bin/.wh.priv": operation not permitted; ghcr.io/supabase/logflare:1.50.4 attempt 1: 1.50.4: Pulling from supabase/logflare
+f623498ee610: Pulling fs layer
+cf5270183f88: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+c895300000d9: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:cf5270183f886cd00783d703af99f7c8e18e25c6fd304aa4c7fed723162a3da7) to overlayfs as "extract-510994219-EUpF sha256:3e896459638b59b76ba2b02263a57607d7b8f7a570187365c9a4856e8c59d5d9": failed to convert whiteout file "opt/app/rel/logflare/bin/.wh.priv": operation not permitted; ghcr.io/supabase/logflare:1.50.4 attempt 2: 1.50.4: Pulling from supabase/logflare
+f623498ee610: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+cf5270183f88: Pulling fs layer
+c895300000d9: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:cf5270183f886cd00783d703af99f7c8e18e25c6fd304aa4c7fed723162a3da7) to overlayfs as "extract-183570470-iuPM sha256:3e896459638b59b76ba2b02263a57607d7b8f7a570187365c9a4856e8c59d5d9": failed to convert whiteout file "opt/app/rel/logflare/bin/.wh.priv": operation not permitted; ghcr.io/supabase/logflare:1.50.4 attempt 3: 1.50.4: Pulling from supabase/logflare
+f623498ee610: Pulling fs layer
+c895300000d9: Pulling fs layer
+cf5270183f88: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:cf5270183f886cd00783d703af99f7c8e18e25c6fd304aa4c7fed723162a3da7) to overlayfs as "extract-340526195-kZ3b sha256:3e896459638b59b76ba2b02263a57607d7b8f7a570187365c9a4856e8c59d5d9": failed to convert whiteout file "opt/app/rel/logflare/bin/.wh.priv": operation not permitted; supabase/logflare:1.50.4 attempt 1: 1.50.4: Pulling from supabase/logflare
+f623498ee610: Pulling fs layer
+cf5270183f88: Pulling fs layer
+c895300000d9: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:cf5270183f886cd00783d703af99f7c8e18e25c6fd304aa4c7fed723162a3da7) to overlayfs as "extract-520557426-j7Bp sha256:3e896459638b59b76ba2b02263a57607d7b8f7a570187365c9a4856e8c59d5d9": failed to convert whiteout file "opt/app/rel/logflare/bin/.wh.priv": operation not permitted; supabase/logflare:1.50.4 attempt 2: 1.50.4: Pulling from supabase/logflare
+cf5270183f88: Pulling fs layer
+c895300000d9: Pulling fs layer
+f623498ee610: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:cf5270183f886cd00783d703af99f7c8e18e25c6fd304aa4c7fed723162a3da7) to overlayfs as "extract-923245502-5Uts sha256:3e896459638b59b76ba2b02263a57607d7b8f7a570187365c9a4856e8c59d5d9": failed to convert whiteout file "opt/app/rel/logflare/bin/.wh.priv": operation not permitted; supabase/logflare:1.50.4 attempt 3: 1.50.4: Pulling from supabase/logflare
+f623498ee610: Pulling fs layer
+cf5270183f88: Pulling fs layer
+c895300000d9: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:cf5270183f886cd00783d703af99f7c8e18e25c6fd304aa4c7fed723162a3da7) to overlayfs as "extract-455223429-4UUp sha256:3e896459638b59b76ba2b02263a57607d7b8f7a570187365c9a4856e8c59d5d9": failed to convert whiteout file "opt/app/rel/logflare/bin/.wh.priv": operation not permitted
+failed to pull docker image from all registries: public.ecr.aws/supabase/kong:2.8.1 attempt 1: 2.8.1: Pulling from supabase/kong
+814dd06d26c7: Pulling fs layer
+531e3bd93090: Pulling fs layer
+a70653f7a2d5: Pulling fs layer
+213ec9aee27d: Pulling fs layer
+814dd06d26c7: Download complete
+a70653f7a2d5: Download complete
+531e3bd93090: Download complete
+213ec9aee27d: Download complete
+a70653f7a2d5: Pull complete
+a70653f7a2d5: Pull complete
+213ec9aee27d: Pull complete
+failed to extract layer (application/vnd.docker.image.rootfs.diff.tar.gzip sha256:531e3bd93090d08ef911bb2c8320f2fef2428ef96597535a55111fda18efde52) to overlayfs as "extract-660017948-KS9r sha256:76e66cec8435ad1db5b948618a4d99bb66a837f1e274dedd9dfa2a549422db99": failed to convert whiteout file "tmp/.wh.kong.tar.gz": operation not permitted; public.ecr.aws/supabase/kong:2.8.1 attempt 2: 2.8.1: Pulling from supabase/kong
+814dd06d26c7: Pulling fs layer
+a70653f7a2d5: Pulling fs layer
+213ec9aee27d: Pulling fs layer
+531e3bd93090: Pulling fs layer
+814dd06d26c7: Download complete
+a70653f7a2d5: Download complete
+213ec9aee27d: Download complete
+a70653f7a2d5: Pull complete
+213ec9aee27d: Pull complete
+531e3bd93090: Download complete
+failed to extract layer (application/vnd.docker.image.rootfs.diff.tar.gzip sha256:531e3bd93090d08ef911bb2c8320f2fef2428ef96597535a55111fda18efde52) to overlayfs as "extract-194907417-1MpW sha256:76e66cec8435ad1db5b948618a4d99bb66a837f1e274dedd9dfa2a549422db99": failed to convert whiteout file "tmp/.wh.kong.tar.gz": operation not permitted; public.ecr.aws/supabase/kong:2.8.1 attempt 3: 2.8.1: Pulling from supabase/kong
+814dd06d26c7: Pulling fs layer
+213ec9aee27d: Pulling fs layer
+a70653f7a2d5: Pulling fs layer
+531e3bd93090: Pulling fs layer
+814dd06d26c7: Download complete
+a70653f7a2d5: Download complete
+213ec9aee27d: Download complete
+a70653f7a2d5: Pull complete
+213ec9aee27d: Pull complete
+531e3bd93090: Download complete
+failed to extract layer (application/vnd.docker.image.rootfs.diff.tar.gzip sha256:531e3bd93090d08ef911bb2c8320f2fef2428ef96597535a55111fda18efde52) to overlayfs as "extract-764493024-EH0h sha256:76e66cec8435ad1db5b948618a4d99bb66a837f1e274dedd9dfa2a549422db99": failed to convert whiteout file "tmp/.wh.kong.tar.gz": operation not permitted; ghcr.io/supabase/kong:2.8.1 attempt 1: 2.8.1: Pulling from supabase/kong
+814dd06d26c7: Pulling fs layer
+a70653f7a2d5: Pulling fs layer
+213ec9aee27d: Pulling fs layer
+531e3bd93090: Pulling fs layer
+a70653f7a2d5: Download complete
+814dd06d26c7: Download complete
+213ec9aee27d: Download complete
+213ec9aee27d: Pull complete
+a70653f7a2d5: Pull complete
+531e3bd93090: Download complete
+failed to extract layer (application/vnd.docker.image.rootfs.diff.tar.gzip sha256:531e3bd93090d08ef911bb2c8320f2fef2428ef96597535a55111fda18efde52) to overlayfs as "extract-42263489-R98x sha256:76e66cec8435ad1db5b948618a4d99bb66a837f1e274dedd9dfa2a549422db99": failed to convert whiteout file "tmp/.wh.kong.tar.gz": operation not permitted; ghcr.io/supabase/kong:2.8.1 attempt 2: 2.8.1: Pulling from supabase/kong
+814dd06d26c7: Pulling fs layer
+a70653f7a2d5: Pulling fs layer
+531e3bd93090: Pulling fs layer
+213ec9aee27d: Pulling fs layer
+814dd06d26c7: Download complete
+a70653f7a2d5: Download complete
+213ec9aee27d: Download complete
+a70653f7a2d5: Pull complete
+213ec9aee27d: Pull complete
+531e3bd93090: Download complete
+failed to extract layer (application/vnd.docker.image.rootfs.diff.tar.gzip sha256:531e3bd93090d08ef911bb2c8320f2fef2428ef96597535a55111fda18efde52) to overlayfs as "extract-451358741-9_Zl sha256:76e66cec8435ad1db5b948618a4d99bb66a837f1e274dedd9dfa2a549422db99": failed to convert whiteout file "tmp/.wh.kong.tar.gz": operation not permitted; ghcr.io/supabase/kong:2.8.1 attempt 3: 2.8.1: Pulling from supabase/kong
+a70653f7a2d5: Pulling fs layer
+213ec9aee27d: Pulling fs layer
+531e3bd93090: Pulling fs layer
+814dd06d26c7: Pulling fs layer
+a70653f7a2d5: Download complete
+814dd06d26c7: Download complete
+213ec9aee27d: Download complete
+213ec9aee27d: Pull complete
+a70653f7a2d5: Pull complete
+531e3bd93090: Download complete
+failed to extract layer (application/vnd.docker.image.rootfs.diff.tar.gzip sha256:531e3bd93090d08ef911bb2c8320f2fef2428ef96597535a55111fda18efde52) to overlayfs as "extract-493313009-dgqJ sha256:76e66cec8435ad1db5b948618a4d99bb66a837f1e274dedd9dfa2a549422db99": failed to convert whiteout file "tmp/.wh.kong.tar.gz": operation not permitted; library/kong:2.8.1 attempt 1: 2.8.1: Pulling from library/kong
+a70653f7a2d5: Pulling fs layer
+213ec9aee27d: Pulling fs layer
+531e3bd93090: Pulling fs layer
+814dd06d26c7: Pulling fs layer
+a70653f7a2d5: Download complete
+814dd06d26c7: Download complete
+213ec9aee27d: Download complete
+213ec9aee27d: Pull complete
+a70653f7a2d5: Pull complete
+531e3bd93090: Download complete
+failed to extract layer (application/vnd.docker.image.rootfs.diff.tar.gzip sha256:531e3bd93090d08ef911bb2c8320f2fef2428ef96597535a55111fda18efde52) to overlayfs as "extract-818188903-RgBd sha256:76e66cec8435ad1db5b948618a4d99bb66a837f1e274dedd9dfa2a549422db99": failed to convert whiteout file "tmp/.wh.kong.tar.gz": operation not permitted; library/kong:2.8.1 attempt 2: 2.8.1: Pulling from library/kong
+814dd06d26c7: Pulling fs layer
+a70653f7a2d5: Pulling fs layer
+213ec9aee27d: Pulling fs layer
+531e3bd93090: Pulling fs layer
+814dd06d26c7: Download complete
+a70653f7a2d5: Download complete
+213ec9aee27d: Download complete
+a70653f7a2d5: Pull complete
+213ec9aee27d: Pull complete
+531e3bd93090: Download complete
+failed to extract layer (application/vnd.docker.image.rootfs.diff.tar.gzip sha256:531e3bd93090d08ef911bb2c8320f2fef2428ef96597535a55111fda18efde52) to overlayfs as "extract-792337516-TD5I sha256:76e66cec8435ad1db5b948618a4d99bb66a837f1e274dedd9dfa2a549422db99": failed to convert whiteout file "tmp/.wh.kong.tar.gz": operation not permitted; library/kong:2.8.1 attempt 3: 2.8.1: Pulling from library/kong
+814dd06d26c7: Pulling fs layer
+213ec9aee27d: Pulling fs layer
+531e3bd93090: Pulling fs layer
+a70653f7a2d5: Pulling fs layer
+814dd06d26c7: Download complete
+a70653f7a2d5: Download complete
+213ec9aee27d: Download complete
+213ec9aee27d: Pull complete
+a70653f7a2d5: Pull complete
+531e3bd93090: Download complete
+failed to extract layer (application/vnd.docker.image.rootfs.diff.tar.gzip sha256:531e3bd93090d08ef911bb2c8320f2fef2428ef96597535a55111fda18efde52) to overlayfs as "extract-759500453-4-2U sha256:76e66cec8435ad1db5b948618a4d99bb66a837f1e274dedd9dfa2a549422db99": failed to convert whiteout file "tmp/.wh.kong.tar.gz": operation not permitted
+failed to pull docker image from all registries: public.ecr.aws/supabase/realtime:v2.129.3 attempt 1: v2.129.3: Pulling from supabase/realtime
+4f4fb700ef54: Pulling fs layer
+f066bdfa8565: Pulling fs layer
+062e450697fa: Pulling fs layer
+aadc1df55248: Pulling fs layer
+07f6c7f37eb7: Pulling fs layer
+219bccc39f10: Pulling fs layer
+9d445f162b30: Pulling fs layer
+4683247db99b: Pulling fs layer
+0ced55f3e717: Pulling fs layer
+e39a20378c07: Pulling fs layer
+ac006f7e52ef: Pulling fs layer
+62d958520b0b: Pulling fs layer
+4f4fb700ef54: Already exists
+4f4fb700ef54: Pull complete
+4683247db99b: Download complete
+8c7a9d068733: Download complete
+e39a20378c07: Download complete
+62d958520b0b: Download complete
+219bccc39f10: Download complete
+9d445f162b30: Download complete
+0ced55f3e717: Download complete
+f066bdfa8565: Download complete
+07f6c7f37eb7: Download complete
+ac006f7e52ef: Download complete
+062e450697fa: Download complete
+aadc1df55248: Download complete
+062e450697fa: Pull complete
+aadc1df55248: Pull complete
+219bccc39f10: Pull complete
+07f6c7f37eb7: Pull complete
+9d445f162b30: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:f066bdfa8565ddb58716a39bfbabc26abab1038be9e22f0c854f168a4ea1aa72) to overlayfs as "extract-266461808-Cbn9 sha256:55fe818a1a0e4180c83abda23d230ace6c4420b40adcce898496d62508df17d2": failed to convert whiteout file "tmp/.wh.libpg-query.tar.gz": operation not permitted; public.ecr.aws/supabase/realtime:v2.129.3 attempt 2: v2.129.3: Pulling from supabase/realtime
+f066bdfa8565: Pulling fs layer
+062e450697fa: Pulling fs layer
+aadc1df55248: Pulling fs layer
+07f6c7f37eb7: Pulling fs layer
+219bccc39f10: Pulling fs layer
+9d445f162b30: Pulling fs layer
+4683247db99b: Pulling fs layer
+0ced55f3e717: Pulling fs layer
+e39a20378c07: Pulling fs layer
+ac006f7e52ef: Pulling fs layer
+62d958520b0b: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+4f4fb700ef54: Already exists
+4f4fb700ef54: Pull complete
+f066bdfa8565: Download complete
+e39a20378c07: Download complete
+62d958520b0b: Download complete
+219bccc39f10: Download complete
+9d445f162b30: Download complete
+4683247db99b: Download complete
+0ced55f3e717: Download complete
+8c7a9d068733: Download complete
+07f6c7f37eb7: Download complete
+062e450697fa: Download complete
+ac006f7e52ef: Download complete
+062e450697fa: Pull complete
+aadc1df55248: Download complete
+aadc1df55248: Pull complete
+07f6c7f37eb7: Pull complete
+219bccc39f10: Pull complete
+9d445f162b30: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:f066bdfa8565ddb58716a39bfbabc26abab1038be9e22f0c854f168a4ea1aa72) to overlayfs as "extract-876834639-RYrz sha256:55fe818a1a0e4180c83abda23d230ace6c4420b40adcce898496d62508df17d2": failed to convert whiteout file "tmp/.wh.libpg-query.tar.gz": operation not permitted; public.ecr.aws/supabase/realtime:v2.129.3 attempt 3: v2.129.3: Pulling from supabase/realtime
+4f4fb700ef54: Pulling fs layer
+4683247db99b: Pulling fs layer
+f066bdfa8565: Pulling fs layer
+ac006f7e52ef: Pulling fs layer
+e39a20378c07: Pulling fs layer
+aadc1df55248: Pulling fs layer
+07f6c7f37eb7: Pulling fs layer
+219bccc39f10: Pulling fs layer
+62d958520b0b: Pulling fs layer
+9d445f162b30: Pulling fs layer
+062e450697fa: Pulling fs layer
+0ced55f3e717: Pulling fs layer
+4f4fb700ef54: Already exists
+4f4fb700ef54: Pull complete
+219bccc39f10: Download complete
+e39a20378c07: Download complete
+0ced55f3e717: Download complete
+4683247db99b: Download complete
+f066bdfa8565: Download complete
+62d958520b0b: Download complete
+9d445f162b30: Download complete
+8c7a9d068733: Download complete
+ac006f7e52ef: Download complete
+07f6c7f37eb7: Download complete
+062e450697fa: Download complete
+aadc1df55248: Download complete
+062e450697fa: Pull complete
+aadc1df55248: Pull complete
+07f6c7f37eb7: Pull complete
+219bccc39f10: Pull complete
+9d445f162b30: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:f066bdfa8565ddb58716a39bfbabc26abab1038be9e22f0c854f168a4ea1aa72) to overlayfs as "extract-334702923-r1CT sha256:55fe818a1a0e4180c83abda23d230ace6c4420b40adcce898496d62508df17d2": failed to convert whiteout file "tmp/.wh.libpg-query.tar.gz": operation not permitted; ghcr.io/supabase/realtime:v2.129.3 attempt 1: v2.129.3: Pulling from supabase/realtime
+4f4fb700ef54: Pulling fs layer
+062e450697fa: Pulling fs layer
+aadc1df55248: Pulling fs layer
+07f6c7f37eb7: Pulling fs layer
+219bccc39f10: Pulling fs layer
+9d445f162b30: Pulling fs layer
+f066bdfa8565: Pulling fs layer
+0ced55f3e717: Pulling fs layer
+e39a20378c07: Pulling fs layer
+4683247db99b: Pulling fs layer
+ac006f7e52ef: Pulling fs layer
+62d958520b0b: Pulling fs layer
+4f4fb700ef54: Already exists
+4f4fb700ef54: Pull complete
+9d445f162b30: Download complete
+e39a20378c07: Download complete
+4683247db99b: Download complete
+219bccc39f10: Download complete
+f066bdfa8565: Download complete
+0ced55f3e717: Download complete
+62d958520b0b: Download complete
+8c7a9d068733: Download complete
+07f6c7f37eb7: Download complete
+ac006f7e52ef: Download complete
+062e450697fa: Download complete
+aadc1df55248: Download complete
+062e450697fa: Pull complete
+aadc1df55248: Pull complete
+9d445f162b30: Pull complete
+219bccc39f10: Pull complete
+9d445f162b30: Pull complete
+219bccc39f10: Pull complete
+07f6c7f37eb7: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:f066bdfa8565ddb58716a39bfbabc26abab1038be9e22f0c854f168a4ea1aa72) to overlayfs as "extract-218670530-Yl89 sha256:55fe818a1a0e4180c83abda23d230ace6c4420b40adcce898496d62508df17d2": failed to convert whiteout file "tmp/.wh.libpg-query.tar.gz": operation not permitted; ghcr.io/supabase/realtime:v2.129.3 attempt 2: v2.129.3: Pulling from supabase/realtime
+4f4fb700ef54: Pulling fs layer
+62d958520b0b: Pulling fs layer
+07f6c7f37eb7: Pulling fs layer
+062e450697fa: Pulling fs layer
+9d445f162b30: Pulling fs layer
+4683247db99b: Pulling fs layer
+0ced55f3e717: Pulling fs layer
+e39a20378c07: Pulling fs layer
+aadc1df55248: Pulling fs layer
+ac006f7e52ef: Pulling fs layer
+f066bdfa8565: Pulling fs layer
+219bccc39f10: Pulling fs layer
+4f4fb700ef54: Already exists
+4683247db99b: Download complete
+62d958520b0b: Download complete
+4f4fb700ef54: Pull complete
+219bccc39f10: Download complete
+e39a20378c07: Download complete
+9d445f162b30: Download complete
+0ced55f3e717: Download complete
+f066bdfa8565: Download complete
+8c7a9d068733: Download complete
+062e450697fa: Download complete
+07f6c7f37eb7: Download complete
+062e450697fa: Pull complete
+aadc1df55248: Download complete
+ac006f7e52ef: Download complete
+aadc1df55248: Pull complete
+219bccc39f10: Pull complete
+9d445f162b30: Pull complete
+07f6c7f37eb7: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:f066bdfa8565ddb58716a39bfbabc26abab1038be9e22f0c854f168a4ea1aa72) to overlayfs as "extract-81866284-xj5s sha256:55fe818a1a0e4180c83abda23d230ace6c4420b40adcce898496d62508df17d2": failed to convert whiteout file "tmp/.wh.libpg-query.tar.gz": operation not permitted; ghcr.io/supabase/realtime:v2.129.3 attempt 3: v2.129.3: Pulling from supabase/realtime
+4f4fb700ef54: Pulling fs layer
+062e450697fa: Pulling fs layer
+aadc1df55248: Pulling fs layer
+07f6c7f37eb7: Pulling fs layer
+219bccc39f10: Pulling fs layer
+9d445f162b30: Pulling fs layer
+f066bdfa8565: Pulling fs layer
+4683247db99b: Pulling fs layer
+0ced55f3e717: Pulling fs layer
+ac006f7e52ef: Pulling fs layer
+e39a20378c07: Pulling fs layer
+62d958520b0b: Pulling fs layer
+4f4fb700ef54: Already exists
+4f4fb700ef54: Pull complete
+f066bdfa8565: Download complete
+62d958520b0b: Download complete
+4683247db99b: Download complete
+e39a20378c07: Download complete
+219bccc39f10: Download complete
+9d445f162b30: Download complete
+0ced55f3e717: Download complete
+8c7a9d068733: Download complete
+ac006f7e52ef: Download complete
+07f6c7f37eb7: Download complete
+062e450697fa: Download complete
+aadc1df55248: Download complete
+062e450697fa: Pull complete
+aadc1df55248: Pull complete
+219bccc39f10: Pull complete
+9d445f162b30: Pull complete
+07f6c7f37eb7: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:f066bdfa8565ddb58716a39bfbabc26abab1038be9e22f0c854f168a4ea1aa72) to overlayfs as "extract-301510131-LI-x sha256:55fe818a1a0e4180c83abda23d230ace6c4420b40adcce898496d62508df17d2": failed to convert whiteout file "tmp/.wh.libpg-query.tar.gz": operation not permitted; supabase/realtime:v2.129.3 attempt 1: v2.129.3: Pulling from supabase/realtime
+4f4fb700ef54: Pulling fs layer
+f066bdfa8565: Pulling fs layer
+0ced55f3e717: Pulling fs layer
+e39a20378c07: Pulling fs layer
+aadc1df55248: Pulling fs layer
+4683247db99b: Pulling fs layer
+07f6c7f37eb7: Pulling fs layer
+ac006f7e52ef: Pulling fs layer
+219bccc39f10: Pulling fs layer
+62d958520b0b: Pulling fs layer
+9d445f162b30: Pulling fs layer
+062e450697fa: Pulling fs layer
+4f4fb700ef54: Already exists
+4f4fb700ef54: Pull complete
+f066bdfa8565: Download complete
+4683247db99b: Download complete
+219bccc39f10: Download complete
+62d958520b0b: Download complete
+e39a20378c07: Download complete
+0ced55f3e717: Download complete
+9d445f162b30: Download complete
+8c7a9d068733: Download complete
+07f6c7f37eb7: Download complete
+ac006f7e52ef: Download complete
+062e450697fa: Download complete
+aadc1df55248: Download complete
+062e450697fa: Pull complete
+aadc1df55248: Pull complete
+219bccc39f10: Pull complete
+9d445f162b30: Pull complete
+07f6c7f37eb7: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:f066bdfa8565ddb58716a39bfbabc26abab1038be9e22f0c854f168a4ea1aa72) to overlayfs as "extract-628365838-f4IO sha256:55fe818a1a0e4180c83abda23d230ace6c4420b40adcce898496d62508df17d2": failed to convert whiteout file "tmp/.wh.libpg-query.tar.gz": operation not permitted; supabase/realtime:v2.129.3 attempt 2: v2.129.3: Pulling from supabase/realtime
+4f4fb700ef54: Pulling fs layer
+f066bdfa8565: Pulling fs layer
+9d445f162b30: Pulling fs layer
+4683247db99b: Pulling fs layer
+aadc1df55248: Pulling fs layer
+07f6c7f37eb7: Pulling fs layer
+0ced55f3e717: Pulling fs layer
+219bccc39f10: Pulling fs layer
+062e450697fa: Pulling fs layer
+e39a20378c07: Pulling fs layer
+ac006f7e52ef: Pulling fs layer
+62d958520b0b: Pulling fs layer
+4f4fb700ef54: Already exists
+4f4fb700ef54: Pull complete
+f066bdfa8565: Download complete
+4683247db99b: Download complete
+e39a20378c07: Download complete
+219bccc39f10: Download complete
+62d958520b0b: Download complete
+8c7a9d068733: Download complete
+9d445f162b30: Download complete
+0ced55f3e717: Download complete
+062e450697fa: Download complete
+ac006f7e52ef: Download complete
+07f6c7f37eb7: Download complete
+062e450697fa: Pull complete
+aadc1df55248: Download complete
+aadc1df55248: Pull complete
+07f6c7f37eb7: Pull complete
+219bccc39f10: Pull complete
+9d445f162b30: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:f066bdfa8565ddb58716a39bfbabc26abab1038be9e22f0c854f168a4ea1aa72) to overlayfs as "extract-222297521-sVwi sha256:55fe818a1a0e4180c83abda23d230ace6c4420b40adcce898496d62508df17d2": failed to convert whiteout file "tmp/.wh.libpg-query.tar.gz": operation not permitted; supabase/realtime:v2.129.3 attempt 3: v2.129.3: Pulling from supabase/realtime
+4f4fb700ef54: Pulling fs layer
+07f6c7f37eb7: Pulling fs layer
+0ced55f3e717: Pulling fs layer
+9d445f162b30: Pulling fs layer
+f066bdfa8565: Pulling fs layer
+ac006f7e52ef: Pulling fs layer
+e39a20378c07: Pulling fs layer
+4683247db99b: Pulling fs layer
+aadc1df55248: Pulling fs layer
+219bccc39f10: Pulling fs layer
+62d958520b0b: Pulling fs layer
+062e450697fa: Pulling fs layer
+4f4fb700ef54: Already exists
+4f4fb700ef54: Pull complete
+e39a20378c07: Download complete
+4683247db99b: Download complete
+62d958520b0b: Download complete
+219bccc39f10: Download complete
+0ced55f3e717: Download complete
+9d445f162b30: Download complete
+f066bdfa8565: Download complete
+8c7a9d068733: Download complete
+ac006f7e52ef: Download complete
+07f6c7f37eb7: Download complete
+062e450697fa: Download complete
+aadc1df55248: Download complete
+062e450697fa: Pull complete
+aadc1df55248: Pull complete
+219bccc39f10: Pull complete
+9d445f162b30: Pull complete
+219bccc39f10: Pull complete
+9d445f162b30: Pull complete
+07f6c7f37eb7: Pull complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:f066bdfa8565ddb58716a39bfbabc26abab1038be9e22f0c854f168a4ea1aa72) to overlayfs as "extract-481035577-Meu8 sha256:55fe818a1a0e4180c83abda23d230ace6c4420b40adcce898496d62508df17d2": failed to convert whiteout file "tmp/.wh.libpg-query.tar.gz": operation not permitted
+failed to pull docker image from all registries: public.ecr.aws/supabase/storage-api:v1.70.3 attempt 1: v1.70.3: Pulling from supabase/storage-api
+868d43efe767: Pulling fs layer
+5f05fbb94ac9: Pulling fs layer
+dbd229483e61: Pulling fs layer
+f4e2bfbd8bcd: Pulling fs layer
+521c5280947c: Pulling fs layer
+3f609ae12598: Pulling fs layer
+78f6dd8aae59: Pulling fs layer
+c80645774acf: Pulling fs layer
+cecc09177dca: Pulling fs layer
+6db964937c43: Pulling fs layer
+5e731b050e43: Pulling fs layer
+3adfb80f0287: Pulling fs layer
+0f248d4fdffd: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:0f248d4fdffda4033dc95b28fd74e8449c4a0a7039c673b19c6128cb1a3f29f7) to overlayfs as "extract-954908657-wCEG sha256:13f9cc0b59182b6552d87dce283a86e92849632ae6df1d7a60b5705b310524f8": failed to convert whiteout file "usr/local/lib/node_modules/npm/.wh..npmrc": operation not permitted; public.ecr.aws/supabase/storage-api:v1.70.3 attempt 2: v1.70.3: Pulling from supabase/storage-api
+868d43efe767: Pulling fs layer
+5f05fbb94ac9: Pulling fs layer
+5e731b050e43: Pulling fs layer
+dbd229483e61: Pulling fs layer
+f4e2bfbd8bcd: Pulling fs layer
+521c5280947c: Pulling fs layer
+3f609ae12598: Pulling fs layer
+c80645774acf: Pulling fs layer
+78f6dd8aae59: Pulling fs layer
+0f248d4fdffd: Pulling fs layer
+6db964937c43: Pulling fs layer
+3adfb80f0287: Pulling fs layer
+cecc09177dca: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:0f248d4fdffda4033dc95b28fd74e8449c4a0a7039c673b19c6128cb1a3f29f7) to overlayfs as "extract-211300232-NICN sha256:13f9cc0b59182b6552d87dce283a86e92849632ae6df1d7a60b5705b310524f8": failed to convert whiteout file "usr/local/lib/node_modules/npm/.wh..npmrc": operation not permitted; public.ecr.aws/supabase/storage-api:v1.70.3 attempt 3: v1.70.3: Pulling from supabase/storage-api
+868d43efe767: Pulling fs layer
+c80645774acf: Pulling fs layer
+5e731b050e43: Pulling fs layer
+78f6dd8aae59: Pulling fs layer
+5f05fbb94ac9: Pulling fs layer
+cecc09177dca: Pulling fs layer
+3adfb80f0287: Pulling fs layer
+dbd229483e61: Pulling fs layer
+521c5280947c: Pulling fs layer
+0f248d4fdffd: Pulling fs layer
+3f609ae12598: Pulling fs layer
+f4e2bfbd8bcd: Pulling fs layer
+6db964937c43: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:0f248d4fdffda4033dc95b28fd74e8449c4a0a7039c673b19c6128cb1a3f29f7) to overlayfs as "extract-485371875-iXjI sha256:13f9cc0b59182b6552d87dce283a86e92849632ae6df1d7a60b5705b310524f8": failed to convert whiteout file "usr/local/lib/node_modules/npm/.wh..npmrc": operation not permitted; ghcr.io/supabase/storage-api:v1.70.3 attempt 1: v1.70.3: Pulling from supabase/storage-api
+868d43efe767: Pulling fs layer
+c80645774acf: Pulling fs layer
+5e731b050e43: Pulling fs layer
+5f05fbb94ac9: Pulling fs layer
+0f248d4fdffd: Pulling fs layer
+dbd229483e61: Pulling fs layer
+6db964937c43: Pulling fs layer
+f4e2bfbd8bcd: Pulling fs layer
+78f6dd8aae59: Pulling fs layer
+521c5280947c: Pulling fs layer
+3f609ae12598: Pulling fs layer
+cecc09177dca: Pulling fs layer
+3adfb80f0287: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:0f248d4fdffda4033dc95b28fd74e8449c4a0a7039c673b19c6128cb1a3f29f7) to overlayfs as "extract-999919618-za90 sha256:13f9cc0b59182b6552d87dce283a86e92849632ae6df1d7a60b5705b310524f8": failed to convert whiteout file "usr/local/lib/node_modules/npm/.wh..npmrc": operation not permitted; ghcr.io/supabase/storage-api:v1.70.3 attempt 2: v1.70.3: Pulling from supabase/storage-api
+868d43efe767: Pulling fs layer
+5f05fbb94ac9: Pulling fs layer
+dbd229483e61: Pulling fs layer
+f4e2bfbd8bcd: Pulling fs layer
+521c5280947c: Pulling fs layer
+3f609ae12598: Pulling fs layer
+6db964937c43: Pulling fs layer
+5e731b050e43: Pulling fs layer
+0f248d4fdffd: Pulling fs layer
+cecc09177dca: Pulling fs layer
+3adfb80f0287: Pulling fs layer
+78f6dd8aae59: Pulling fs layer
+c80645774acf: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:0f248d4fdffda4033dc95b28fd74e8449c4a0a7039c673b19c6128cb1a3f29f7) to overlayfs as "extract-626932877-jvIm sha256:13f9cc0b59182b6552d87dce283a86e92849632ae6df1d7a60b5705b310524f8": failed to convert whiteout file "usr/local/lib/node_modules/npm/.wh..npmrc": operation not permitted; ghcr.io/supabase/storage-api:v1.70.3 attempt 3: v1.70.3: Pulling from supabase/storage-api
+868d43efe767: Pulling fs layer
+5f05fbb94ac9: Pulling fs layer
+dbd229483e61: Pulling fs layer
+f4e2bfbd8bcd: Pulling fs layer
+521c5280947c: Pulling fs layer
+3f609ae12598: Pulling fs layer
+c80645774acf: Pulling fs layer
+5e731b050e43: Pulling fs layer
+0f248d4fdffd: Pulling fs layer
+6db964937c43: Pulling fs layer
+78f6dd8aae59: Pulling fs layer
+cecc09177dca: Pulling fs layer
+3adfb80f0287: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:0f248d4fdffda4033dc95b28fd74e8449c4a0a7039c673b19c6128cb1a3f29f7) to overlayfs as "extract-603278296-nj0q sha256:13f9cc0b59182b6552d87dce283a86e92849632ae6df1d7a60b5705b310524f8": failed to convert whiteout file "usr/local/lib/node_modules/npm/.wh..npmrc": operation not permitted; supabase/storage-api:v1.70.3 attempt 1: v1.70.3: Pulling from supabase/storage-api
+868d43efe767: Pulling fs layer
+c80645774acf: Pulling fs layer
+5e731b050e43: Pulling fs layer
+5f05fbb94ac9: Pulling fs layer
+0f248d4fdffd: Pulling fs layer
+dbd229483e61: Pulling fs layer
+6db964937c43: Pulling fs layer
+f4e2bfbd8bcd: Pulling fs layer
+78f6dd8aae59: Pulling fs layer
+521c5280947c: Pulling fs layer
+cecc09177dca: Pulling fs layer
+3f609ae12598: Pulling fs layer
+3adfb80f0287: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:0f248d4fdffda4033dc95b28fd74e8449c4a0a7039c673b19c6128cb1a3f29f7) to overlayfs as "extract-553623044-uCg7 sha256:13f9cc0b59182b6552d87dce283a86e92849632ae6df1d7a60b5705b310524f8": failed to convert whiteout file "usr/local/lib/node_modules/npm/.wh..npmrc": operation not permitted; supabase/storage-api:v1.70.3 attempt 2: v1.70.3: Pulling from supabase/storage-api
+868d43efe767: Pulling fs layer
+5f05fbb94ac9: Pulling fs layer
+dbd229483e61: Pulling fs layer
+f4e2bfbd8bcd: Pulling fs layer
+521c5280947c: Pulling fs layer
+3f609ae12598: Pulling fs layer
+6db964937c43: Pulling fs layer
+78f6dd8aae59: Pulling fs layer
+cecc09177dca: Pulling fs layer
+c80645774acf: Pulling fs layer
+3adfb80f0287: Pulling fs layer
+5e731b050e43: Pulling fs layer
+0f248d4fdffd: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:0f248d4fdffda4033dc95b28fd74e8449c4a0a7039c673b19c6128cb1a3f29f7) to overlayfs as "extract-661698334-vMH6 sha256:13f9cc0b59182b6552d87dce283a86e92849632ae6df1d7a60b5705b310524f8": failed to convert whiteout file "usr/local/lib/node_modules/npm/.wh..npmrc": operation not permitted; supabase/storage-api:v1.70.3 attempt 3: v1.70.3: Pulling from supabase/storage-api
+dbd229483e61: Pulling fs layer
+f4e2bfbd8bcd: Pulling fs layer
+0f248d4fdffd: Pulling fs layer
+521c5280947c: Pulling fs layer
+5f05fbb94ac9: Pulling fs layer
+3f609ae12598: Pulling fs layer
+c80645774acf: Pulling fs layer
+5e731b050e43: Pulling fs layer
+78f6dd8aae59: Pulling fs layer
+6db964937c43: Pulling fs layer
+cecc09177dca: Pulling fs layer
+3adfb80f0287: Pulling fs layer
+868d43efe767: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:0f248d4fdffda4033dc95b28fd74e8449c4a0a7039c673b19c6128cb1a3f29f7) to overlayfs as "extract-725570076-wVBh sha256:13f9cc0b59182b6552d87dce283a86e92849632ae6df1d7a60b5705b310524f8": failed to convert whiteout file "usr/local/lib/node_modules/npm/.wh..npmrc": operation not permitted
+failed to pull docker image from all registries: public.ecr.aws/supabase/postgres-meta:v0.98.0 attempt 1: v0.98.0: Pulling from supabase/postgres-meta
+7505145a46ec: Pulling fs layer
+5c18a8cdfd6b: Pulling fs layer
+23c96171f2fe: Pulling fs layer
+4b118796ff6a: Pulling fs layer
+753ab3b39a58: Pulling fs layer
+44136fa355b3: Already exists
+8a9aedb7cce2: Download complete
+7505145a46ec: Download complete
+23c96171f2fe: Download complete
+5c18a8cdfd6b: Download complete
+4b118796ff6a: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:4b118796ff6a5ec54e8c8377233f6a9cc0dd4139322a8650c3b44139d4701502) to overlayfs as "extract-19691262-J5V3 sha256:5a310934a5ac8b65e3eee32b455e4f607b48a3174a1278ef4cff365807f1ae91": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted; public.ecr.aws/supabase/postgres-meta:v0.98.0 attempt 2: v0.98.0: Pulling from supabase/postgres-meta
+44136fa355b3: Already exists
+7505145a46ec: Pulling fs layer
+4b118796ff6a: Pulling fs layer
+753ab3b39a58: Pulling fs layer
+23c96171f2fe: Pulling fs layer
+5c18a8cdfd6b: Pulling fs layer
+8a9aedb7cce2: Download complete
+7505145a46ec: Download complete
+23c96171f2fe: Download complete
+5c18a8cdfd6b: Download complete
+4b118796ff6a: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:4b118796ff6a5ec54e8c8377233f6a9cc0dd4139322a8650c3b44139d4701502) to overlayfs as "extract-562555951-KDNP sha256:5a310934a5ac8b65e3eee32b455e4f607b48a3174a1278ef4cff365807f1ae91": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted; public.ecr.aws/supabase/postgres-meta:v0.98.0 attempt 3: v0.98.0: Pulling from supabase/postgres-meta
+7505145a46ec: Pulling fs layer
+23c96171f2fe: Pulling fs layer
+4b118796ff6a: Pulling fs layer
+753ab3b39a58: Pulling fs layer
+5c18a8cdfd6b: Pulling fs layer
+23c96171f2fe: Download complete
+5c18a8cdfd6b: Download complete
+7505145a46ec: Download complete
+4b118796ff6a: Download complete
+44136fa355b3: Already exists
+8a9aedb7cce2: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:4b118796ff6a5ec54e8c8377233f6a9cc0dd4139322a8650c3b44139d4701502) to overlayfs as "extract-854692717-g0nZ sha256:5a310934a5ac8b65e3eee32b455e4f607b48a3174a1278ef4cff365807f1ae91": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted; ghcr.io/supabase/postgres-meta:v0.98.0 attempt 1: v0.98.0: Pulling from supabase/postgres-meta
+7505145a46ec: Pulling fs layer
+23c96171f2fe: Pulling fs layer
+5c18a8cdfd6b: Pulling fs layer
+4b118796ff6a: Pulling fs layer
+753ab3b39a58: Pulling fs layer
+44136fa355b3: Already exists
+7505145a46ec: Download complete
+23c96171f2fe: Download complete
+5c18a8cdfd6b: Download complete
+4b118796ff6a: Download complete
+8a9aedb7cce2: Download complete
+753ab3b39a58: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:4b118796ff6a5ec54e8c8377233f6a9cc0dd4139322a8650c3b44139d4701502) to overlayfs as "extract-233996425-GBee sha256:5a310934a5ac8b65e3eee32b455e4f607b48a3174a1278ef4cff365807f1ae91": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted; ghcr.io/supabase/postgres-meta:v0.98.0 attempt 2: v0.98.0: Pulling from supabase/postgres-meta
+23c96171f2fe: Pulling fs layer
+4b118796ff6a: Pulling fs layer
+753ab3b39a58: Pulling fs layer
+5c18a8cdfd6b: Pulling fs layer
+7505145a46ec: Pulling fs layer
+44136fa355b3: Already exists
+8a9aedb7cce2: Download complete
+23c96171f2fe: Download complete
+7505145a46ec: Download complete
+5c18a8cdfd6b: Download complete
+4b118796ff6a: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:4b118796ff6a5ec54e8c8377233f6a9cc0dd4139322a8650c3b44139d4701502) to overlayfs as "extract-206688436-uxOh sha256:5a310934a5ac8b65e3eee32b455e4f607b48a3174a1278ef4cff365807f1ae91": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted; ghcr.io/supabase/postgres-meta:v0.98.0 attempt 3: v0.98.0: Pulling from supabase/postgres-meta
+7505145a46ec: Pulling fs layer
+753ab3b39a58: Pulling fs layer
+23c96171f2fe: Pulling fs layer
+4b118796ff6a: Pulling fs layer
+5c18a8cdfd6b: Pulling fs layer
+44136fa355b3: Already exists
+7505145a46ec: Download complete
+8a9aedb7cce2: Download complete
+23c96171f2fe: Download complete
+5c18a8cdfd6b: Download complete
+4b118796ff6a: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:4b118796ff6a5ec54e8c8377233f6a9cc0dd4139322a8650c3b44139d4701502) to overlayfs as "extract-639119963-eGl- sha256:5a310934a5ac8b65e3eee32b455e4f607b48a3174a1278ef4cff365807f1ae91": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted; supabase/postgres-meta:v0.98.0 attempt 1: v0.98.0: Pulling from supabase/postgres-meta
+7505145a46ec: Pulling fs layer
+23c96171f2fe: Pulling fs layer
+753ab3b39a58: Pulling fs layer
+4b118796ff6a: Pulling fs layer
+5c18a8cdfd6b: Pulling fs layer
+5c18a8cdfd6b: Download complete
+44136fa355b3: Already exists
+7505145a46ec: Download complete
+23c96171f2fe: Download complete
+8a9aedb7cce2: Download complete
+4b118796ff6a: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:4b118796ff6a5ec54e8c8377233f6a9cc0dd4139322a8650c3b44139d4701502) to overlayfs as "extract-821175012-K50o sha256:5a310934a5ac8b65e3eee32b455e4f607b48a3174a1278ef4cff365807f1ae91": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted; supabase/postgres-meta:v0.98.0 attempt 2: v0.98.0: Pulling from supabase/postgres-meta
+44136fa355b3: Already exists
+7505145a46ec: Pulling fs layer
+4b118796ff6a: Pulling fs layer
+23c96171f2fe: Pulling fs layer
+753ab3b39a58: Pulling fs layer
+5c18a8cdfd6b: Pulling fs layer
+8a9aedb7cce2: Download complete
+7505145a46ec: Download complete
+23c96171f2fe: Download complete
+5c18a8cdfd6b: Download complete
+4b118796ff6a: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:4b118796ff6a5ec54e8c8377233f6a9cc0dd4139322a8650c3b44139d4701502) to overlayfs as "extract-339328997-p_tQ sha256:5a310934a5ac8b65e3eee32b455e4f607b48a3174a1278ef4cff365807f1ae91": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted; supabase/postgres-meta:v0.98.0 attempt 3: v0.98.0: Pulling from supabase/postgres-meta
+7505145a46ec: Pulling fs layer
+23c96171f2fe: Pulling fs layer
+753ab3b39a58: Pulling fs layer
+4b118796ff6a: Pulling fs layer
+5c18a8cdfd6b: Pulling fs layer
+44136fa355b3: Already exists
+7505145a46ec: Download complete
+23c96171f2fe: Download complete
+5c18a8cdfd6b: Download complete
+8a9aedb7cce2: Download complete
+4b118796ff6a: Download complete
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:4b118796ff6a5ec54e8c8377233f6a9cc0dd4139322a8650c3b44139d4701502) to overlayfs as "extract-914928380-ahix sha256:5a310934a5ac8b65e3eee32b455e4f607b48a3174a1278ef4cff365807f1ae91": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted
+failed to pull docker image from all registries: public.ecr.aws/supabase/studio:2026.08.17-sha-0c1da8f attempt 1: 2026.08.17-sha-0c1da8f: Pulling from supabase/studio
+264588d8dd60: Pulling fs layer
+b7d0efd3fc9c: Pulling fs layer
+c0c4dc518956: Pulling fs layer
+512fd86e6200: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:b7d0efd3fc9c7637c2b6ddc5c27db770b986ee40d93d0f8943b4d6837ca8aa25) to overlayfs as "extract-213321962-iXor sha256:b3574fef8c166763bdc1e161ea0691fc21621f1d145527fc85ec6e88e0c6a7bb": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted; public.ecr.aws/supabase/studio:2026.08.17-sha-0c1da8f attempt 2: 2026.08.17-sha-0c1da8f: Pulling from supabase/studio
+264588d8dd60: Pulling fs layer
+512fd86e6200: Pulling fs layer
+b7d0efd3fc9c: Pulling fs layer
+c0c4dc518956: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:b7d0efd3fc9c7637c2b6ddc5c27db770b986ee40d93d0f8943b4d6837ca8aa25) to overlayfs as "extract-137428998-XuvZ sha256:b3574fef8c166763bdc1e161ea0691fc21621f1d145527fc85ec6e88e0c6a7bb": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted; public.ecr.aws/supabase/studio:2026.08.17-sha-0c1da8f attempt 3: 2026.08.17-sha-0c1da8f: Pulling from supabase/studio
+264588d8dd60: Pulling fs layer
+512fd86e6200: Pulling fs layer
+b7d0efd3fc9c: Pulling fs layer
+c0c4dc518956: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:b7d0efd3fc9c7637c2b6ddc5c27db770b986ee40d93d0f8943b4d6837ca8aa25) to overlayfs as "extract-313686050-qZFa sha256:b3574fef8c166763bdc1e161ea0691fc21621f1d145527fc85ec6e88e0c6a7bb": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted; ghcr.io/supabase/studio:2026.08.17-sha-0c1da8f attempt 1: 2026.08.17-sha-0c1da8f: Pulling from supabase/studio
+264588d8dd60: Pulling fs layer
+b7d0efd3fc9c: Pulling fs layer
+c0c4dc518956: Pulling fs layer
+512fd86e6200: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:b7d0efd3fc9c7637c2b6ddc5c27db770b986ee40d93d0f8943b4d6837ca8aa25) to overlayfs as "extract-977430510-h8Dr sha256:b3574fef8c166763bdc1e161ea0691fc21621f1d145527fc85ec6e88e0c6a7bb": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted; ghcr.io/supabase/studio:2026.08.17-sha-0c1da8f attempt 2: 2026.08.17-sha-0c1da8f: Pulling from supabase/studio
+264588d8dd60: Pulling fs layer
+c0c4dc518956: Pulling fs layer
+b7d0efd3fc9c: Pulling fs layer
+512fd86e6200: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:b7d0efd3fc9c7637c2b6ddc5c27db770b986ee40d93d0f8943b4d6837ca8aa25) to overlayfs as "extract-557461774-isdv sha256:b3574fef8c166763bdc1e161ea0691fc21621f1d145527fc85ec6e88e0c6a7bb": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted; ghcr.io/supabase/studio:2026.08.17-sha-0c1da8f attempt 3: 2026.08.17-sha-0c1da8f: Pulling from supabase/studio
+512fd86e6200: Pulling fs layer
+b7d0efd3fc9c: Pulling fs layer
+c0c4dc518956: Pulling fs layer
+264588d8dd60: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:b7d0efd3fc9c7637c2b6ddc5c27db770b986ee40d93d0f8943b4d6837ca8aa25) to overlayfs as "extract-346009398-8fhD sha256:b3574fef8c166763bdc1e161ea0691fc21621f1d145527fc85ec6e88e0c6a7bb": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted; supabase/studio:2026.08.17-sha-0c1da8f attempt 1: 2026.08.17-sha-0c1da8f: Pulling from supabase/studio
+264588d8dd60: Pulling fs layer
+c0c4dc518956: Pulling fs layer
+b7d0efd3fc9c: Pulling fs layer
+512fd86e6200: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:b7d0efd3fc9c7637c2b6ddc5c27db770b986ee40d93d0f8943b4d6837ca8aa25) to overlayfs as "extract-403745987-NVDv sha256:b3574fef8c166763bdc1e161ea0691fc21621f1d145527fc85ec6e88e0c6a7bb": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted; supabase/studio:2026.08.17-sha-0c1da8f attempt 2: 2026.08.17-sha-0c1da8f: Pulling from supabase/studio
+264588d8dd60: Pulling fs layer
+b7d0efd3fc9c: Pulling fs layer
+c0c4dc518956: Pulling fs layer
+512fd86e6200: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:b7d0efd3fc9c7637c2b6ddc5c27db770b986ee40d93d0f8943b4d6837ca8aa25) to overlayfs as "extract-106583910-1cm1 sha256:b3574fef8c166763bdc1e161ea0691fc21621f1d145527fc85ec6e88e0c6a7bb": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted; supabase/studio:2026.08.17-sha-0c1da8f attempt 3: 2026.08.17-sha-0c1da8f: Pulling from supabase/studio
+264588d8dd60: Pulling fs layer
+512fd86e6200: Pulling fs layer
+b7d0efd3fc9c: Pulling fs layer
+c0c4dc518956: Pulling fs layer
+failed to extract layer (application/vnd.oci.image.layer.v1.tar+gzip sha256:b7d0efd3fc9c7637c2b6ddc5c27db770b986ee40d93d0f8943b4d6837ca8aa25) to overlayfs as "extract-138500957-Ul9Y sha256:b3574fef8c166763bdc1e161ea0691fc21621f1d145527fc85ec6e88e0c6a7bb": failed to convert whiteout file "var/lib/apt/lists/.wh.auxfiles": operation not permitted
+Try rerunning the command with --debug to troubleshoot the error.
