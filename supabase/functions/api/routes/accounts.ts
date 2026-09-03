@@ -75,12 +75,15 @@ app.post('/', zValidator('json', CreateAccountSchema), async (c) => {
 
     const body = c.req.valid('json');
 
+    // Pre-generate the account UUID so we don't need .select().
+    // Using .select() immediately after insert fails because RLS SELECT policies
+    // require an account_member record that hasn't been created yet.
+    const accountId = crypto.randomUUID();
+
     // 1. Create the account
-    const { data: account, error: accountError } = await supabase
+    const { error: accountError } = await supabase
         .from('accounts')
-        .insert({ ...body, owner_user_id: user.id })
-        .select()
-        .single();
+        .insert({ id: accountId, ...body, owner_user_id: user.id });
 
     if (accountError) {
         // Unique constraint on slug
@@ -94,7 +97,7 @@ app.post('/', zValidator('json', CreateAccountSchema), async (c) => {
     const { error: memberError } = await supabase
         .from('account_members')
         .insert({
-            account_id: account.id,
+            account_id: accountId,
             user_id: user.id,
             role: 'owner',
         });
@@ -103,11 +106,21 @@ app.post('/', zValidator('json', CreateAccountSchema), async (c) => {
         return c.json({
             error: 'Account created but failed to assign owner membership.',
             details: memberError.message,
-            account,
         }, 500);
     }
 
-    return c.json(account, 201);
+    // We fetch the account again so we return a complete row matching the DB
+    const { data: accountData, error: fetchError } = await supabase
+        .from('accounts')
+        .select('*')
+        .eq('id', accountId)
+        .single();
+
+    if (fetchError) {
+        return c.json({ error: 'Account created but failed to fetch.' }, 500);
+    }
+
+    return c.json(accountData, 201);
 });
 
 // ---------------------------------------------------------------------------
