@@ -2,28 +2,36 @@
 
 import { createClient } from '@/utils/supabase/server'
 import { revalidatePath } from 'next/cache'
+import { GiveKudosSchema } from '@sprintpulse/shared'
 
 export async function createKudos(formData: FormData) {
   const supabase = await createClient()
 
-  const accountId = formData.get('accountId') as string
-  const teamId = formData.get('teamId') as string
-  const senderProfileId = formData.get('senderProfileId') as string
-  const receiverProfileId = formData.get('receiverProfileId') as string
-  const category = formData.get('category') as string
-  const message = formData.get('message') as string
+  const rawData = {
+    team_id: formData.get('teamId') as string,
+    receiver_profile_id: formData.get('receiverProfileId') as string,
+    category: formData.get('category') as string,
+    message: formData.get('message') as string,
+    sprint_id: formData.get('sprintId') as string || null,
+  }
 
-  if (!message || !receiverProfileId) return { error: 'Required fields missing' }
+  const parsed = GiveKudosSchema.safeParse(rawData)
+
+  if (!parsed.success) {
+    return { error: 'Required fields missing or invalid' }
+  }
+
+  const accountId = formData.get('accountId') as string
+  const senderProfileId = formData.get('senderProfileId') as string
+
+  if (!accountId || !senderProfileId) return { error: 'Required context missing' }
 
   const { error } = await supabase
     .from('kudos')
     .insert({
       account_id: accountId,
-      team_id: teamId,
       sender_profile_id: senderProfileId,
-      receiver_profile_id: receiverProfileId,
-      category,
-      message,
+      ...parsed.data,
     })
 
   if (error) {
