@@ -60,11 +60,16 @@ jobs:
           version: latest
 
       - name: Start Supabase
-        run: supabase start
+        run: supabase start --ignore-health-check
 
       - name: Extract Supabase Keys
         run: |
           supabase status -o json | jq -r 'to_entries | .[] | select(.key | test("API_URL|SERVICE_ROLE_KEY|ANON_KEY")) | "\(.key)=\(.value)"' >> $GITHUB_ENV
 
       - name: Run Tests
+        env:
+          SUPABASE_URL: ${{ env.API_URL }}
+          SUPABASE_ANON_KEY: ${{ env.ANON_KEY }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ env.SERVICE_ROLE_KEY }}
+          FUNCTIONS_URL: ${{ env.API_URL }}/functions/v1
         run: pnpm test

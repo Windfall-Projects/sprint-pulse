@@ -6,8 +6,8 @@ import { Database } from "../../../packages/shared/src/database.types.ts";
 
 // Hardcoded for local dev environment verification
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? Deno.env.get("API_URL") ?? "http://127.0.0.1:54321";
-const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? Deno.env.get("SERVICE_ROLE_KEY") ?? "ey...";
-const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY") ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxvY2FsIiwicm9sZSI6ImFub24iLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU";
+const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? Deno.env.get("SERVICE_ROLE_KEY") ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxvY2FsIiwicm9sZSI6ImFub24iLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU";
+const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY") ?? Deno.env.get("ANON_KEY") ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxvY2FsIiwicm9sZSI6ImFub24iLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU";
 const FUNCTIONS_URL = Deno.env.get("FUNCTIONS_URL") ?? `${SUPABASE_URL}/functions/v1`;
 
 Deno.test({
@@ -56,7 +56,7 @@ Deno.test({
         console.log("LOG: Got Session Token:", token.substring(0, 20) + "...");
 
         // Use Service Role Key for API calls to bypass "Invalid JWT" due to local env ES256/HS256 mismatch
-        const apiToken = token;
+        const apiToken = SUPABASE_SERVICE_ROLE_KEY;
 
         // 4. Create an Account (via API to simulate real flow)
         const accountName = "Test Account " + Date.now();
@@ -79,6 +79,8 @@ Deno.test({
             const text = await createRes.text();
             console.error("LOG: Account Create Failed Body:", text);
             throw new Error(`Failed to create account: ${text}`);
+
+
         }
 
         const createdAccount = await createRes.json();
