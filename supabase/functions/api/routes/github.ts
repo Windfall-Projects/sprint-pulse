@@ -1,6 +1,7 @@
 import { Hono } from 'hono';
 import { createClient } from '@supabase/supabase-js';
 import { Database } from '../../../../packages/shared/src/database.types.ts';
+import { GithubWebhookPayloadSchema } from '../../../../packages/shared/src/schemas/index.ts';
 
 const app = new Hono();
 
@@ -9,7 +10,13 @@ app.post('/webhook', async (c) => {
     // In production, verify signature with Github App Secret
     // const signature = c.req.header('x-hub-signature-256');
     const event = c.req.header('X-GitHub-Event');
-    const payload = await c.req.json();
+    const rawPayload = await c.req.json();
+
+    const parseResult = GithubWebhookPayloadSchema.safeParse(rawPayload);
+    if (!parseResult.success) {
+        return c.json({ error: parseResult.error }, 400);
+    }
+    const payload = parseResult.data;
 
     const supabase = createClient<Database>(
         Deno.env.get('SUPABASE_URL')!,
@@ -17,6 +24,10 @@ app.post('/webhook', async (c) => {
     );
 
     if (event === 'issues') {
+        if (!payload.issue || !payload.repository?.full_name) {
+            return c.json({ error: 'Missing issue or repository information in payload' }, 400);
+        }
+
         const action = payload.action;
         const issue = payload.issue;
         const repoFullName = payload.repository.full_name;
