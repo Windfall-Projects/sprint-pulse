@@ -1,6 +1,7 @@
 import { Hono } from 'hono';
 import { createClient } from '@supabase/supabase-js';
 import { Database } from '../../../../packages/shared/src/database.types.ts';
+import { GitHubWebhookPayloadSchema } from '../../../../packages/shared/src/schemas/index.ts';
 
 const app = new Hono();
 
@@ -9,7 +10,13 @@ app.post('/webhook', async (c) => {
     // In production, verify signature with Github App Secret
     // const signature = c.req.header('x-hub-signature-256');
     const event = c.req.header('X-GitHub-Event');
-    const payload = await c.req.json();
+    const rawPayload = await c.req.json();
+    const parseResult = GitHubWebhookPayloadSchema.safeParse(rawPayload);
+
+    if (!parseResult.success) {
+        return c.json({ error: 'Invalid payload' }, 400);
+    }
+    const payload = parseResult.data;
 
     const supabase = createClient<Database>(
         Deno.env.get('SUPABASE_URL')!,
@@ -19,7 +26,11 @@ app.post('/webhook', async (c) => {
     if (event === 'issues') {
         const action = payload.action;
         const issue = payload.issue;
-        const repoFullName = payload.repository.full_name;
+        const repoFullName = payload.repository?.full_name;
+
+        if (!repoFullName) {
+            return c.json({ message: 'Missing repository information' }, 400);
+        }
 
         // Find mapping
         const { data: mapping } = await supabase
@@ -33,9 +44,9 @@ app.post('/webhook', async (c) => {
             return c.json({ message: 'No active mapping for this repository' }, 200);
         }
 
-        const account_id = (mapping.integrations as any).account_id;
+        const account_id = (mapping.integrations as unknown as { account_id: string }).account_id;
 
-        if (action === 'opened') {
+        if (action === 'opened' && issue) {
             await supabase.from('work_items').insert({
                 team_id: mapping.team_id,
                 account_id,
@@ -46,21 +57,23 @@ app.post('/webhook', async (c) => {
                 type: 'story',
                 provider: 'github',
                 external_id: issue.number.toString(),
-                external_url: issue.html_url
-            } as any);
-        } else if (action === 'edited') {
+                external_url: issue.html_url,
+                created_at: new Date().toISOString(),
+                updated_at: new Date().toISOString()
+            });
+        } else if (action === 'edited' && issue) {
             await supabase.from('work_items')
-                .update({ title: issue.title, description: issue.body } as any)
+                .update({ title: issue.title, description: issue.body })
                 .eq('provider', 'github')
                 .eq('external_id', issue.number.toString());
-        } else if (action === 'closed') {
+        } else if (action === 'closed' && issue) {
             await supabase.from('work_items')
-                .update({ status: 'done' } as any)
+                .update({ status: 'done' })
                 .eq('provider', 'github')
                 .eq('external_id', issue.number.toString());
-        } else if (action === 'reopened') {
+        } else if (action === 'reopened' && issue) {
             await supabase.from('work_items')
-                .update({ status: 'todo' } as any)
+                .update({ status: 'todo' })
                 .eq('provider', 'github')
                 .eq('external_id', issue.number.toString());
         }

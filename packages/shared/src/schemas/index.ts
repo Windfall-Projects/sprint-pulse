@@ -35,6 +35,19 @@ export const ProfileSchema = z.object({
   updated_at: Timestamp,
 });
 
+export const GitHubWebhookPayloadSchema = z.object({
+  action: z.string().optional(),
+  issue: z.object({
+    title: z.string(),
+    body: z.string().nullable().optional(),
+    number: z.number(),
+    html_url: z.string().url(),
+  }).optional(),
+  repository: z.object({
+    full_name: z.string(),
+  }).optional(),
+}).passthrough();
+
 export const AccountSchema = z.object({
   id: z.string().uuid(),
   name: z.string().min(1),
