@@ -57,6 +57,10 @@ app.post('/', zValidator('json', GiveKudosSchema), async (c) => {
 
     const body = c.req.valid('json');
 
+    if (!body.team_id) {
+        return c.json({ error: 'Team ID is required' }, 400);
+    }
+
     // Resolve account_id from team
     const { data: team, error: teamError } = await supabase
         .from('teams')
