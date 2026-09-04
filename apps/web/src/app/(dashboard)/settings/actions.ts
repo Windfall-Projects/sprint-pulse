@@ -2,6 +2,7 @@
 
 import { createClient } from '@/utils/supabase/server'
 import { revalidatePath } from 'next/cache'
+import { UpdateProfileSchema } from '@sprintpulse/shared'
 
 export async function updateProfileAction(prevState: any, formData: FormData) {
   const supabase = await createClient()
@@ -12,19 +13,21 @@ export async function updateProfileAction(prevState: any, formData: FormData) {
     return { error: 'Not authenticated' }
   }
 
-  const displayName = formData.get('displayName') as string
-  const avatarUrl = formData.get('avatarUrl') as string
+  const validatedFields = UpdateProfileSchema.safeParse({
+    display_name: formData.get('displayName'),
+    avatar_url: formData.get('avatarUrl'),
+  })
 
-  if (!displayName || displayName.trim() === '') {
-    return { error: 'Display Name is required' }
+  if (!validatedFields.success) {
+    return { error: 'Validation failed' }
   }
 
   // 2. Perform Update to profiles matching auth_user_id
   const { error } = await supabase
     .from('profiles')
     .update({
-      display_name: displayName,
-      avatar_url: avatarUrl || null,
+      display_name: validatedFields.data.display_name,
+      avatar_url: validatedFields.data.avatar_url || null,
       updated_at: new Date().toISOString()
     })
     .eq('auth_user_id', user.id)
