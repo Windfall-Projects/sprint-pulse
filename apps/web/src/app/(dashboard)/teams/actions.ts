@@ -2,6 +2,7 @@
 
 import { createClient } from '@/utils/supabase/server'
 import { revalidatePath } from 'next/cache'
+import { CreateVirtualProfileSchema } from '@sprintpulse/shared'
 
 export async function createTeam(formData: FormData) {
   const supabase = await createClient()
@@ -69,18 +70,24 @@ export async function createVirtualProfileAction(prevState: any, formData: FormD
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return { error: 'Not authenticated' }
 
-  const displayName = formData.get('displayName') as string
-  const avatarUrl = formData.get('avatarUrl') as string
-  const teamIdsRaw = formData.getAll('teamIds') as string[]
+  const payload = {
+    display_name: formData.get('displayName'),
+    avatar_url: formData.get('avatarUrl') || null,
+    team_ids: formData.getAll('teamIds'),
+  }
 
-  if (!displayName || displayName.trim() === '') return { error: 'Display name is required' }
+  const parsed = CreateVirtualProfileSchema.safeParse(payload)
+
+  if (!parsed.success) {
+    return { error: parsed.error.errors[0].message }
+  }
 
   // 1. Create the profile
   const { data: profile, error } = await supabase
     .from('profiles')
     .insert({
-      display_name: displayName,
-      avatar_url: avatarUrl || null,
+      display_name: parsed.data.display_name,
+      avatar_url: parsed.data.avatar_url || null,
       auth_user_id: null // Explicitly null for virtual
     })
     .select()
@@ -92,8 +99,8 @@ export async function createVirtualProfileAction(prevState: any, formData: FormD
   }
 
   // 2. Add to selected teams
-  if (teamIdsRaw.length > 0) {
-    const memberInserts = teamIdsRaw.map(teamId => ({
+  if ((parsed.data.team_ids && parsed.data.team_ids.length) > 0) {
+    const memberInserts = (parsed.data.team_ids || []).map(teamId => ({
       team_id: teamId,
       profile_id: profile.id,
       role: 'contributor' // Default role for new members
