@@ -2,6 +2,7 @@
 
 import { createClient } from '@/utils/supabase/server'
 import { revalidatePath } from 'next/cache'
+import { UpdateAccountSchema } from '@sprintpulse/shared'
 
 export async function updateWorkspaceName(formData: FormData) {
   const supabase = await createClient()
@@ -10,10 +11,15 @@ export async function updateWorkspaceName(formData: FormData) {
   if (!user) return { error: 'Not authenticated' }
 
   const accountId = formData.get('accountId') as string
-  const name = formData.get('name') as string
 
-  if (!name || name.trim() === '') {
-    return { error: 'Workspace name is required' }
+  const payload = {
+    name: formData.get('name')
+  }
+
+  const parsed = UpdateAccountSchema.safeParse(payload)
+
+  if (!parsed.success) {
+    return { error: parsed.error.errors[0].message }
   }
 
   // Double check authorization (must be admin/owner)
@@ -30,7 +36,7 @@ export async function updateWorkspaceName(formData: FormData) {
 
   const { error } = await supabase
     .from('accounts')
-    .update({ name: name, updated_at: new Date().toISOString() })
+    .update({ name: parsed.data.name, updated_at: new Date().toISOString() })
     .eq('id', accountId)
 
   if (error) {
