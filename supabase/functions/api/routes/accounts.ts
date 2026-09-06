@@ -76,11 +76,16 @@ app.post('/', zValidator('json', CreateAccountSchema), async (c) => {
     const body = c.req.valid('json');
 
     // 1. Create the account
-    const { data: account, error: accountError } = await supabase
+    const accountId = crypto.randomUUID();
+    const accountData = {
+        id: accountId,
+        ...body,
+        owner_user_id: user.id,
+    };
+
+    const { error: accountError } = await supabase
         .from('accounts')
-        .insert({ ...body, owner_user_id: user.id })
-        .select()
-        .single();
+        .insert(accountData);
 
     if (accountError) {
         // Unique constraint on slug
@@ -94,7 +99,7 @@ app.post('/', zValidator('json', CreateAccountSchema), async (c) => {
     const { error: memberError } = await supabase
         .from('account_members')
         .insert({
-            account_id: account.id,
+            account_id: accountId,
             user_id: user.id,
             role: 'owner',
         });
@@ -103,11 +108,11 @@ app.post('/', zValidator('json', CreateAccountSchema), async (c) => {
         return c.json({
             error: 'Account created but failed to assign owner membership.',
             details: memberError.message,
-            account,
+            account: accountData,
         }, 500);
     }
 
-    return c.json(account, 201);
+    return c.json(accountData, 201);
 });
 
 // ---------------------------------------------------------------------------
