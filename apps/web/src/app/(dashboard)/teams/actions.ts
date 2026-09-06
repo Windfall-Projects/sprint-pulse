@@ -2,6 +2,7 @@
 
 import { createClient } from '@/utils/supabase/server'
 import { revalidatePath } from 'next/cache'
+import { CreateTeamSchema } from '@sprintpulse/shared'
 
 export async function createTeam(formData: FormData) {
   const supabase = await createClient()
@@ -9,16 +10,21 @@ export async function createTeam(formData: FormData) {
   if (!user) return { error: 'Not authenticated' }
 
   const accountId = formData.get('accountId') as string
-  const name = formData.get('name') as string
+  const payload = {
+    account_id: accountId,
+    name: formData.get('name')
+  }
 
-  if (!name || name.trim() === '') return { error: 'Name is required' }
+  const parsed = CreateTeamSchema.safeParse(payload)
+  if (!parsed.success) {
+    return { error: parsed.error.errors[0].message }
+  }
 
   // Insert Team
   const { data: team, error } = await supabase
     .from('teams')
     .insert({
-      account_id: accountId,
-      name: name,
+      ...parsed.data
     })
     .select()
     .single()
