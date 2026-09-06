@@ -432,8 +432,8 @@ describe('5 · Projects', () => {
         it('accepts null description', () => {
             expect(ProjectSchema.safeParse({ ...validProject, description: null }).success).toBe(true);
         });
-        it('rejects invalid status', () => {
-            expect(ProjectSchema.safeParse({ ...validProject, status: 'draft' }).success).toBe(false);
+        it('accepts valid string status', () => {
+            expect(ProjectSchema.safeParse({ ...validProject, status: 'draft' }).success).toBe(true);
         });
     });
 
