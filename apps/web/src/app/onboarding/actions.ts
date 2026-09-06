@@ -2,13 +2,20 @@
 
 import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
+import { CreateAccountSchema } from '@sprintpulse/shared/schemas'
 
 export async function createWorkspaceAction(prevState: any, formData: FormData) {
   const supabase = await createClient()
   const workspaceName = formData.get('workspaceName') as string
 
-  if (!workspaceName || workspaceName.trim() === '') {
-    return { error: 'Please enter a workspace name' }
+  const payload = {
+    name: workspaceName,
+    slug: workspaceName || 'temp', // Schema requires slug, real one generated below
+  }
+
+  const parsed = CreateAccountSchema.safeParse(payload)
+  if (!parsed.success) {
+    return { error: parsed.error.errors[0].message }
   }
 
   // 1. Get user and profile
