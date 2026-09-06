@@ -214,9 +214,9 @@ export const ProjectSchema = z.object({
   team_id: z.string().uuid(),
   name: z.string().min(1, "Project name is required"),
   description: z.string().nullable(),
-  status: ProjectStatusEnum,
-  created_at: Timestamp,
-  updated_at: Timestamp,
+  status: z.string().nullable(),
+  created_at: z.string().nullable(),
+  updated_at: z.string().nullable(),
 });
 
 export const CreateProjectSchema = z.object({
