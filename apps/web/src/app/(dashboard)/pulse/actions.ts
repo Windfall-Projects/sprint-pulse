@@ -2,18 +2,14 @@
 
 import { createClient } from '@/utils/supabase/server'
 import { revalidatePath } from 'next/cache'
+import { CreateSurveySchema } from '@sprintpulse/shared'
 
 export async function createSurvey(formData: FormData) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return { error: 'Not authenticated' }
 
-  const title = formData.get('title') as string
   const description = formData.get('description') as string
-  const teamId = formData.get('teamId') as string
-  const accountId = formData.get('accountId') as string
-
-  if (!title) return { error: 'Title is required' }
 
   // Use the RPC to create a survey with a default question
   const defaultQuestions = [{
@@ -23,6 +19,27 @@ export async function createSurvey(formData: FormData) {
     order_index: 1,
     is_required: true
   }]
+
+  const payload = {
+    account_id: formData.get('accountId') as string,
+    team_id: formData.get('teamId') as string,
+    title: formData.get('title') as string,
+    questions: defaultQuestions.map(q => ({
+       question_text: q.question_text,
+       question_type: q.response_type,
+       order_index: q.order_index,
+       is_required: q.is_required
+    }))
+  }
+
+  const parsed = CreateSurveySchema.safeParse(payload)
+  if (!parsed.success) {
+    return { error: parsed.error.errors[0].message }
+  }
+
+  const title = parsed.data.title;
+  const accountId = parsed.data.account_id;
+  const teamId = parsed.data.team_id;
 
   const { error } = await supabase.rpc('create_survey_with_questions', {
     p_account_id: accountId,
