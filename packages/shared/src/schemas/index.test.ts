@@ -147,9 +147,10 @@ describe('2 · Identity', () => {
         id: UUID,
         name: 'Acme Corp',
         slug: 'acme-corp',
-        domain: 'acme.com',
+        owner_user_id: UUID,
         is_test_tenant: false,
         created_at: ISO_TS,
+        updated_at: ISO_TS,
     };
 
     describe('ProfileSchema', () => {
@@ -189,8 +190,8 @@ describe('2 · Identity', () => {
         it('rejects empty name', () => {
             expect(AccountSchema.safeParse({ ...validAccount, name: '' }).success).toBe(false);
         });
-        it('accepts null domain', () => {
-            expect(AccountSchema.safeParse({ ...validAccount, domain: null }).success).toBe(true);
+        it('accepts null updated_at', () => {
+            expect(AccountSchema.safeParse({ ...validAccount, updated_at: null }).success).toBe(true);
         });
     });
 
