@@ -2,24 +2,21 @@ import { Hono } from 'hono';
 import { zValidator } from '@hono/zod-validator';
 import { createClient } from '@supabase/supabase-js';
 import { Database } from '@sprintpulse/shared/database.types.ts';
-import { CreateWorkItemSchema, UpdateWorkItemSchema } from '@sprintpulse/shared/schemas/index.ts';
+import { CreateWorkItemSchema, UpdateWorkItemSchema, WorkItemsQuerySchema } from '@sprintpulse/shared/schemas/index.ts';
 
 const app = new Hono();
 
 // ---------------------------------------------------------------------------
 // GET / — List work items (filterable by teamId, sprintId, status, assignee)
 // ---------------------------------------------------------------------------
-app.get('/', async (c) => {
+app.get('/', zValidator('query', WorkItemsQuerySchema), async (c) => {
     const supabase = createClient<Database>(
         Deno.env.get('SUPABASE_URL')!,
         Deno.env.get('SUPABASE_ANON_KEY')!,
         { global: { headers: { Authorization: c.req.header('Authorization')! } } }
     );
 
-    const teamId = c.req.query('teamId');
-    if (!teamId) {
-        return c.json({ error: 'Missing required query parameter: teamId' }, 400);
-    }
+    const { teamId, sprintId, status, assigneeProfileId, projectId } = c.req.valid('query');
 
     let query = supabase
         .from('work_items')
@@ -27,22 +24,18 @@ app.get('/', async (c) => {
         .eq('team_id', teamId);
 
     // Optional filters
-    const sprintId = c.req.query('sprintId');
     if (sprintId) {
         query = query.eq('sprint_id', sprintId);
     }
 
-    const status = c.req.query('status');
     if (status) {
         query = query.eq('status', status);
     }
 
-    const assigneeProfileId = c.req.query('assigneeProfileId');
     if (assigneeProfileId) {
         query = query.eq('assignee_profile_id', assigneeProfileId);
     }
 
-    const projectId = c.req.query('projectId');
     if (projectId) {
         query = query.eq('project_id', projectId);
     }
