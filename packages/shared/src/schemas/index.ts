@@ -514,3 +514,11 @@ export const UpdateIntegrationMappingSchema = z.object({
   project_id: z.string().uuid().nullable(),
   is_active: z.boolean(),
 }).partial();
+
+export const WorkItemsQuerySchema = z.object({
+  teamId: z.string().uuid(),
+  sprintId: z.string().uuid().optional(),
+  status: WorkItemStatusEnum.optional(),
+  assigneeProfileId: z.string().uuid().optional(),
+  projectId: z.string().uuid().optional(),
+});
