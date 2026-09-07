@@ -55,6 +55,16 @@ app.post('/', zValidator('json', GiveKudosSchema), async (c) => {
         return c.json({ error: 'Unauthorized' }, 401);
     }
 
+    const { data: profile } = await supabase
+        .from('profiles')
+        .select('id')
+        .eq('auth_user_id', user.id)
+        .single();
+
+    if (!profile) {
+        return c.json({ error: 'Profile not found' }, 404);
+    }
+
     const body = c.req.valid('json');
 
     // Resolve account_id from team
@@ -73,7 +83,7 @@ app.post('/', zValidator('json', GiveKudosSchema), async (c) => {
         .insert({
             ...body,
             account_id: team.account_id,
-            sender_user_id: user.id,
+            sender_profile_id: profile.id,
         })
         .select()
         .single();

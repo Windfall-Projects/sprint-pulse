@@ -87,6 +87,16 @@ app.post('/', zValidator('json', SubmitSurveyResponseSchema), async (c) => {
         return c.json({ error: 'Unauthorized' }, 401);
     }
 
+    const { data: profile } = await supabase
+        .from('profiles')
+        .select('id')
+        .eq('auth_user_id', user.id)
+        .single();
+
+    if (!profile) {
+        return c.json({ error: 'Profile not found' }, 404);
+    }
+
     const input = c.req.valid('json');
 
     // 1. Create the response record
@@ -95,7 +105,7 @@ app.post('/', zValidator('json', SubmitSurveyResponseSchema), async (c) => {
         .insert({
             survey_id: input.survey_id,
             sprint_id: input.sprint_id,
-            user_id: user.id,
+            responder_profile_id: profile.id,
             is_confidential: input.is_confidential,
         })
         .select()
