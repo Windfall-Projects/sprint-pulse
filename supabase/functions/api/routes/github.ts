@@ -47,6 +47,11 @@ app.post('/webhook', async (c) => {
     if (event === 'issues') {
         const action = payload.action;
         const issue = payload.issue;
+
+        if (!issue || !payload.repository || !payload.repository.full_name || issue.number === undefined) {
+             return c.json({ error: 'Missing required payload fields' }, 400);
+        }
+
         const repoFullName = payload.repository.full_name;
 
         // Find mapping
