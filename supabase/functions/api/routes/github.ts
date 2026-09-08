@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
 import { createClient } from '@supabase/supabase-js';
 import { Database } from '../../../../packages/shared/src/database.types.ts';
-import { GitHubWebhookPayloadSchema } from '../../../../packages/shared/src/index.ts';
+import { GitHubWebhookPayloadSchema } from '@sprintpulse/shared/schemas/index.ts';
 
 const app = new Hono();
 
