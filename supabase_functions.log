@@ -1,0 +1,10 @@
+npm warn exec The following package was not found and will be installed: supabase@2.117.0
+WARN: config section [inbucket] is deprecated. Please use [local_smtp] instead.
+WARN: config section [inbucket] is deprecated. Please use [local_smtp] instead.
+supabase start is not running.
+Try rerunning the command with --debug to troubleshoot the error.
+npm notice
+npm notice New minor version of npm available! 11.11.0 -> 11.19.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.19.1
+npm notice To update run: npm install -g npm@11.19.1
+npm notice
