@@ -344,11 +344,11 @@ export const SurveyResponseSchema = z.object({
 
 export const SurveyAnswerSchema = z.object({
   id: z.string().uuid(),
-  response_id: z.string().uuid(),
-  question_id: z.string().uuid(),
+  response_id: z.string().uuid().nullable(),
+  question_id: z.string().uuid().nullable(),
   value_text: z.string().nullable(),
   value_number: z.number().int().nullable(),
-  value_json: z.unknown().nullable(),
+  value_json: z.any(),
 });
 
 /**
