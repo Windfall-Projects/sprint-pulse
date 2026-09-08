@@ -40,14 +40,10 @@
     ],
     "packageJson": {
       "dependencies": [
-        "npm:@eslint/js@^9.39.4",
         "npm:@hono/zod-validator@~0.7.6",
         "npm:@supabase/supabase-js@^2.94.1",
-        "npm:eslint@^9.39.4",
         "npm:hono@^4.11.7",
-        "npm:next-themes@~0.4.6",
         "npm:supabase@^2.76.8",
-        "npm:typescript-eslint@^8.59.3",
         "npm:typescript@5"
       ]
     }
