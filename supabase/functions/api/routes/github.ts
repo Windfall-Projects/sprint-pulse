@@ -4,12 +4,40 @@ import { Database } from '../../../../packages/shared/src/database.types.ts';
 
 const app = new Hono();
 
+import { z } from 'zod';
+
+const GithubWebhookSchema = z.object({
+  action: z.string().optional(),
+  issue: z.object({
+    title: z.string().optional(),
+    body: z.string().optional(),
+    number: z.number().optional(),
+    html_url: z.string().url().optional(),
+  }).passthrough().optional(),
+  repository: z.object({
+    full_name: z.string().optional(),
+  }).passthrough().optional(),
+}).passthrough();
+
 // This endpoint receives webhooks directly from the GitHub App
 app.post('/webhook', async (c) => {
     // In production, verify signature with Github App Secret
     // const signature = c.req.header('x-hub-signature-256');
     const event = c.req.header('X-GitHub-Event');
-    const payload = await c.req.json();
+
+    let rawPayload;
+    try {
+        rawPayload = await c.req.json();
+    } catch (e) {
+        return c.json({ error: 'Invalid JSON payload' }, 400);
+    }
+
+    const parsedPayload = GithubWebhookSchema.safeParse(rawPayload);
+    if (!parsedPayload.success) {
+        return c.json({ error: parsedPayload.error.errors[0].message }, 400);
+    }
+
+    const payload = parsedPayload.data;
 
     const supabase = createClient<Database>(
         Deno.env.get('SUPABASE_URL')!,
