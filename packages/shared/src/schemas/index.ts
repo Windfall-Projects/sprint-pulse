@@ -514,3 +514,16 @@ export const UpdateIntegrationMappingSchema = z.object({
   project_id: z.string().uuid().nullable(),
   is_active: z.boolean(),
 }).partial();
+
+export const GithubWebhookSchema = z.object({
+  action: z.string().optional(),
+  issue: z.object({
+    title: z.string(),
+    body: z.string().nullable().optional(),
+    number: z.number(),
+    html_url: z.string(),
+  }).passthrough().optional(),
+  repository: z.object({
+    full_name: z.string(),
+  }).passthrough().optional(),
+}).passthrough();
