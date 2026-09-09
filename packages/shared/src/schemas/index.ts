@@ -295,11 +295,13 @@ export const UpdateWorkItemSchema = z.object({
 
 export const SurveySchema = z.object({
   id: z.string().uuid(),
-  team_id: z.string().uuid().nullable(), // Null = System Template
+  account_id: z.string().uuid(),
+  team_id: z.string().uuid().nullable(),
   title: z.string().min(1),
-  is_active: z.boolean(),
-  is_system_template: z.boolean(),
-  created_at: Timestamp,
+  description: z.string().nullable(),
+  is_system_template: z.boolean().nullable(),
+  trigger_event: z.string().nullable(),
+  created_at: Timestamp.nullable(),
 });
 
 export const SurveyQuestionSchema = z.object({
