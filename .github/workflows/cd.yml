@@ -8,7 +8,7 @@ on:
 jobs:
   deploy-supabase:
     name: Deploy Supabase (Database & Functions)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     steps:
       - name: Checkout repository
@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Install pnpm
         uses: pnpm/action-setup@v3
@@ -27,7 +27,7 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: v1.x
+          deno-version: v2.1.4
 
       - name: Get pnpm store directory
         shell: bash
@@ -48,7 +48,7 @@ jobs:
       - name: Setup Supabase CLI
         uses: supabase/setup-cli@v1
         with:
-          version: latest
+          version: 1.169.3
 
       - name: Deploy Database Migrations
         run: supabase db push --project-ref ${{ secrets.SUPABASE_PROJECT_ID }}
