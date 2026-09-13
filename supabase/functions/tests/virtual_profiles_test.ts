@@ -5,8 +5,8 @@ import { createClient } from "@supabase/supabase-js";
 import { Database } from "../../../packages/shared/src/database.types.ts";
 
 // Hardcoded for local dev environment verification
-const SUPABASE_URL = "http://127.0.0.1:54321";
-const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
+const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? Deno.env.get("API_URL") ?? "http://127.0.0.1:54321";
+const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? Deno.env.get("SERVICE_ROLE_KEY") ?? "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxvY2FsIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTUxNjIzOTAyMiwiZXhwIjoxOTgzODEyOTk2fQ.H4h3k5M_M20q46xZq_1f_P6nSIfv_6q9jO4_kGqY128";
 
 Deno.test({
     name: "Virtual Profiles Lifecycle",
