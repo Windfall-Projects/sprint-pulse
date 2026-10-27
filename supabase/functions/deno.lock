@@ -1,5 +1,5 @@
 {
-  "version": "5",
+  "version": "4",
   "specifiers": {
     "jsr:@std/assert@*": "1.0.18",
     "jsr:@std/internal@^1.0.12": "1.0.12",
@@ -147,14 +147,6 @@
       "npm:@supabase/supabase-js@2",
       "npm:hono@4",
       "npm:zod@^3.25.0"
-    ],
-    "links": {
-      "npm:sprint-pulse-monorepo": {
-        "dependencies": [
-          "npm:hono@^4.11.7",
-          "npm:next-themes@~0.4.6"
-        ]
-      }
-    }
+    ]
   }
 }
