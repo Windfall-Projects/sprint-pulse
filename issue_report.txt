@@ -1,0 +1,38 @@
+**File Path:** `supabase/functions/api/routes/kudos.ts`
+**Violated Boundary/Rule:** `Ensure that the data passed from the validated request into the database layer strictly aligns with the generated Supabase types.` (Schema mismatch: `sender_user_id` should be `sender_profile_id` according to `packages/shared/src/database.types.ts`)
+
+**Failing Code Snippet:**
+```typescript
+    const { data, error } = await supabase
+        .from('kudos')
+        .insert({
+            ...body,
+            account_id: team.account_id,
+            sender_user_id: user.id,
+        })
+        .select()
+        .single();
+```
+
+**Required Correction:** `Rename payload property 'sender_user_id' to 'sender_profile_id'.`
+
+---
+
+**File Path:** `supabase/functions/api/routes/survey-responses.ts`
+**Violated Boundary/Rule:** `Ensure that the data passed from the validated request into the database layer strictly aligns with the generated Supabase types.` (Schema mismatch: `user_id` should be `responder_profile_id` according to `packages/shared/src/database.types.ts`)
+
+**Failing Code Snippet:**
+```typescript
+    const { data: response, error: responseError } = await supabase
+        .from('survey_responses')
+        .insert({
+            survey_id: input.survey_id,
+            sprint_id: input.sprint_id,
+            user_id: user.id,
+            is_confidential: input.is_confidential,
+        })
+        .select()
+        .single();
+```
+
+**Required Correction:** `Rename payload property 'user_id' to 'responder_profile_id'.`
