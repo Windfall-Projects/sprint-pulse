@@ -1,0 +1,3 @@
+- Call the `message_user` tool to output the exact branch name `readonly-update-api-sentinel-15513299302306095114` returned by the previous submit command, noting that the CI test failure in `supabase/functions/tests/virtual_profiles_test.ts` reporting 'Error: supabaseKey is required' is caused by the `SUPABASE_SERVICE_ROLE_KEY` environment variable falling back to an empty string, and the lockfile version '5' issue in `type-check:api` is caused by the GitHub Actions workflow using Deno v1.x instead of Deno v2.1.4.
+1. Complete pre-commit steps to ensure proper testing, verification, review, and reflection are done.
+2. Call the `submit` tool with the exact branch name `readonly-update-api-sentinel-15513299302306095114`.
